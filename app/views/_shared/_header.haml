@@ -1,0 +1,76 @@
+%div.row
+  %div{:class=>"col-sm-10"}
+    %a{:href=>"/",:class=>"site-header"}
+      %h1{:class=>"site-header"} Next Generation Library Publishing Technical Scan
+  %div{:class=>"col-sm-2"}
+    - if user_signed_in?
+      = link_to('Logout', destroy_user_session_path, method: :delete)
+    - else
+      = link_to('Login', new_user_session_path)
+%div.row
+  %div.col
+    %p.notice
+      =notice
+    %p.alert
+      =alert
+%div.row
+  %div.col
+    %div{:id=>"navbar-dcmi"}
+      %nav{:id=>"top-nav-bar", :class=>"navbar navbar-expand-sm navbar-light navbar-dcmi"}
+        %button{:class=>"navbar-toggler", :type=>"button", :"data-toggle"=>"collapse", :"data-target"=>"#navbarSupportedContent", :"aria-controls"=>"navbarSupportedContent", :"aria-expanded"=>"false", :"aria-label"=>"Toggle navigation"}
+          %span{:class=>"navbar-toggler-icon"}
+        %div{:class=>"collapse navbar-collapse", :id=>"navbarSupportedContent"}
+          %ul{:class=>"nav mr-auto"}
+            -if controller.controller_name == "home" then
+              %li{:class=>"nav-item nav-item-selected"}
+                =link_to "Home", root_path, :class => "nav-link"
+            -#-else
+            -#  %li{:class=>"nav-item"}
+            -#    =link_to "Home", root_path, :class => "nav-link"
+            -#
+            -#-if controller.controller_name == "subjects" then
+            -#  %li{:class=>"nav-item nav-item-selected"}
+            -#    =link_to "Subjects", subjects_path, :class => "nav-link"
+            -#-else
+            -#  %li{:class=>"nav-item"}
+            -#    =link_to "Subjects", subjects_path, :class => "nav-link"
+            -#
+            -#-if controller.controller_name == "related_resources" then
+            -#  %li{:class=>"nav-item nav-item-selected"}
+            -#    =link_to "Related Resources", related_resources_path, :class => "nav-link"
+            -#-else
+            -#  %li{:class=>"nav-item"}
+            -#    =link_to "Related Resources", related_resources_path, :class => "nav-link"
+            -#
+            -#-if controller.controller_name == "communities" then
+            -#  %li{:class=>"nav-item nav-item-selected"}
+            -#    =link_to "Communities", communities_path, :class => "nav-link"
+            -#-else
+            -#  %li{:class=>"nav-item"}
+            -#    =link_to "Communities", communities_path, :class => "nav-link"
+            -#
+            -#-if controller.controller_name == "opportunities" then
+            -#  %li{:class=>"nav-item nav-item-selected"}
+            -#    =link_to "Opportunities", opportunities_path, :class => "nav-link"
+            -#-else
+            -#  %li{:class=>"nav-item"}
+            -#    =link_to "Opportunities", opportunities_path, :class => "nav-link"
+            -#
+            -#-if controller.controller_name == "functions" then
+            -#  %li{:class=>"nav-item nav-item-selected"}
+            -#    =link_to "Functions", functions_path, :class => "nav-link"
+            -#-else
+            -#  %li{:class=>"nav-item"}
+            -#    =link_to "Functions", functions_path, :class => "nav-link"
+            -#
+            -#
+            -#
+            -#%li{:class=>"nav-item dropdown"}
+            -#  %a{:class=>"nav-link dropdown-toggle", :id=>"navbarDropdown", :role=>"button", :"data-toggle"=>"dropdown", :"aria-haspopup"=>"true", :"aria-expanded"=>"false"}Classifications
+            -#  %div{:class=>"dropdown-menu", :"aria-labelledby"=>"navbarDropdown"}
+            -#    =link_to "Entity Types", entity_types_path, :class => "dropdown-item"
+            -#    =link_to "Technology Readiness", technology_readinesses_path, :class => "dropdown-item"
+            -#    =link_to "Community Lifecycle Stage", community_lifecycle_stages_path, :class => "dropdown-item"
+            -#    =link_to "Related Resource Type", related_resource_types_path, :class => "dropdown-item"
+            -#    =link_to "Community Type", community_types_path, :class => "dropdown-item"
+            -#    =link_to "Adoption Levels", adoption_levels_path, :class => "dropdown-item"

@@ -1,0 +1,44 @@
+th.actions,td.actions {
+  white-space: nowrap;
+  // max-width: 30px;
+  text-align: right;
+}
+
+table,tr {
+  border: 1px #efefef solid;
+  width: 100%;
+}
+
+th,td {
+  vertical-align: top;
+  padding: 5px;
+  border: 1px #efefef solid;
+  /*font-size: 90%;*/
+}
+
+th {
+  font-weight: bold;
+  white-space: nowrap;
+  background-color: #efefef;
+}
+
+table.invisible-layout-table {
+  border: none;
+  width: auto;
+}
+
+table.invisible-layout-table tr, table.invisible-layout-table td {
+  border: none;
+  font-size: 100%;
+}
+
+td.field-name {
+  text-align: right;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+td.number {
+  text-align: right;
+  font-family: Courier, monospace;
+}
