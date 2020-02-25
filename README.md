@@ -1,9 +1,5 @@
 # README
 
-***(Note: this repo uses `.yarnrc` to allow temporarily sharing on Dropbox without creating a massive `node_modules` folder. Move out of Dropbox to Github only, and delete `.yarnrc`,  before publishing.)***
-
-
-
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
