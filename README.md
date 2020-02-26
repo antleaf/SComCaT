@@ -7,7 +7,6 @@ Added following gems to `Gemfile`:
 
 ```ruby
 gem 'haml-rails', '~>2.0.1'
-gem 'ancestry', '~>3.0.7'
 gem 'friendly_id', '~>5.3.0'
 gem 'acts-as-taggable-on', '~>6.5.0'
 gem 'devise','~>4.7.1'
@@ -75,6 +74,15 @@ rails haml:erb2haml
 rails g pundit:install
 ```
 
+Include Pundit in your application controller:
+
+```ruby
+class ApplicationController < ActionController::Base
+  include Pundit
+  protect_from_forgery
+end
+```
+
 ### Configured Bootstrap (vis Webpack) with Datatables
 ```bash
 yarn add bootstrap jquery popper.js
@@ -113,6 +121,36 @@ Edit `package.json` to include:
 yarn add http://datatables.net-bs4 
 ```
 -->
+
+### Created  scaffold:
+```bash
+rails generate scaffold AdoptionLevel name:string description:string notes:text slug:uniq
+rails generate scaffold Category name:string description:string notes:text slug:uniq
+rails generate scaffold Function name:string description:string notes:text slug:uniq
+rails generate scaffold ReadinessLevel name:string description:string notes:text slug:uniq
+rails generate scaffold Technology name:string description:string url:string notes:text slug:uniq adoption_level:references readiness_level:references
+```
+
+### Created join tables for HABTM
+```bash
+rails generate migration CreateJoinTableTechnologyCategory technology category
+rails generate migration CreateJoinTableTechnologyFunction technology function
+```
+
+### Added slugs for friendly_find
+```bash
+rails generate migration AddSlugToAdoptionLevels slug:uniq
+rails generate migration AddSlugToFunctions slug:uniq
+rails generate migration AddSlugToReadinessLevels slug:uniq
+rails generate migration AddSlugToCategories slug:uniq
+rails generate migration AddSlugToTechnologies slug:uniq
+```
+
+
+
+
+
+
 
 
 This README would normally document whatever steps are necessary to get the

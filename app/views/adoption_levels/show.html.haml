@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @adoption_level.name
+%p
+  %b Description:
+  = @adoption_level.description
+%p
+  %b Notes:
+  = @adoption_level.notes
+
+= link_to 'Edit', edit_adoption_level_path(@adoption_level)
+\|
+= link_to 'Back', adoption_levels_path

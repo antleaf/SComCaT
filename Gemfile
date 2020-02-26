@@ -4,7 +4,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.5.3'
 
 gem 'haml-rails', '~>2.0.1'
-gem 'ancestry', '~>3.0.7'
 gem 'friendly_id', '~>5.3.0'
 gem 'acts-as-taggable-on', '~>6.5.0'
 gem 'devise','~>4.7.1'

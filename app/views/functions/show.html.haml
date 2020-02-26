@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @function.name
+%p
+  %b Description:
+  = @function.description
+%p
+  %b Notes:
+  = @function.notes
+
+= link_to 'Edit', edit_function_path(@function)
+\|
+= link_to 'Back', functions_path

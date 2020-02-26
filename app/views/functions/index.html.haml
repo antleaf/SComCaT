@@ -1,0 +1,25 @@
+%h1 Listing functions
+
+%table{:class=>"table table-condensed table-striped sorted-table"}
+  %thead
+    %tr
+      %th Name
+      %th Description
+      %th Notes
+      %th
+      %th
+      %th
+
+  %tbody
+    - @functions.each do |function|
+      %tr
+        %td= function.name
+        %td= function.description
+        %td= function.notes
+        %td= link_to 'Show', function
+        %td= link_to 'Edit', edit_function_path(function)
+        %td= link_to 'Destroy', function, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Function', new_function_path

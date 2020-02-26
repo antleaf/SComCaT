@@ -1,0 +1,19 @@
+= form_for @readiness_level do |f|
+  - if @readiness_level.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@readiness_level.errors.count, "error")} prohibited this readiness_level from being saved:"
+      %ul
+        - @readiness_level.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :description
+    = f.text_field :description
+  .field
+    = f.label :notes
+    = f.text_area :notes
+  .actions
+    = f.submit 'Save'

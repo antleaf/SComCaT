@@ -1,0 +1,16 @@
+ID,Name,Description,Tags,Notes
+annotation,Annotation,,,
+creation,Authoring / Editing,,,
+discovery,Discovery,,,e.g. supporting indexing services; APIs such as ResourceSync
+format_conversion,Format Conversion,,,e.g. Pandoc
+formatting,Layout & Formatting,,,
+ingest,Ingest,,,e.g. SWORD
+metrics,Metrics,,,e.g. COUNTER
+preservation,Preservation,,,
+publishing,Publishing,,,Delivered on the web; Licensing; DOI minting
+reader_tools,Readers' tools,,,Accessibility (e.g. simplified views); Bibliographic management & Citation; Functions to support text/data mining
+review,Review,,,Including peer-review
+social,Social,,,"User management, profiling, linking, recommendations"
+submission,Submission Management,,,
+workflow,Workflow Management,,,
+data_mining,Data Mining ,,,

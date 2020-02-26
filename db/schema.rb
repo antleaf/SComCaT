@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_26_110848) do
+ActiveRecord::Schema.define(version: 2020_02_26_142023) do
+
+  create_table "adoption_levels", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.text "notes"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "slug"
+    t.index ["slug"], name: "index_adoption_levels_on_slug", unique: true
+  end
 
   create_table "audits", force: :cascade do |t|
     t.integer "auditable_id"
@@ -32,6 +42,46 @@ ActiveRecord::Schema.define(version: 2020_02_26_110848) do
     t.index ["created_at"], name: "index_audits_on_created_at"
     t.index ["request_uuid"], name: "index_audits_on_request_uuid"
     t.index ["user_id", "user_type"], name: "user_index"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.text "notes"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "slug"
+    t.index ["slug"], name: "index_categories_on_slug", unique: true
+  end
+
+  create_table "categories_technologies", id: false, force: :cascade do |t|
+    t.integer "technology_id", null: false
+    t.integer "category_id", null: false
+  end
+
+  create_table "functions", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.text "notes"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "slug"
+    t.index ["slug"], name: "index_functions_on_slug", unique: true
+  end
+
+  create_table "functions_technologies", id: false, force: :cascade do |t|
+    t.integer "technology_id", null: false
+    t.integer "function_id", null: false
+  end
+
+  create_table "readiness_levels", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.text "notes"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "slug"
+    t.index ["slug"], name: "index_readiness_levels_on_slug", unique: true
   end
 
   create_table "taggings", force: :cascade do |t|
@@ -61,6 +111,21 @@ ActiveRecord::Schema.define(version: 2020_02_26_110848) do
     t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
+  create_table "technologies", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.string "url"
+    t.text "notes"
+    t.integer "adoption_level_id", null: false
+    t.integer "readiness_level_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "slug"
+    t.index ["adoption_level_id"], name: "index_technologies_on_adoption_level_id"
+    t.index ["readiness_level_id"], name: "index_technologies_on_readiness_level_id"
+    t.index ["slug"], name: "index_technologies_on_slug", unique: true
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -74,4 +139,6 @@ ActiveRecord::Schema.define(version: 2020_02_26_110848) do
   end
 
   add_foreign_key "taggings", "tags"
+  add_foreign_key "technologies", "adoption_levels"
+  add_foreign_key "technologies", "readiness_levels"
 end

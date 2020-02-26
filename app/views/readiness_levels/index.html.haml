@@ -1,0 +1,25 @@
+%h1 Listing readiness_levels
+
+%table{:class=>"table table-condensed table-striped sorted-table"}
+  %thead
+    %tr
+      %th Name
+      %th Description
+      %th Notes
+      %th
+      %th
+      %th
+
+  %tbody
+    - @readiness_levels.each do |readiness_level|
+      %tr
+        %td= readiness_level.name
+        %td= readiness_level.description
+        %td= readiness_level.notes
+        %td= link_to 'Show', readiness_level
+        %td= link_to 'Edit', edit_readiness_level_path(readiness_level)
+        %td= link_to 'Destroy', readiness_level, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Readiness level', new_readiness_level_path

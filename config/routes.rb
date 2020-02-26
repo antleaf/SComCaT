@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :technologies
+  resources :readiness_levels
+  resources :functions
+  resources :categories
+  resources :adoption_levels
   devise_for :users
   root 'home#index'
 

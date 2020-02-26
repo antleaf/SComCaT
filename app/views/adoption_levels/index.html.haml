@@ -1,0 +1,25 @@
+%h1 Listing adoption_levels
+
+%table{:class=>"table table-condensed table-striped sorted-table"}
+  %thead
+    %tr
+      %th Name
+      %th Description
+      %th Notes
+      %th
+      %th
+      %th
+
+  %tbody
+    - @adoption_levels.each do |adoption_level|
+      %tr
+        %td= adoption_level.name
+        %td= adoption_level.description
+        %td= adoption_level.notes
+        %td= link_to 'Show', adoption_level
+        %td= link_to 'Edit', edit_adoption_level_path(adoption_level)
+        %td= link_to 'Destroy', adoption_level, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Adoption level', new_adoption_level_path

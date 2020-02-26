@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @technology.name
+%p
+  %b Description:
+  = @technology.description
+%p
+  %b Url:
+  = @technology.url
+%p
+  %b Notes:
+  = @technology.notes
+%p
+  %b Adoption level:
+  = @technology.adoption_level
+%p
+  %b Readiness level:
+  = @technology.readiness_level
+
+= link_to 'Edit', edit_technology_path(@technology)
+\|
+= link_to 'Back', technologies_path

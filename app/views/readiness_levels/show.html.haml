@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @readiness_level.name
+%p
+  %b Description:
+  = @readiness_level.description
+%p
+  %b Notes:
+  = @readiness_level.notes
+
+= link_to 'Edit', edit_readiness_level_path(@readiness_level)
+\|
+= link_to 'Back', readiness_levels_path
