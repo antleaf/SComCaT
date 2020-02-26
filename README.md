@@ -129,6 +129,7 @@ rails generate scaffold Category name:string description:string notes:text slug:
 rails generate scaffold Function name:string description:string notes:text slug:uniq
 rails generate scaffold ReadinessLevel name:string description:string notes:text slug:uniq
 rails generate scaffold Technology name:string description:string url:string notes:text slug:uniq adoption_level:references readiness_level:references
+rails generate scaffold Relationship predicate:string subj:references obj:references
 ```
 
 ### Created join tables for HABTM

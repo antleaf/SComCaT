@@ -60,6 +60,12 @@
             -else
               %li{:class=>"nav-item"}
                 =link_to "Readiness", readiness_levels_path, :class => "nav-link"
+            -if controller.controller_name == "relationships"
+              %li{:class=>"nav-item nav-item-selected"}
+                =link_to "Relationships", relationships_path, :class => "nav-link"
+            -else
+              %li{:class=>"nav-item"}
+                =link_to "Relationships", relationships_path, :class => "nav-link"
 
 
             -#%li{:class=>"nav-item dropdown"}

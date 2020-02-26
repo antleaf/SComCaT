@@ -1,0 +1,25 @@
+%h1 Listing relationships
+
+%table{:class=>"table table-condensed table-striped sorted-table"}
+  %thead
+    %tr
+      %th Subject
+      %th Predicate
+      %th Object
+      %th
+      %th
+      %th
+
+  %tbody
+    - @relationships.each do |relationship|
+      %tr
+        %td= relationship.subj.name
+        %td= relationship.predicate
+        %td= relationship.obj.name
+        %td= link_to 'Show', relationship
+        %td= link_to 'Edit', edit_relationship_path(relationship)
+        %td= link_to 'Destroy', relationship, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Relationship', new_relationship_path
