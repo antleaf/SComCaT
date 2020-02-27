@@ -35,6 +35,7 @@ CSV.open("#{CSV_DATA_ROOT}/Technology.csv", CSV_PARSING_OPTIONS).each do |row|
       readiness_level: ReadinessLevel.friendly.find(row['Technology_Readiness'])
   )
   technology.tag_list.add(row['Tags'], parse: true)
+  technology.save
 end
 
 CSV.open("#{CSV_DATA_ROOT}/TechnologyFunction.csv", CSV_PARSING_OPTIONS).each do |row|
@@ -45,10 +46,13 @@ CSV.open("#{CSV_DATA_ROOT}/TechnologyCategory.csv", CSV_PARSING_OPTIONS).each do
   Technology.friendly.find(row['Technology_ID']).categories << Category.friendly.find(row['Category_ID'])
 end
 
-# CSV.open("#{CSV_DATA_ROOT}/Relationships.csv", CSV_PARSING_OPTIONS).each do |row|
-#   parent_technology = Technology.friendly.find(row['Related_Technology_ID'])
-#   child_technology = Technology.friendly.find(row['Technology_ID'])
-# end
+CSV.open("#{CSV_DATA_ROOT}/Relationships.csv", CSV_PARSING_OPTIONS).each do |row|
+  Relationship.create(
+      subj: Technology.friendly.find(row['Technology_ID']),
+      obj: Technology.friendly.find(row['Related_Technology_ID']),
+      predicate: row['Predicate']
+  )
+end
 
 user = User.new
 user.email = 'paul@paulwalk.net'

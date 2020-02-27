@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_26_142023) do
+ActiveRecord::Schema.define(version: 2020_02_26_183040) do
 
   create_table "adoption_levels", force: :cascade do |t|
     t.string "name"
@@ -84,6 +84,16 @@ ActiveRecord::Schema.define(version: 2020_02_26_142023) do
     t.index ["slug"], name: "index_readiness_levels_on_slug", unique: true
   end
 
+  create_table "relationships", force: :cascade do |t|
+    t.string "predicate"
+    t.integer "subj_id", null: false
+    t.integer "obj_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["obj_id"], name: "index_relationships_on_obj_id"
+    t.index ["subj_id"], name: "index_relationships_on_subj_id"
+  end
+
   create_table "taggings", force: :cascade do |t|
     t.integer "tag_id"
     t.string "taggable_type"
@@ -138,6 +148,8 @@ ActiveRecord::Schema.define(version: 2020_02_26_142023) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "relationships", "technologies", column: "obj_id"
+  add_foreign_key "relationships", "technologies", column: "subj_id"
   add_foreign_key "taggings", "tags"
   add_foreign_key "technologies", "adoption_levels"
   add_foreign_key "technologies", "readiness_levels"
