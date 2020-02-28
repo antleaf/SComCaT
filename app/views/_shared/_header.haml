@@ -1,23 +1,16 @@
 %div.row
   %div{:class=>"col-sm-10"}
     %a{:href=>"/",:class=>"site-header"}
-      %h1{:class=>"site-header"} Scholarly Communications Technical Scan
+      %div{:class=>"site-header"} Scholarly Communications Technical Scan
   %div{:class=>"col-sm-2",:id=>"header-login-col"}
     - if user_signed_in?
       = link_to('Logout', destroy_user_session_path, method: :delete)
     - else
       = link_to('Login', new_user_session_path)
--if (notice!=nil) | (alert!=nil)
-  %div.row
-    %div.col
-      -if notice
-        %p.notice
-          =notice
-      -if alert
-        %p.alert
-          =alert
+
 %div.row
   %div.col
+    =render '_shared/alerts'
     %div{:id=>"navbar-scomcat"}
       %nav{:id=>"top-nav-bar", :class=>"navbar navbar-expand-sm navbar-light navbar-scomcat"}
         %button{:class=>"navbar-toggler", :type=>"button", :"data-toggle"=>"collapse", :"data-target"=>"#navbarSupportedContent", :"aria-controls"=>"navbarSupportedContent", :"aria-expanded"=>"false", :"aria-label"=>"Toggle navigation"}
@@ -66,7 +59,13 @@
             -else
               %li{:class=>"nav-item"}
                 =link_to "Relationships", relationships_path, :class => "nav-link"
-
+            - if policy(AdminController).index?
+              -if controller.controller_name == "admin"
+                %li{:class=>"nav-item nav-item-selected"}
+                  =link_to "Admin", admin_path, :class => "nav-link"
+              -else
+                %li{:class=>"nav-item"}
+                  =link_to "Admin", admin_path, :class => "nav-link"
 
             -#%li{:class=>"nav-item dropdown"}
             -#  %a{:class=>"nav-link dropdown-toggle", :id=>"navbarDropdown", :role=>"button", :"data-toggle"=>"dropdown", :"aria-haspopup"=>"true", :"aria-expanded"=>"false"}Classifications
