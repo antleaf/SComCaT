@@ -17,7 +17,8 @@ $(document).ready(function(){
 		"bPaginate":false,
 		"fixedHeader": false,
 		"order": [[ 0, "asc" ]],
-		"columnDefs": [{targets: 'actions', orderable: false }]
+		"columnDefs": [{targets: 'actions', orderable: false }],
+		stateSave: true
 	});
 });
 

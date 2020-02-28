@@ -2,9 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 html {
-  padding-top: 1%;
   background-color: white;
-  /*font-size: 16px;*/
   max-width: 2000px;
   margin: 0 auto;
   padding: 1%;
@@ -13,6 +11,12 @@ html {
 body {
   background-color: white;
   color: #555555;
+}
+
+body, p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
 }
 
 a,a:visited,a:hover {
@@ -41,4 +45,12 @@ blockquote {
   padding-left: 10px;
   margin-right: 20px;
   border-left: 3px solid #cdcdcd;
+}
+
+h2.page-title {
+  text-align: center;
+  border-top: 1px solid #cdcdcd;
+  border-bottom: 1px solid #cdcdcd;
+  padding-bottom: 3px;
+  color: #555555;
 }

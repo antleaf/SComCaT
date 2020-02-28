@@ -10,6 +10,10 @@
   %b Notes:
   = @adoption_level.notes
 
+%h3 Technologies with this adoption level
+
+= render(:partial => 'technologies/table',:locals => {:technology_list => @adoption_level.technologies})
+
 = link_to 'Edit', edit_adoption_level_path(@adoption_level)
 \|
 = link_to 'Back', adoption_levels_path

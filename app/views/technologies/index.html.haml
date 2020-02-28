@@ -1,31 +1,8 @@
-%h1 Listing technologies
+%h2 All Technologies
 
-%table{:class=>"table table-condensed table-striped sorted-table"}
-  %thead
-    %tr
-      %th Name
-      %th Description
-      %th Url
-      %th Notes
-      %th Adoption level
-      %th Readiness level
-      %th
-      %th
-      %th
-
-  %tbody
-    - @technologies.each do |technology|
-      %tr
-        %td= technology.name
-        %td= technology.description
-        %td= technology.url
-        %td= technology.notes
-        %td= technology.adoption_level
-        %td= technology.readiness_level
-        %td= link_to 'Show', technology
-        %td= link_to 'Edit', edit_technology_path(technology)
-        %td= link_to 'Destroy', technology, method: :delete, data: { confirm: 'Are you sure?' }
+= render(:partial => 'table',:locals => {:technology_list => @technologies})
 
 %br
 
-= link_to 'New Technology', new_technology_path
+- if policy(Technology).create?
+  = link_to 'New Technology', new_technology_path
