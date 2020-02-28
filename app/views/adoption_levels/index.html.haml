@@ -1,25 +1,28 @@
-%h1 Listing adoption_levels
+%h1 Adoption Levels
 
 %table{:class=>"table table-condensed table-striped sorted-table"}
   %thead
     %tr
       %th Name
       %th Description
-      %th Notes
-      %th
-      %th
-      %th
+      %th Count
+      - if (policy(AdoptionLevel).edit?)|(policy(AdoptionLevel).destroy?)
+        %th.actions Actions
 
   %tbody
     - @adoption_levels.each do |adoption_level|
       %tr
-        %td= adoption_level.name
-        %td= adoption_level.description
-        %td= adoption_level.notes
-        %td= link_to 'Show', adoption_level
-        %td= link_to 'Edit', edit_adoption_level_path(adoption_level)
-        %td= link_to 'Destroy', adoption_level, method: :delete, data: { confirm: 'Are you sure?' }
+        %td.no-wrap= link_to adoption_level.name, adoption_level
+        %td.expand-to-fit-available-space= truncate(adoption_level.description, length: 50, separator: ' ')
+        %td.number= adoption_level.technologies.count
+        - if (policy(AdoptionLevel).edit?)|(policy(AdoptionLevel).destroy?)
+          %td.actions
+            - if policy(AdoptionLevel).edit?
+              = link_to image_tag('icons/edit.png'), edit_adoption_level_path(adoption_level), :title => 'Edit', :class=>'action-icon'
+            - if policy(AdoptionLevel).destroy?
+              = link_to image_tag('icons/delete.png'), adoption_level, method: :delete, data: { confirm: 'Are you sure?' }, :title => 'Delete', :class=>'action-icon'
 
 %br
 
-= link_to 'New Adoption level', new_adoption_level_path
+- if policy(AdoptionLevel).create?
+  = link_to 'New Adoption level', new_adoption_level_path

@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'admin/index'
+  resources :assignments
+  resources :roles
   resources :relationships
   resources :technologies
   resources :readiness_levels

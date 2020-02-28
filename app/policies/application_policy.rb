@@ -15,7 +15,7 @@ class ApplicationPolicy
   end
 
   def create?
-    @user != nil
+    @user != nil && @user.has_role?(:editor)
   end
 
   def new?
@@ -23,7 +23,7 @@ class ApplicationPolicy
   end
 
   def update?
-    @user != nil
+    @user != nil && @user.has_role?(:editor)
   end
 
   def edit?
@@ -31,7 +31,7 @@ class ApplicationPolicy
   end
 
   def destroy?
-    @user != nil
+    @user != nil && @user.has_role?(:admin)
   end
 
   class Scope

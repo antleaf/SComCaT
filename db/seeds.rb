@@ -24,6 +24,17 @@ SIMPLE_MODELS.each do |model|
   puts
 end
 
+
+# CSV.open("#{CSV_DATA_ROOT}/ReadinessLevel.csv", CSV_PARSING_OPTIONS).each do |row|
+#   ReadinessLevel.create(
+#       slug: row['Name'].gsub(/\s/,'_').downcase,
+#       name: row['Name'],
+#       description: row['Description'],
+#       notes: row['Notes']
+#   )
+# end
+
+
 CSV.open("#{CSV_DATA_ROOT}/Technology.csv", CSV_PARSING_OPTIONS).each do |row|
   technology = Technology.create(
       slug: row['ID'],
@@ -54,8 +65,13 @@ CSV.open("#{CSV_DATA_ROOT}/Relationships.csv", CSV_PARSING_OPTIONS).each do |row
   )
 end
 
+admin_role = Role.create(:name => 'admin', :description => 'Full administration rights')
+edit_role = Role.create(:name => 'editor', :description => 'Can edit (but) not delete records')
+
 user = User.new
 user.email = 'paul@paulwalk.net'
 user.password = 'what3v3r'
 user.password_confirmation = 'what3v3r'
+user.roles << admin_role
+user.roles << edit_role
 user.save!

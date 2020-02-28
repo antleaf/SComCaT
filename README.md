@@ -45,7 +45,7 @@ rake acts_as_taggable_on_engine:install:migrations
 
 ### Created `Home` controller
 ```bash
-rails g controller Home index
+rails generate controller Home index
 ```
 
 ### Added home route to `routes.rb`
@@ -130,6 +130,8 @@ rails generate scaffold Function name:string description:string notes:text slug:
 rails generate scaffold ReadinessLevel name:string description:string notes:text slug:uniq
 rails generate scaffold Technology name:string description:string url:string notes:text slug:uniq adoption_level:references readiness_level:references
 rails generate scaffold Relationship predicate:string subj:references obj:references
+rails generate scaffold Role name:string description:string
+rails generate scaffold Assignment user:references role:references
 ```
 
 ### Created join tables for HABTM
@@ -145,9 +147,13 @@ rails generate migration AddSlugToFunctions slug:uniq
 rails generate migration AddSlugToReadinessLevels slug:uniq
 rails generate migration AddSlugToCategories slug:uniq
 rails generate migration AddSlugToTechnologies slug:uniq
+rails generate migration AddSlugToRoles slug:uniq
 ```
 
-
+### Add Admin controller
+```bash
+rails generate controller Admin index
+```
 
 
 

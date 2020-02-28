@@ -16,6 +16,14 @@ th,td {
   /*font-size: 90%;*/
 }
 
+td.expand-to-fit-available-space {
+  width: 100%;
+}
+
+td.no-wrap {
+  white-space: nowrap;
+}
+
 th {
   font-weight: bold;
   color: #555555;
@@ -42,4 +50,5 @@ td.field-name {
 td.number {
   text-align: right;
   font-family: Courier, monospace;
+  font-size: 110%;
 }
