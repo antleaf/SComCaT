@@ -20,9 +20,21 @@
     = f.text_area :notes
   .field
     = f.label :adoption_level
-    = f.text_field :adoption_level
+    = select_tag "adoption_level", options_from_collection_for_select(AdoptionLevel.all, "id", "name", @technology.adoption_level.id)
   .field
     = f.label :readiness_level
-    = f.text_field :readiness_level
+    = select_tag "readiness_level", options_from_collection_for_select(ReadinessLevel.all, "id", "name", @technology.readiness_level.id)
+  .field
+    = f.label :functions
+    = collection_check_boxes(:technology, :function_ids, Function.all, :id, :name) do |c|
+      %br
+      = c.label
+      = c.check_box
+  .field
+    = f.label :categories
+    = collection_check_boxes(:technology, :category_ids, Category.all, :id, :name) do |c|
+      %br
+      = c.label
+      = c.check_box
   .actions
     = f.submit 'Save'
