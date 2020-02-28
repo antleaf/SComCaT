@@ -3,6 +3,12 @@ a.site-header,a.site-header:hover,a.site-header:visited {
   color: #555555;
 }
 
+div.site-header {
+  font-weight: bold;
+  font-size: 250%;
+  margin-bottom: 20px;
+}
+
 div#navbar-scomcat {
   margin-bottom: 10px;
   background-color: #efefef;
