@@ -1,0 +1,3 @@
+class AdoptionLevelPolicy < ApplicationPolicy
+
+end
