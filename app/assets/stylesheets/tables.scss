@@ -38,6 +38,7 @@ table.invisible-layout-table {
 
 table.invisible-layout-table tr, table.invisible-layout-table td {
   border: none;
+  //border: 1px #efefef solid;
   font-size: 100%;
 }
 
@@ -45,6 +46,10 @@ td.field-name {
   text-align: right;
   font-weight: bold;
   white-space: nowrap;
+}
+
+td.field-value {
+  width:100%;
 }
 
 td.number {
