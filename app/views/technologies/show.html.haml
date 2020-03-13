@@ -1,9 +1,8 @@
-%h2.page-title
+%h4.page-title
   =@technology.name
 
 %div.row
   %div.col-sm-9
-    %h5 Details
     %table.invisible-layout-table
       %tr
         %td.field-name
@@ -37,7 +36,7 @@
         %td
           = raw(@technology.functions.collect { |function| link_to(function.name,function).html_safe }.join(', '))
     %br
-    - if @technology.notes
+    - if !@technology.notes.blank?
       %h5 Notes
       = @technology.notes
   %div.col-sm-3
@@ -55,4 +54,4 @@
           %li= link_to d.name,d
 
 - if policy(Technology).edit?
-  = link_to 'Edit', edit_technology_path(@technology)
+  = link_to 'Edit', edit_technology_path(@technology), :class => "btn btn-info btn-sm"

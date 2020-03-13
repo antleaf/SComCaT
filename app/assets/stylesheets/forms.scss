@@ -1,9 +1,11 @@
-textarea,input[type=text] {
+textarea,input[type=text],input[type=email],input[type=password] {
   width: 100%;
 }
 
 div.actions {
   text-align: center;
+  //border-top: 1px #efefef solid;
+  //padding-top: 3px;
 }
 
 a.btn {

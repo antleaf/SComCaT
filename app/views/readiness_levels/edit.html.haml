@@ -1,7 +1,4 @@
-%h1 Editing readiness_level
+%h4.page-title
+  ="Readiness Level: #{@readiness_level.name} (edit)"
 
 = render 'form'
-
-= link_to 'Show', @readiness_level
-\|
-= link_to 'Back', readiness_levels_path

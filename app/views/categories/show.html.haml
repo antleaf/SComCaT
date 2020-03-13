@@ -1,15 +1,20 @@
-%p#notice= notice
+%h4.page-title
+  = "Category: #{@category.name}"
+%table.invisible-layout-table
+  %tr
+    %td.field-name
+      Description:
+    %td
+      = @category.description
+%br
+  - if !@category.notes.blank?
+    %h5 Notes
+    = @category.notes
 
-%p
-  %b Name:
-  = @category.name
-%p
-  %b Description:
-  = @category.description
-%p
-  %b Notes:
-  = @category.notes
+- if policy(Category).edit?
+  = link_to 'Edit', edit_category_path(@category), :class => "btn btn-info btn-sm"
+%br
+%br
+%h5 Technologies in this category
 
-= link_to 'Edit', edit_category_path(@category)
-\|
-= link_to 'Back', categories_path
+= render(:partial => 'technologies/table',:locals => {:technology_list => @category.technologies})

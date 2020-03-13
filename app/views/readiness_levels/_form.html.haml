@@ -6,14 +6,23 @@
         - @readiness_level.errors.full_messages.each do |message|
           %li= message
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :description
-    = f.text_field :description
-  .field
-    = f.label :notes
-    = f.text_area :notes
+  %table.invisible-layout-table
+    - if policy(ReadinessLevel).edit_name?
+      %tr
+        %td.field-name
+          Name:
+        %td.field-value
+          = f.text_field :name
+    %tr
+      %td.field-name
+        Description:
+      %td.field-value
+        = f.text_field :description
+      %tr
+        %td.field-name
+          Notes:
+        %td.field-value
+          = f.text_area :notes, :rows => 10
   .actions
-    = f.submit 'Save'
+    = link_to 'Cancel', @readiness_level, :class => "btn btn-danger btn-sm"
+    = f.submit 'Save', :class => 'btn btn-success btn-sm'

@@ -1,8 +1,11 @@
-%h2.page-title All Technologies
+%h4.page-title All Technologies
+
+- if policy(Technology).create?
+  = link_to 'New Technology', new_technology_path, :class => "btn btn-info btn-sm"
 
 = render(:partial => 'table',:locals => {:technology_list => @technologies})
 
 %br
 
 - if policy(Technology).create?
-  = link_to 'New Technology', new_technology_path
+  = link_to 'New Technology', new_technology_path, :class => "btn btn-info btn-sm"

@@ -1,11 +1,14 @@
-%h1 Adoption Levels
+%h4.page-title Adoption Levels
+
+- if policy(AdoptionLevel).create?
+  = link_to 'New Adoption level', new_adoption_level_path, :class => "btn btn-info btn-sm"
 
 %table{:class=>"table table-condensed table-striped sorted-table"}
   %thead
     %tr
       %th Name
       %th Description
-      %th Count
+      %th Technologies with this adoption level
       - if (policy(AdoptionLevel).edit?)|(policy(AdoptionLevel).destroy?)
         %th.actions Actions
 
@@ -13,16 +16,16 @@
     - @adoption_levels.each do |adoption_level|
       %tr
         %td.no-wrap= link_to adoption_level.name, adoption_level
-        %td.expand-to-fit-available-space= truncate(adoption_level.description, length: 50, separator: ' ')
+        %td.expand-to-fit-available-space= adoption_level.description
         %td.number= adoption_level.technologies.count
         - if (policy(AdoptionLevel).edit?)|(policy(AdoptionLevel).destroy?)
           %td.actions
             - if policy(AdoptionLevel).edit?
-              = link_to image_tag('icons/edit.png'), edit_adoption_level_path(adoption_level), :title => 'Edit', :class=>'action-icon'
+              = link_to 'Edit', edit_adoption_level_path(adoption_level), :title => 'Edit', :class => "btn btn-info btn-sm"
             - if policy(AdoptionLevel).destroy?
-              = link_to image_tag('icons/delete.png'), adoption_level, method: :delete, data: { confirm: 'Are you sure?' }, :title => 'Delete', :class=>'action-icon'
+              = link_to 'Delete', adoption_level, method: :delete, data: { confirm: 'Are you sure?' }, :title => 'Delete', :class => "btn btn-info btn-sm"
 
 %br
 
 - if policy(AdoptionLevel).create?
-  = link_to 'New Adoption level', new_adoption_level_path
+  = link_to 'New Adoption level', new_adoption_level_path, :class => "btn btn-info btn-sm"

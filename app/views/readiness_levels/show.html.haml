@@ -1,15 +1,20 @@
-%p#notice= notice
+%h4.page-title
+  = "Readiness Level: #{@readiness_level.name}"
+%table.invisible-layout-table
+  %tr
+    %td.field-name
+      Description:
+    %td
+      = @readiness_level.description
+%br
+  - if !@readiness_level.notes.blank?
+    %h5 Notes
+    = @readiness_level.notes
 
-%p
-  %b Name:
-  = @readiness_level.name
-%p
-  %b Description:
-  = @readiness_level.description
-%p
-  %b Notes:
-  = @readiness_level.notes
+- if policy(ReadinessLevel).edit?
+  = link_to 'Edit', edit_readiness_level_path(@readiness_level), :class => "btn btn-info btn-sm"
+%br
+%br
+%h5 Technologies with this Readiness Level
 
-= link_to 'Edit', edit_readiness_level_path(@readiness_level)
-\|
-= link_to 'Back', readiness_levels_path
+= render(:partial => 'technologies/table',:locals => {:technology_list => @readiness_level.technologies})
