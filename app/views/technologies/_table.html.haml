@@ -29,8 +29,6 @@
         - if (policy(Technology).edit?)|(policy(Technology).destroy?)
           %td.actions
             - if policy(Technology).edit?
-              -#= link_to image_tag('icons/edit.png'), edit_technology_path(technology), :title => 'Edit', :class=>'action-icon'
-              = link_to 'Edit', edit_technology_path(technology), :class => "btn btn-info btn-sm"
+              = link_to 'Edit', edit_technology_path(technology), :class => "btn btn-info btn-xs"
             - if policy(Technology).destroy?
-              -#= link_to image_tag('icons/delete.png'), technology, method: :delete, data: { confirm: 'Are you sure?' }, :title => 'Delete', :class=>'action-icon'
-              = link_to 'Delete', technology, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-info btn-sm"
+              = link_to 'Delete', technology, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-info btn-xs"

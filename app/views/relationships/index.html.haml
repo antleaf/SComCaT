@@ -1,4 +1,7 @@
-%h1 Listing relationships
+%h4.page-title Relationships
+
+- if policy(Relationship).create?
+  = link_to 'New Relationships', new_relationship_path, :class => "btn btn-info btn-xs"
 
 %table{:class=>"table table-condensed table-striped sorted-table"}
   %thead
@@ -6,20 +9,23 @@
       %th Subject
       %th Predicate
       %th Object
-      %th
-      %th
-      %th
+      - if (policy(Relationship).edit?)|(policy(Relationship).destroy?)
+        %th.actions Actions
 
   %tbody
     - @relationships.each do |relationship|
       %tr
-        %td= relationship.subj.name
+        %td.no-wrap= link_to relationship.subj.name,relationship.subj
         %td= relationship.predicate
-        %td= relationship.obj.name
-        %td= link_to 'Show', relationship
-        %td= link_to 'Edit', edit_relationship_path(relationship)
-        %td= link_to 'Destroy', relationship, method: :delete, data: { confirm: 'Are you sure?' }
+        %td.no-wrap= link_to relationship.obj.name,relationship.obj
+        - if (policy(Relationship).edit?)|(policy(Relationship).destroy?)
+          %td.actions
+            - if policy(Relationship).edit?
+              = link_to 'Edit', edit_relationship_path(relationship), :class => "btn btn-info btn-xs"
+            - if policy(Relationship).destroy?
+              = link_to 'Delete', relationship, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-info btn-xs"
 
 %br
 
-= link_to 'New Relationship', new_relationship_path
+- if policy(Relationship).create?
+  = link_to 'New Relationships', new_relationship_path, :class => "btn btn-info btn-xs"

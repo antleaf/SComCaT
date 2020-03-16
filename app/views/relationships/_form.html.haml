@@ -5,15 +5,16 @@
       %ul
         - @relationship.errors.full_messages.each do |message|
           %li= message
+  %table.invisible-layout-table
+    %tr
+      %td
+        = select_tag "subj", options_from_collection_for_select(Technology.all, "id", "name", @relationship.subj.id)
+      %td
+        = f.text_field :predicate
+      %td
+        = select_tag "obj", options_from_collection_for_select(Technology.all, "id", "name", @relationship.obj.id)
 
-  .field
-    = f.label :predicate
-    = f.text_field :predicate
-  .field
-    = f.label :subj
-    = f.text_field :subj
-  .field
-    = f.label :obj
-    = f.text_field :obj
+
   .actions
-    = f.submit 'Save'
+    = link_to 'Cancel', @relationship, :class => "btn btn-danger btn-xs"
+    = f.submit 'Save', :class => 'btn btn-success btn-xs'

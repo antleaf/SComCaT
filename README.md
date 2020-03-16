@@ -155,6 +155,10 @@ rails generate migration AddSlugToRoles slug:uniq
 rails generate controller Admin index
 ```
 
+### Add D3
+```bash
+yarn add d3
+```
 
 
 
