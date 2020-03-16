@@ -2,6 +2,7 @@
 
 - if policy(AdoptionLevel).create?
   = link_to 'New Adoption level', new_adoption_level_path, :class => "btn btn-info btn-xs"
+= render "_shared/download_machine_readable_data_buttons"
 
 %table{:class=>"table table-condensed table-striped sorted-table"}
   %thead
@@ -29,3 +30,4 @@
 
 - if policy(AdoptionLevel).create?
   = link_to 'New Adoption level', new_adoption_level_path, :class => "btn btn-info btn-xs"
+= render "_shared/download_machine_readable_data_buttons"

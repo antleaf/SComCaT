@@ -1,172 +1,133 @@
 %h4.page-title Home
 
-
--#%div{:class=>"alert alert-primary", :role=>"alert"}
--#  This is a primary alert—check it out!
-
-%div#svg-body.panel-body
-
 :javascript
-  function filterNodesById(nodes,id){
-    return nodes.filter(function(n) { return n.id === id; });
-  }
+  var width = 1000,
+    height = 1000;
 
-  function filterNodesByType(nodes,value){
-    return nodes.filter(function(n) { return n.type === value; });
-  }
+  var force = d3.layout.force()
+    .size([width, height])
+    .linkDistance(60)
+    .charge(-300)
+    .gravity(0.2)
+    .on("tick", tick);
 
-  function triplesToGraph(triples){
-    svg.html("");
-      //Graph
-    var graph={nodes:[], links:[], triples:[]};
+  var svg = d3.select("body").append("svg")
+    .attr("width", width)
+    .attr("height", height)
+    .style("border", "1px solid black");
 
-      //Initial Graph from triples
-    triples.forEach(function(triple){
-      var subjId = triple.subject;
-      var predId = triple.predicate;
-      var objId = triple.object;
+  var view = svg.append("view")
+    .attr("id", "view")
+    .attr("viewBox", "1000 1000 1500 1500");
 
-      var subjNode = filterNodesById(graph.nodes, subjId)[0];
-      var objNode  = filterNodesById(graph.nodes, objId)[0];
+  var path = svg.append("g").selectAll("path"),
+    circle = svg.append("g").selectAll("circle"),
+    hypertext = svg.append("g").selectAll("text");
 
-      if(subjNode==null){
-        subjNode = {id:subjId, label:subjId, weight:1, type:"node"};
-        graph.nodes.push(subjNode);
-      }
+  var marker = svg.append("defs").append("marker")
+    .attr("id", "arrow")
+    .attr("viewBox", "0 -5 10 10")
+    .attr("refX", 15)
+    .attr("refY", -1.5)
+    .attr("markerWidth", 6)
+    .attr("markerHeight", 6)
+    .attr("orient", "auto")
+    .append("path")
+      .attr("d", "M0,-5L10,0L0,5");
 
-      if(objNode==null){
-        objNode = {id:objId, label:objId, weight:1, type:"node"};
-        graph.nodes.push(objNode);
-      }
+  var data = getData();
+  var nodes = data.nodes;
+  var links = data.links;
 
-      var predNode = {id:predId, label:predId, weight:1, type:"pred"} ;
-      graph.nodes.push(predNode);
+  update(links);
 
-      var blankLabel = "";
-
-      graph.links.push({source:subjNode, target:predNode, predicate:blankLabel, weight:1});
-      graph.links.push({source:predNode, target:objNode, predicate:blankLabel, weight:1});
-
-      graph.triples.push({s:subjNode, p:predNode, o:objNode});
-
+  function update(links) {
+      // Compute the distinct nodes from the links.
+    links.forEach(function (link) {
+      link.source = nodes[link.source];
+      link.target = nodes[link.target];
     });
 
-    return graph;
-  }
+    force.nodes(nodes)
+      .links(links)
+      .start();
 
+      // -------------------------------
 
-  function update(){
-      // ==================== Add Marker ====================
-    svg.append("svg:defs").selectAll("marker")
-      .data(["end"])
-      .enter().append("svg:marker")
-      .attr("id", String)
-      .attr("viewBox", "0 -5 10 10")
-      .attr("refX", 30)
-      .attr("refY", -0.5)
-      .attr("markerWidth", 6)
-      .attr("markerHeight", 6)
-      .attr("orient", "auto")
-      .append("svg:polyline")
-      .attr("points", "0,-5 10,0 0,5")
-    ;
+      // Compute the data join. This returns the update selection.
+    path = path.data(force.links());
 
-      // ==================== Add Links ====================
-    var links = svg.selectAll(".link")
-      .data(graph.triples)
-      .enter()
-      .append("path")
-      .attr("marker-end", "url(#end)")
+      // Remove any outgoing/old paths.
+    path.exit().remove();
+
+      // Compute new attributes for entering and updating paths.
+    path.enter().append("path")
       .attr("class", "link")
-    ;
-
-      // ==================== Add Link Names =====================
-    var linkTexts = svg.selectAll(".link-text")
-      .data(graph.triples)
-      .enter()
-      .append("text")
-      .attr("class", "link-text")
-      .text( function (d) { return d.p.label; })
-    ;
-
-      //linkTexts.append("title")
-      //		.text(function(d) { return d.predicate; });
-
-      // ==================== Add Link Names =====================
-    var nodeTexts = svg.selectAll(".node-text")
-      .data(filterNodesByType(graph.nodes, "node"))
-      .enter()
-      .append("text")
-      .attr("class", "node-text")
-      .text( function (d) { return d.label; })
-    ;
-
-      //nodeTexts.append("title")
-      //		.text(function(d) { return d.label; });
-
-      // ==================== Add Node =====================
-    var nodes = svg.selectAll(".node")
-      .data(filterNodesByType(graph.nodes, "node"))
-      .enter()
-      .append("circle")
-      .attr("class", "node")
-      .attr("r",8)
-      .call(force.drag)
-    ;//nodes
-
-      // ==================== Force ====================
-    force.on("tick", function() {
-      nodes
-        .attr("cx", function(d){ return d.x; })
-        .attr("cy", function(d){ return d.y; })
-      ;
-
-      links
-        .attr("d", function(d) {
-          return "M" 	+ d.s.x + "," + d.s.y
-            + "S" + d.p.x + "," + d.p.y
-            + " " + d.o.x + "," + d.o.y;
+      .style("stroke", function (d) {
+        return d3.rgb(5*d.value, 200+d.value, 127-2*d.value);
         })
-      ;
+      .attr("marker-end", "url(#arrow)");
 
-      nodeTexts
-        .attr("x", function(d) { return d.x + 12 ; })
-        .attr("y", function(d) { return d.y + 3; })
-      ;
+      // -------------------------------
+
+      // Compute the data join. This returns the update selection.
+    circle = circle.data(force.nodes());
+
+      // Add any incoming circles.
+    circle.enter().append("circle");
+
+      // Remove any outgoing/old circles.
+    circle.exit().remove();
+
+      // Compute new attributes for entering and updating circles.
+    circle.attr("r", 6)
+      .attr("is", function(d){return "node-"+d.name})
+      .call(force.drag);
 
 
-      linkTexts
-        .attr("x", function(d) { return 4 + (d.s.x + d.p.x + d.o.x)/3  ; })
-        .attr("y", function(d) { return 4 + (d.s.y + d.p.y + d.o.y)/3 ; })
-      ;
+      // Compute the data join. This returns the update selection.
+    hypertext  = hypertext .data(force.nodes());
+
+      // Add any incoming texts.
+    hypertext.enter().append("text")
+      .append("a")
+      //.attr("xlink:show", "new")
+          .attr("target", "_blank");
+
+      // Remove any outgoing/old texts.
+    hypertext.exit().remove();
+
+      // Compute new attributes for entering and updating texts.
+    hypertext.attr("x", 8)
+      .attr("y", ".31em")
+    .select("a")
+    .attr("xlink:href", function (d) {
+      return "/technologies/" + d.slug;
+    })
+    .text(function (d) {
+      return d.name;
     });
-
-      // ==================== Run ====================
-    force
-      .nodes(graph.nodes)
-      .links(graph.links)
-      .charge(-500)
-      .linkDistance(50)
-      .start()
-    ;
   }
-  var triples = [
-    {subject:"ex:ThaiLand", 	predicate:"ex:hasFood", 	object:"ex:TomYumKung"},
-    {subject:"ex:TomYumKung", 	predicate:"ex:isFoodOf", 	object:"ex:ThaiLand"},
-    {subject:"ex:TomYumKung", 	predicate:"rdf:type", 		object:"ex:SpicyFood"},
-    {subject:"ex:TomYumKung", 	predicate:"ex:includes", 	object:"ex:shrimp"},
-    {subject:"ex:TomYumKung", 	predicate:"ex:includes", 	object:"ex:chilly"},
-    {subject:"ex:TomYumKung", 	predicate:"ex:requires", 	object:"ex:chilly"},
-    {subject:"ex:TomYumKung", 	predicate:"ex:hasSpicy", 	object:"ex:chilly"},
-    {subject:"ex:TomYumKung", 	predicate:"ex:includes", 	object:"ex:lemon"},
-    {subject:"ex:lemon", 		predicate:"ex:hasTaste", 	object:"ex:sour"},
-    {subject:"ex:chilly", 		predicate:"ex:hasTaste", 	object:"ex:spicy"}
-  ];
 
-  var svg = d3.select("#svg-body").append("svg").attr("width", 800).attr("height", 600);
+  // Use elliptical arc path segments to doubly-encode directionality.
+  function tick() {
+    path.attr("d", linkArc);
+    circle.attr("transform", transform);
+    hypertext.attr("transform", transform);
+  }
 
-  var force = d3.layout.force().size([800, 600]);
+  function linkArc(d) {
+    var dx = d.target.x - d.source.x,
+      dy = d.target.y - d.source.y,
+      dr = Math.sqrt(dx * dx + dy * dy);
+    return "M" + d.source.x + "," + d.source.y + "A" + dr + "," + dr + " 0 0,1 " + d.target.x + "," + d.target.y;
+  }
 
-  var graph = triplesToGraph(triples);
+  function transform(d) {
+    return "translate(" + d.x + "," + d.y + ")";
+  }
 
-  update();
+
+  function getData() {
+    return #{@graph};
+  }

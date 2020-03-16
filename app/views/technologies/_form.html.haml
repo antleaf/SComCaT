@@ -33,12 +33,18 @@
           %td.field-name
             Adoption Level:
           %td.field-value
-            = select_tag "adoption_level", options_from_collection_for_select(AdoptionLevel.all, "id", "name", @technology.adoption_level.id)
+            - if @technology.new_record?
+              = select_tag "adoption_level", options_from_collection_for_select(AdoptionLevel.all, "id", "name")
+            - else
+              = select_tag "adoption_level", options_from_collection_for_select(AdoptionLevel.all, "id", "name", @technology.adoption_level.id)
         %tr
           %td.field-name
             Readiness Level:
           %td.field-value
-            = select_tag "readiness_level", options_from_collection_for_select(ReadinessLevel.all, "id", "name", @technology.readiness_level.id)
+            - if @technology.new_record?
+              = select_tag "readiness_level", options_from_collection_for_select(ReadinessLevel.all, "id", "name")
+            - else
+              = select_tag "readiness_level", options_from_collection_for_select(ReadinessLevel.all, "id", "name", @technology.readiness_level.id)
     .div.col-sm-2
       .field
         %h5 Functions

@@ -5,6 +5,11 @@ class TechnologiesController < ApplicationController
   # GET /technologies.json
   def index
     @technologies = Technology.all
+    respond_to do |format|
+      format.html
+      format.json { send_data @technologies.to_json, filename: "technologies-#{Date.today}.json" }
+      format.csv { send_data @technologies.to_csv, filename: "technologies-#{Date.today}.csv" }
+    end
   end
 
   # GET /technologies/1

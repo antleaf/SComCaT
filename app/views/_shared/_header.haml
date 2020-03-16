@@ -60,6 +60,12 @@
             -else
               %li{:class=>"nav-item"}
                 =link_to "Relationships", relationships_path, :class => "nav-link"
+            -if controller.controller_name == "tags"
+              %li{:class=>"nav-item nav-item-selected"}
+                =link_to "Tags", tags_path, :class => "nav-link"
+            -else
+              %li{:class=>"nav-item"}
+                =link_to "Tags", tags_path, :class => "nav-link"
             - if policy(AdminController).index?
               -if controller.controller_name == "admin"
                 %li{:class=>"nav-item nav-item-selected"}

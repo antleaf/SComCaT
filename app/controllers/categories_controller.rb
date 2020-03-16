@@ -5,6 +5,11 @@ class CategoriesController < ApplicationController
   # GET /categories.json
   def index
     @categories = Category.all
+    respond_to do |format|
+      format.html
+      format.json { send_data @categories.to_json, filename: "categories-#{Date.today}.json" }
+      format.csv { send_data @categories.to_csv, filename: "categories-#{Date.today}.csv" }
+    end
   end
 
   # GET /categories/1

@@ -5,6 +5,11 @@ class ReadinessLevelsController < ApplicationController
   # GET /readiness_levels.json
   def index
     @readiness_levels = ReadinessLevel.all
+    respond_to do |format|
+      format.html
+      format.json { send_data @readiness_levels.to_json, filename: "readiness_levels-#{Date.today}.json" }
+      format.csv { send_data @readiness_levels.to_csv, filename: "readiness_levels-#{Date.today}.csv" }
+    end
   end
 
   # GET /readiness_levels/1

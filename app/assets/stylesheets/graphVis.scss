@@ -1,31 +1,36 @@
-.node {
-  stroke: #fff;
-  fill:#ddd;
-  stroke-width: 1.5px;
-}
 
 .link {
   fill: none;
-  stroke: #999;
-  stroke-opacity: .6;
-  stroke-width: 1px;
+  stroke: #666;
+  stroke-width: 1.5px;
 }
 
-marker {
-  stroke: #999;
-  fill:rgba(124,240,10,0);
+circle {
+  //fill: #ccc;
+  //stroke: #333;
+  //stroke-width: 1.5px;
+  fill: white;
+  stroke: white;
+  stroke-width: 0px;
 }
 
-.node-text {
-  font: 11px sans-serif;
-  fill:black;
+text {
+  text-baseline: middle;
+  text-anchor:middle;
+  //font: 10px sans-serif;
+  /*pointer-events: none;*/
+  //text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, 0 -1px 0 #fff, -1px 0 0 #fff;
 }
 
-.link-text {
-  font: 9px sans-serif;
-  fill:grey;
-}
+//text a {
+//  fill: navy;
+//}
 
-svg{
-  border:1px solid black;
+//text a:visited {
+//  fill:darkpurple;
+//}
+
+text a:hover, text a:active {
+  text-decoration: underline;
+  //fill:darkred;
 }

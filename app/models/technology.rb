@@ -1,6 +1,7 @@
 class Technology < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: :slugged
+  include GenerateCsv
 
   acts_as_taggable
 

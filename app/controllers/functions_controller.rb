@@ -5,6 +5,12 @@ class FunctionsController < ApplicationController
   # GET /functions.json
   def index
     @functions = Function.all
+
+    respond_to do |format|
+      format.html
+      format.json { send_data @functions.to_json, filename: "functions-#{Date.today}.json" }
+      format.csv { send_data @functions.to_csv, filename: "functions-#{Date.today}.csv" }
+    end
   end
 
   # GET /functions/1

@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   resources :categories
   resources :adoption_levels
   devise_for :users
+
+  resources :tags, only: [:index, :show]
+
   root 'home#index'
 
   get 'home', to: 'home#index'

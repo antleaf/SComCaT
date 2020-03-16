@@ -5,6 +5,11 @@ class AdoptionLevelsController < ApplicationController
   # GET /adoption_levels.json
   def index
     @adoption_levels = AdoptionLevel.all
+    respond_to do |format|
+      format.html
+      format.json { send_data @adoption_levels.to_json, filename: "adoption_levels-#{Date.today}.json" }
+      format.csv { send_data @adoption_levels.to_csv, filename: "adoption_levels-#{Date.today}.csv" }
+    end
   end
 
   # GET /adoption_levels/1

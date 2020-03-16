@@ -2,6 +2,7 @@
 
 - if policy(Function).create?
   = link_to 'New Function', new_function_path, :class => "btn btn-info btn-xs"
+= render "_shared/download_machine_readable_data_buttons"
 
 %table{:class=>"table table-condensed table-striped sorted-table"}
   %thead
@@ -27,3 +28,4 @@
 
 - if policy(Function).create?
   = link_to 'New Function', new_function_path, :class => "btn btn-info btn-xs"
+= render "_shared/download_machine_readable_data_buttons"
