@@ -10,6 +10,7 @@ gem 'devise','~>4.7.1'
 gem 'pundit','~>2.1.0'
 gem 'backup', '~>5.0.0.beta.2'
 gem "audited", "~> 4.9"
+#gem 'rails-jquery-autocomplete'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.1'
