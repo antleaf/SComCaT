@@ -1,0 +1,11 @@
+ID,Name,Description,Notes
+not_classified,Not Classified,Not Classified,
+tr1_basic_principles_observed,TR1,TR1 Basic Principles Observed,
+tr2_technology_concept_formulated,TR2,TR2 Technology Concept Formulated,
+tr3_experimental_proof_of_concept,TR3,TR3 Experimental Proof Of Concept,
+tr4_technology_validated_in_lab,TR4,TR4 Technology Validated In Lab,
+tr5_technology_validated_in_relevant_environment,TR5,TR5 Technology Validated In Relevant Environment,
+tr6_technology_demonstrated_in_relevant_environment,TR6,TR6 Technology Demonstrated In Relevant Environment,
+tr7_system_prototype_demonstration_in_operational_environment,TR7,TR7 System Prototype Demonstration In Operational Environment,
+tr8_system_complete_and_qualified,TR8,TR8 System Complete And Qualified,
+tr9_actual_system_proven_in_operational_environment,TR9,TR9 Actual System Proven In Operational Environment,

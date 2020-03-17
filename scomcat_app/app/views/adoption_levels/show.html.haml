@@ -1,0 +1,20 @@
+%h4.page-title
+  = "Adoption Level: #{@adoption_level.name}"
+%table.invisible-layout-table
+  %tr
+    %td.field-name
+      Description:
+    %td
+      = @adoption_level.description
+%br
+  - if !@adoption_level.notes.blank?
+    %h5 Notes
+    = @adoption_level.notes
+
+- if policy(AdoptionLevel).edit?
+  = link_to 'Edit', edit_adoption_level_path(@adoption_level), :class => "btn btn-info btn-xs"
+%br
+%br
+%h5 Technologies with this adoption level
+
+= render(:partial => 'technologies/table',:locals => {:technology_list => @adoption_level.technologies})

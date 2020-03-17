@@ -1,0 +1,33 @@
+%h4.page-title  Categories
+
+- if policy(Category).create?
+  = link_to 'New Category', new_category_path, :class => "btn btn-info btn-xs"
+= render "_shared/download_machine_readable_data_buttons"
+
+%table{:class=>"table table-condensed table-striped sorted-table"}
+  %thead
+    %tr
+      %th Name
+      %th Description
+      %th Technologies in this category
+      - if (policy(Category).edit?)|(policy(Category).destroy?)
+        %th.actions Actions
+
+  %tbody
+    - @categories.each do |category|
+      %tr
+        %td.no-wrap= link_to category.name,category
+        %td.expand-to-fit-available-space= category.description
+        %td.number= category.technologies.count
+        - if (policy(Category).edit?)|(policy(Category).destroy?)
+          %td.actions
+            - if policy(Category).edit?
+              = link_to 'Edit', edit_category_path(category), :title => 'Edit', :class => "btn btn-info btn-xs"
+            - if policy(Category).destroy?
+              = link_to 'Delete', category, method: :delete, data: { confirm: 'Are you sure?' }, :title => 'Delete', :class => "btn btn-info btn-xs"
+
+
+
+- if policy(Category).create?
+  = link_to 'New Category', new_category_path, :class => "btn btn-info btn-xs"
+= render "_shared/download_machine_readable_data_buttons"

@@ -1,0 +1,20 @@
+%h4.page-title
+  = "Function: #{@function.name}"
+%table.invisible-layout-table
+  %tr
+    %td.field-name
+      Description:
+    %td
+      = @function.description
+%br
+  - if !@function.notes.blank?
+    %h5 Notes
+    = @function.notes
+
+- if policy(Function).edit?
+  = link_to 'Edit', edit_function_path(@function), :class => "btn btn-info btn-xs"
+%br
+%br
+%h5 Technologies providing this function
+
+= render(:partial => 'technologies/table',:locals => {:technology_list => @function.technologies})

@@ -1,0 +1,59 @@
+th.actions,td.actions {
+  white-space: nowrap;
+  // max-width: 30px;
+  text-align: right;
+}
+
+table,tr {
+  border: 1px #efefef solid;
+  width: 100%;
+}
+
+th,td {
+  vertical-align: top;
+  padding: 5px;
+  border: 1px #efefef solid;
+  /*font-size: 90%;*/
+}
+
+td.expand-to-fit-available-space {
+  width: 100%;
+}
+
+td.no-wrap {
+  white-space: nowrap;
+}
+
+th {
+  font-weight: bold;
+  color: #555555;
+  white-space: nowrap;
+  //background-color: #d9e6fa;
+}
+
+table.invisible-layout-table {
+  border: none;
+  width: auto;
+}
+
+table.invisible-layout-table tr, table.invisible-layout-table td {
+  border: none;
+  //border: 1px #efefef solid;
+  font-size: 100%;
+}
+
+td.field-name {
+  text-align: right;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+td.field-value {
+  width:100%;
+}
+
+td.number {
+  text-align: right;
+  font-family: Courier, monospace;
+  font-size: 110%;
+}

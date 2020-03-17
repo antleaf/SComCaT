@@ -1,0 +1,3 @@
+class ReadinessLevelPolicy < ApplicationPolicy
+
+end

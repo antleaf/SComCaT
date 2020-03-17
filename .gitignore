@@ -5,37 +5,37 @@
 #   git config --global core.excludesfile '~/.gitignore_global'
 
 # Ignore bundler config.
-/.bundle
+/scomcat_app/.bundle
 
 # Ignore the default SQLite database.
-/db/*.sqlite3
-/db/*.sqlite3-journal
-/db/*.sqlite3-*
+/scomcat_app/db/*.sqlite3
+/scomcat_app/db/*.sqlite3-journal
+/scomcat_app/db/*.sqlite3-*
 
 # Ignore all logfiles and tempfiles.
-/log/*
-/tmp/*
-!/log/.keep
-!/tmp/.keep
+/scomcat_app/log/*
+/scomcat_app/tmp/*
+!/scomcat_app/log/.keep
+!/scomcat_app/tmp/.keep
 
 # Ignore uploaded files in development.
-/storage/*
-!/storage/.keep
+/scomcat_app/storage/*
+!/scomcat_app/storage/.keep
 
-/public/assets
+/scomcat_app/public/assets
 .byebug_history
 
 # Ignore master key for decrypting credentials and more.
-/config/master.key
+/scomcat_app/config/master.key
 
-/public/packs
-/public/packs-test
-/node_modules
-/yarn-error.log
+/scomcat_app/public/packs
+/scomcat_app/public/packs-test
+/scomcat_app/node_modules
+/scomcat_app/yarn-error.log
 yarn-debug.log*
 .yarn-integrity
 
 .DS_Store
 .idea
-/.generators
-/.rakeTasks
+/scomcat_app/.generators
+/scomcat_app/.rakeTasks

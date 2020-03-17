@@ -1,0 +1,66 @@
+= form_for @technology do |f|
+  - if @technology.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@technology.errors.count, "error")} prohibited this technology from being saved:"
+      %ul
+        - @technology.errors.full_messages.each do |message|
+          %li= message
+  .div.row
+    .div.col-sm-8
+      %table.invisible-layout-table
+        - if policy(Technology).edit_name?
+          %tr
+            %td.field-name
+              Name:
+            %td.field-value
+              = f.text_field :name
+        %tr
+          %td.field-name
+            Description:
+          %td.field-value
+            = f.text_field :description
+        %tr
+          %td.field-name
+            URL:
+          %td.field-value
+            = f.text_field :url
+        %tr
+          %td.field-name
+            Notes:
+          %td.field-value
+            = f.text_area :notes, :rows => 10
+        %tr
+          %td.field-name
+            Adoption Level:
+          %td.field-value
+            - if @technology.new_record?
+              = select_tag "adoption_level", options_from_collection_for_select(AdoptionLevel.all, "id", "name")
+            - else
+              = select_tag "adoption_level", options_from_collection_for_select(AdoptionLevel.all, "id", "name", @technology.adoption_level.id)
+        %tr
+          %td.field-name
+            Readiness Level:
+          %td.field-value
+            - if @technology.new_record?
+              = select_tag "readiness_level", options_from_collection_for_select(ReadinessLevel.all, "id", "name")
+            - else
+              = select_tag "readiness_level", options_from_collection_for_select(ReadinessLevel.all, "id", "name", @technology.readiness_level.id)
+    .div.col-sm-2
+      .field
+        %h5 Functions
+        = collection_check_boxes(:technology, :function_ids, Function.all, :id, :name) do |c|
+          = c.check_box
+          = c.label
+          %br
+    .div.col-sm-2
+      .field
+        %h5 Categories
+        = collection_check_boxes(:technology, :category_ids, Category.all, :id, :name) do |c|
+          = c.check_box
+          = c.label
+          %br
+  .div.row
+    .div.col
+      .actions
+        = link_to 'Cancel', @technology, :class => "btn btn-danger btn-xs"
+        = f.submit 'Save', :class => 'btn btn-success btn-xs'

@@ -1,0 +1,31 @@
+%h4.page-title Relationships
+
+- if policy(Relationship).create?
+  = link_to 'New Relationships', new_relationship_path, :class => "btn btn-info btn-xs"
+
+%table{:class=>"table table-condensed table-striped sorted-table"}
+  %thead
+    %tr
+      %th Subject
+      %th Predicate
+      %th Object
+      - if (policy(Relationship).edit?)|(policy(Relationship).destroy?)
+        %th.actions Actions
+
+  %tbody
+    - @relationships.each do |relationship|
+      %tr
+        %td.no-wrap= link_to relationship.subj.name,relationship.subj
+        %td= relationship.predicate
+        %td.no-wrap= link_to relationship.obj.name,relationship.obj
+        - if (policy(Relationship).edit?)|(policy(Relationship).destroy?)
+          %td.actions
+            - if policy(Relationship).edit?
+              = link_to 'Edit', edit_relationship_path(relationship), :class => "btn btn-info btn-xs"
+            - if policy(Relationship).destroy?
+              = link_to 'Delete', relationship, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-info btn-xs"
+
+%br
+
+- if policy(Relationship).create?
+  = link_to 'New Relationships', new_relationship_path, :class => "btn btn-info btn-xs"

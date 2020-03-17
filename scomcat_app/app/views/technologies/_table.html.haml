@@ -1,0 +1,34 @@
+%table{:class=>"table table-condensed table-striped sorted-table"}
+  %thead
+    %tr
+      %th Name
+      %th Description
+      %th Adoption
+      %th Readiness
+      -#%th Categories
+      -#%th Functions
+      %th Depends On
+      %th Dependents
+      -#%th Tags
+      - if (policy(Technology).edit?)|(policy(Technology).destroy?)
+        %th.actions Actions
+
+  %tbody
+    - technology_list.each do |technology|
+      %tr
+        %td.no-wrap= link_to technology.name,technology
+        %td.no-wrap= truncate(technology.description, length: 50, separator: ' ')
+        %td= link_to technology.adoption_level.name, technology.adoption_level
+        %td= link_to technology.readiness_level.name, technology.readiness_level
+        -#%td= raw(technology.categories.collect { |category| link_to(category.name,category).html_safe }.join(', '))
+        -#%td= raw(technology.functions.collect { |function| link_to(function.name,function).html_safe }.join(', '))
+        -#%td= raw(technology.tags.collect { |tag| tag }.join(', '))
+        %td.number= technology.depends_on.count
+        %td.number= technology.is_depended_on_by.count
+        -#%td= technology.tag_list
+        - if (policy(Technology).edit?)|(policy(Technology).destroy?)
+          %td.actions
+            - if policy(Technology).edit?
+              = link_to 'Edit', edit_technology_path(technology), :class => "btn btn-info btn-xs"
+            - if policy(Technology).destroy?
+              = link_to 'Delete', technology, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-info btn-xs"
