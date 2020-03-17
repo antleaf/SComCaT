@@ -1,3 +1,0 @@
-class TechnologyPolicy < ApplicationPolicy
-
-end

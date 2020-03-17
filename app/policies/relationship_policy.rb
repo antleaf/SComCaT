@@ -1,3 +1,0 @@
-class RelationshipPolicy < ApplicationPolicy
-
-end

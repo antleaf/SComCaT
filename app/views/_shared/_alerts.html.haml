@@ -1,9 +1,0 @@
--flash.each do |type, msg|
-  -if type == 'error'
-    %div.alert.alert-dismissible.alert-danger
-      %button{:type=>"button", :class=>"close",:"data-dismiss"=>"alert"}
-        &times;
-      = msg
-  -else
-    %div.alert.alert-dismissible.alert-success
-      = msg
