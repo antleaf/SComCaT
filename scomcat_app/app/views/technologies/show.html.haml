@@ -35,6 +35,11 @@
           Functions:
         %td
           = raw(@technology.functions.collect { |function| link_to(function.name,function).html_safe }.join(', '))
+      %tr
+        %td.field-name
+          Tags:
+        %td
+          = raw(@technology.tags.collect { |tag| link_to(tag.name,tag_path(tag)).html_safe }.join(', '))
     %br
     - if !@technology.notes.blank?
       %h5 Notes

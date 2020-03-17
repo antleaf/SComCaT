@@ -5,6 +5,12 @@ class RelationshipsController < ApplicationController
   # GET /relationships.json
   def index
     @relationships = Relationship.all
+
+    respond_to do |format|
+      format.html
+      format.json { send_data @relationships.to_json, filename: "readiness_levels-#{Date.today}.json" }
+      format.csv { send_data @relationships.to_csv, filename: "readiness_levels-#{Date.today}.csv" }
+    end
   end
 
   # GET /relationships/1

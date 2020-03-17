@@ -1,5 +1,9 @@
 class HomeController < ApplicationController
+
   def index
+  end
+
+  def graph
     nodes_array = [{"name": 'node_1'},{"name": 'node_2'},{"name": 'node_3'}]
     # links_array = [{"source": 0, "target": 1, "value": 'depends_on'},{"source": 1, "target": 2, "value": 'depends_on'}]
     nodes_array = []

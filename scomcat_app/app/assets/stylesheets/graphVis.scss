@@ -1,8 +1,11 @@
+div#dependency-graph-svg-div {
+  text-align: center;
+}
 
 .link {
-  fill: none;
-  stroke: #666;
-  stroke-width: 1.5px;
+  fill: white;
+  stroke: #ccc !important;
+  stroke-width: 1.5px !important;
 }
 
 circle {
@@ -15,7 +18,7 @@ circle {
 }
 
 text {
-  text-baseline: middle;
+  //text-baseline: middle;
   text-anchor:middle;
   //font: 10px sans-serif;
   /*pointer-events: none;*/

@@ -9,9 +9,6 @@ require("@rails/activestorage").start();
 require("channels");
 require("bootstrap/dist/js/bootstrap");
 require("datatables.net-bs4");
-// require('jquery_ujs');
-// require('jquery-ui/widgets/autocomplete');
-// require('autocomplete-rails');
 require("./d3.v3.min.js");
 require("./scomcat.js");
 

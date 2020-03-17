@@ -45,6 +45,11 @@
               = select_tag "readiness_level", options_from_collection_for_select(ReadinessLevel.all, "id", "name")
             - else
               = select_tag "readiness_level", options_from_collection_for_select(ReadinessLevel.all, "id", "name", @technology.readiness_level.id)
+        %tr
+          %td.field-name
+            Tags:
+          %td.field-value
+            = f.text_field :tag_list, value: f.object.tag_list.join(",")
     .div.col-sm-2
       .field
         %h5 Functions

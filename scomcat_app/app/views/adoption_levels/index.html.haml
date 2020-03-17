@@ -1,8 +1,11 @@
 %h4.page-title Adoption Levels
 
-- if policy(AdoptionLevel).create?
-  = link_to 'New Adoption level', new_adoption_level_path, :class => "btn btn-info btn-xs"
-= render "_shared/download_machine_readable_data_buttons"
+%div.row
+  %div.col-lg-6
+    - if policy(AdoptionLevel).create?
+      = link_to 'New Adoption level', new_adoption_level_path, :class => "btn btn-info btn-xs"
+  %div.col.right-aligned
+    = render "_shared/download_machine_readable_data_buttons"
 
 %table{:class=>"table table-condensed table-striped sorted-table"}
   %thead
@@ -25,9 +28,9 @@
               = link_to 'Edit', edit_adoption_level_path(adoption_level), :title => 'Edit', :class => "btn btn-info btn-xs"
             - if policy(AdoptionLevel).destroy?
               = link_to 'Delete', adoption_level, method: :delete, data: { confirm: 'Are you sure?' }, :title => 'Delete', :class => "btn btn-info btn-xs"
-
-%br
-
-- if policy(AdoptionLevel).create?
-  = link_to 'New Adoption level', new_adoption_level_path, :class => "btn btn-info btn-xs"
-= render "_shared/download_machine_readable_data_buttons"
+%div.row
+  %div.col-lg-6
+    - if policy(AdoptionLevel).create?
+      = link_to 'New Adoption level', new_adoption_level_path, :class => "btn btn-info btn-xs"
+  %div.col.right-aligned
+    = render "_shared/download_machine_readable_data_buttons"
