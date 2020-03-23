@@ -1,5 +1,21 @@
 # README
 
+## Deployment
+###  Local, production environment
+```bash
+su - app
+# will need to set the POSTGRES_PASSWORD ENV 
+
+RAILS_ENV=production rails db:create
+RAILS_ENV=production rails db:migrate
+RAILS_ENV=production rails db:reset DISABLE_DATABASE_ENVIRONMENT_CHECK=1
+RAILS_ENV=production rails assets:precompile
+RAILS_ENV=production RAILS_SERVE_STATIC_FILES=true rails server
+```
+
+
+
+
 ## Development log
 
 ### Gem configuration
@@ -160,29 +176,3 @@ rails generate controller Admin index
 yarn add d3
 ```
 
-
-
-
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...

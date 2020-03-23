@@ -1,4 +1,6 @@
-FROM phusion/passenger-ruby25:latest
+FROM antleaf/antleaf_nginx_passenger_base_image:1.0
+
+ENV POSTGRES_PASSWORD=
 
 # Set correct environment variables.
 ENV HOME /root
