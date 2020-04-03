@@ -40,3 +40,4 @@ yarn-debug.log*
 /.generators
 /.rakeTasks
 /.ruby-version
+/config/credentials/production.key
