@@ -22,7 +22,7 @@ production:
   # <<: *default
   adapter: postgresql
   encoding: unicode
-  host: postgres-scomcat
+  host: scomcat-postgres-service
   username: postgres
   #  password:
   pool: 5
