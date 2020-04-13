@@ -22,8 +22,8 @@ production:
   # <<: *default
   adapter: postgresql
   encoding: unicode
-  host: scomcat-postgres-service
-  username: postgres
+  host: <%= ENV['POSTGRES_HOST'] %>
+  username: <%= ENV['POSTGRES_USER'] %>
   #  password:
   pool: 5
   database: scomcat_production
