@@ -69,9 +69,9 @@ admin_role = Role.create(:name => 'admin', :description => 'Full administration 
 edit_role = Role.create(:name => 'editor', :description => 'Can edit (but) not delete records')
 
 user = User.new
-user.email = 'paul@paulwalk.net'
-user.password = 'what3v3r'
-user.password_confirmation = 'what3v3r'
+user.email = ENV["ADMIN_ACCOUNT_EMAIL"]
+user.password = ENV["ADMIN_ACCOUNT_PASSWORD"]
+user.password_confirmation = ENV["ADMIN_ACCOUNT_PASSWORD"]
 user.roles << admin_role
 user.roles << edit_role
 user.save!
