@@ -22,7 +22,7 @@ def download_all_google_data(csv_data_root)
   GOOGLE_SHEET_ID_HASH.each_pair do |k,v|
     download_google_sheet(csv_data_root,k)
   end
-  open("#{csv_data_root}/Relationships.csv", 'wb') do |file|
+  open("#{csv_data_root}/Relationship.csv", 'wb') do |file|
     file << open(RELATIONSHIPS_SHEET_URL).read
   end
 

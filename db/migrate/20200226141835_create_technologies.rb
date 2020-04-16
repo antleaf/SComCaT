@@ -7,7 +7,7 @@ class CreateTechnologies < ActiveRecord::Migration[6.0]
       t.text :notes
       t.references :adoption_level, null: false, foreign_key: true
       t.references :readiness_level, null: false, foreign_key: true
-
+      t.references :governance, null: false, foreign_key: true
       t.timestamps
     end
   end

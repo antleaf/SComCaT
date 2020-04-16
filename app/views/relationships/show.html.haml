@@ -1,15 +1,21 @@
-%p#notice= notice
+%h4.page-title
+  = "Relationship: #{@relationship.subj.name} #{@relationship.predicate} #{@relationship.obj.name}"
+%table.invisible-layout-table
+  %tr
+    %td.field-name
+      Predicate:
+    %td
+      = @relationship.predicate
+  %tr
+    %td.field-name
+      Subject:
+    %td
+      = @relationship.subj.name
+  %tr
+    %td.field-name
+      Object:
+    %td
+      = @relationship.obj.name
 
-%p
-  %b Predicate:
-  = @relationship.predicate
-%p
-  %b Subj:
-  = @relationship.subj
-%p
-  %b Obj:
-  = @relationship.obj
-
-= link_to 'Edit', edit_relationship_path(@relationship)
-\|
-= link_to 'Back', relationships_path
+- if policy(Relationship).edit?
+  = link_to 'Edit', edit_relationship_path(@relationship), :class => "btn btn-info btn-xs"

@@ -1,7 +1,9 @@
 %div.row.site-header-row
   %div.col-sm-10
     %div.site-header
-      %a.site-header{:href=>"/"} Scholarly Communications Technical Scan
+      %a.site-header{:href=>"/"} SComCat
+    %div.site-sub-header
+      Scholarly Communications Technolgy Catalogue
   %div{:class=>"col-sm-2",:id=>"header-login-col"}
     - if user_signed_in?
       ="User: #{current_user.email}"
@@ -48,6 +50,12 @@
             -else
               %li{:class=>"nav-item"}
                 =link_to "Categories", categories_path, :class => "nav-link"
+            -if controller.controller_name == "governance"
+              %li{:class=>"nav-item nav-item-selected"}
+                =link_to "Governance", governances_path, :class => "nav-link"
+            -else
+              %li{:class=>"nav-item"}
+                =link_to "Governance", governances_path, :class => "nav-link"
             -if controller.controller_name == "readiness_levels"
               %li{:class=>"nav-item nav-item-selected"}
                 =link_to "Readiness", readiness_levels_path, :class => "nav-link"

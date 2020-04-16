@@ -1,4 +1,4 @@
-ID,Name,Description,Notes
+slug,name,description,notes
 codebase,Codebase,Source code (open source),
 component,Component,,"Software library or plugin, a comonent to be used in another tool or system"
 framework,Application Framework,,Framework for building applications/systems

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_28_110728) do
+ActiveRecord::Schema.define(version: 2020_04_16_120953) do
 
   create_table "adoption_levels", force: :cascade do |t|
     t.string "name"
@@ -83,6 +83,16 @@ ActiveRecord::Schema.define(version: 2020_02_28_110728) do
     t.integer "function_id", null: false
   end
 
+  create_table "governances", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.text "notes"
+    t.string "slug"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["slug"], name: "index_governances_on_slug", unique: true
+  end
+
   create_table "readiness_levels", force: :cascade do |t|
     t.string "name"
     t.string "description"
@@ -146,10 +156,12 @@ ActiveRecord::Schema.define(version: 2020_02_28_110728) do
     t.text "notes"
     t.integer "adoption_level_id", null: false
     t.integer "readiness_level_id", null: false
+    t.integer "governance_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "slug"
     t.index ["adoption_level_id"], name: "index_technologies_on_adoption_level_id"
+    t.index ["governance_id"], name: "index_technologies_on_governance_id"
     t.index ["readiness_level_id"], name: "index_technologies_on_readiness_level_id"
     t.index ["slug"], name: "index_technologies_on_slug", unique: true
   end
@@ -172,5 +184,6 @@ ActiveRecord::Schema.define(version: 2020_02_28_110728) do
   add_foreign_key "relationships", "technologies", column: "subj_id"
   add_foreign_key "taggings", "tags"
   add_foreign_key "technologies", "adoption_levels"
+  add_foreign_key "technologies", "governances"
   add_foreign_key "technologies", "readiness_levels"
 end

@@ -1,4 +1,4 @@
-ID,Name,Description,Tags,Notes
+slug,name,description,tags,notes
 annotation,Annotation,,,
 creation,Authoring / Editing,,,
 discovery,Discovery,,,e.g. supporting indexing services; APIs such as ResourceSync

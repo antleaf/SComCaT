@@ -1,0 +1,36 @@
+%h4.page-title Governance Models
+
+%div.row
+  %div.col-lg-6
+    - if policy(Governance).create?
+      = link_to 'New Governance Model', new_governance_path, :class => "btn btn-info btn-xs"
+  %div.col.right-aligned
+    = render "_shared/download_machine_readable_data_buttons"
+
+%table{:class=>"table table-condensed table-striped sorted-table"}
+  %thead
+    %tr
+      %th Name
+      %th.unsorted-column Description
+      %th Technologies with this governance model
+      - if (policy(Governance).edit?)|(policy(Governance).destroy?)
+        %th.actions Actions
+
+  %tbody
+    - @governances.each do |governance|
+      %tr
+        %td.no-wrap= link_to governance.name, governance
+        %td.expand-to-fit-available-space= governance.description
+        %td.number= governance.technologies.count
+        - if (policy(Governance).edit?)|(policy(Governance).destroy?)
+          %td.actions
+            - if policy(Governance).edit?
+              = link_to 'Edit', edit_governance_path(governance), :title => 'Edit', :class => "btn btn-info btn-xs"
+            - if policy(Governance).destroy?
+              = link_to 'Delete', governance, method: :delete, data: { confirm: 'Are you sure?' }, :title => 'Delete', :class => "btn btn-info btn-xs"
+%div.row
+  %div.col-lg-6
+    - if policy(Governance).create?
+      = link_to 'New Governance Model', new_governance_path, :class => "btn btn-info btn-xs"
+  %div.col.right-aligned
+    = render "_shared/download_machine_readable_data_buttons"

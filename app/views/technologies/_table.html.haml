@@ -2,9 +2,10 @@
   %thead
     %tr
       %th Name
-      %th Description
+      %th.unsorted-column Description
       %th Adoption
       %th Readiness
+      %th Governance
       -#%th Categories
       -#%th Functions
       %th Depends On
@@ -20,6 +21,7 @@
         %td.no-wrap= truncate(technology.description, length: 50, separator: ' ')
         %td= link_to technology.adoption_level.name, technology.adoption_level
         %td= link_to technology.readiness_level.name, technology.readiness_level
+        %td= link_to technology.governance.name, technology.governance
         -#%td= raw(technology.categories.collect { |category| link_to(category.name,category).html_safe }.join(', '))
         -#%td= raw(technology.functions.collect { |function| link_to(function.name,function).html_safe }.join(', '))
         -#%td= raw(technology.tags.collect { |tag| tag }.join(', '))

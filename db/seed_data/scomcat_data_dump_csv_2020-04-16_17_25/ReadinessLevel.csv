@@ -1,0 +1,11 @@
+id,name,description,notes,created_at,updated_at,slug
+1,Not Classified,Not Classified,,2020-04-16 14:18:27 UTC,2020-04-16 14:18:27 UTC,not_classified
+2,TR1,TR1 Basic Principles Observed,,2020-04-16 14:18:27 UTC,2020-04-16 14:18:27 UTC,tr1_basic_principles_observed
+3,TR2,TR2 Technology Concept Formulated,,2020-04-16 14:18:27 UTC,2020-04-16 14:18:27 UTC,tr2_technology_concept_formulated
+4,TR3,TR3 Experimental Proof Of Concept,,2020-04-16 14:18:27 UTC,2020-04-16 14:18:27 UTC,tr3_experimental_proof_of_concept
+5,TR4,TR4 Technology Validated In Lab,,2020-04-16 14:18:27 UTC,2020-04-16 14:18:27 UTC,tr4_technology_validated_in_lab
+6,TR5,TR5 Technology Validated In Relevant Environment,,2020-04-16 14:18:27 UTC,2020-04-16 14:18:27 UTC,tr5_technology_validated_in_relevant_environment
+7,TR6,TR6 Technology Demonstrated In Relevant Environment,,2020-04-16 14:18:27 UTC,2020-04-16 14:18:27 UTC,tr6_technology_demonstrated_in_relevant_environment
+8,TR7,TR7 System Prototype Demonstration In Operational Environment,,2020-04-16 14:18:27 UTC,2020-04-16 14:18:27 UTC,tr7_system_prototype_demonstration_in_operational_environment
+9,TR8,TR8 System Complete And Qualified,,2020-04-16 14:18:27 UTC,2020-04-16 14:18:27 UTC,tr8_system_complete_and_qualified
+10,TR9,TR9 Actual System Proven In Operational Environment,,2020-04-16 14:18:27 UTC,2020-04-16 14:18:27 UTC,tr9_actual_system_proven_in_operational_environment

@@ -1,0 +1,3 @@
+class GovernancePolicy < ApplicationPolicy
+
+end

@@ -27,6 +27,11 @@
           = link_to @technology.readiness_level.name, @technology.readiness_level
       %tr
         %td.field-name
+          Governance:
+        %td
+          = link_to @technology.governance.name, @technology.governance
+      %tr
+        %td.field-name
           Categories:
         %td
           = raw(@technology.categories.collect { |category| link_to(category.name,category).html_safe }.join(', '))

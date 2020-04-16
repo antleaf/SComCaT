@@ -17,7 +17,7 @@ $(document).on('turbolinks:load',function () {
         "bPaginate": false,
         "fixedHeader": false,
         "order": [[0, "asc"]],
-        "columnDefs": [{targets: 'actions', orderable: false}],
+        "columnDefs": [{targets: ['unsorted-column','actions'], orderable: false}],
         stateSave: true
     });
 });
@@ -29,7 +29,8 @@ $(document).on('turbolinks:load',function () {
         "bFilter": false,
         "bPaginate": false,
         "fixedHeader": false,
-        "order": [[0, "desc"]]
+        "order": [[0, "desc"]],
+        "columnDefs": [{targets: ['unsorted-column','actions'], orderable: false}],
     });
 });
 

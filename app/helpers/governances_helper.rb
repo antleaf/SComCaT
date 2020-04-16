@@ -1,0 +1,2 @@
+module GovernancesHelper
+end

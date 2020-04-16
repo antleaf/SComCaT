@@ -1,0 +1,16 @@
+id,name,description,notes,created_at,updated_at,slug
+1,Annotation,,,2020-04-16 14:18:27 UTC,2020-04-16 14:18:27 UTC,annotation
+2,Authoring / Editing,,,2020-04-16 14:18:27 UTC,2020-04-16 14:18:27 UTC,creation
+15,Data Mining ,,,2020-04-16 14:18:27 UTC,2020-04-16 14:18:27 UTC,data_mining
+3,Discovery,,e.g. supporting indexing services; APIs such as ResourceSync,2020-04-16 14:18:27 UTC,2020-04-16 14:18:27 UTC,discovery
+4,Format Conversion,,e.g. Pandoc,2020-04-16 14:18:27 UTC,2020-04-16 14:18:27 UTC,format_conversion
+6,Ingest,,e.g. SWORD,2020-04-16 14:18:27 UTC,2020-04-16 14:18:27 UTC,ingest
+5,Layout & Formatting,,,2020-04-16 14:18:27 UTC,2020-04-16 14:18:27 UTC,formatting
+7,Metrics,,e.g. COUNTER,2020-04-16 14:18:27 UTC,2020-04-16 14:18:27 UTC,metrics
+8,Preservation,,,2020-04-16 14:18:27 UTC,2020-04-16 14:18:27 UTC,preservation
+9,Publishing,,Delivered on the web; Licensing; DOI minting,2020-04-16 14:18:27 UTC,2020-04-16 14:18:27 UTC,publishing
+10,Readers' tools,,Accessibility (e.g. simplified views); Bibliographic management & Citation; Functions to support text/data mining,2020-04-16 14:18:27 UTC,2020-04-16 14:18:27 UTC,reader_tools
+11,Review,,Including peer-review,2020-04-16 14:18:27 UTC,2020-04-16 14:18:27 UTC,review
+12,Social,,"User management, profiling, linking, recommendations",2020-04-16 14:18:27 UTC,2020-04-16 14:18:27 UTC,social
+13,Submission Management,,,2020-04-16 14:18:27 UTC,2020-04-16 14:18:27 UTC,submission
+14,Workflow Management,,,2020-04-16 14:18:27 UTC,2020-04-16 14:18:27 UTC,workflow

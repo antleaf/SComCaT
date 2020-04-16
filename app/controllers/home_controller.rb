@@ -16,4 +16,6 @@ class HomeController < ApplicationController
     end
     @graph = {"nodes" => nodes_array,"links" => links_array}.to_json.html_safe
   end
+
+
 end
