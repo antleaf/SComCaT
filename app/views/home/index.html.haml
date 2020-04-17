@@ -1,8 +1,19 @@
 %h4.page-title Home
+%div.row
+  %div.col-lg-9
+    Welcome to the Scholarly Communication Technology Catalogue... (explain scope here)
 
-= link_to "Change your password", edit_user_registration_path, :class => 'btn btn-info btn-xs'
 
-= link_to 'Graph', home_graph_path
+    %h5 Experimental features
+    %ul
+      %li= link_to 'Dependency graph visualiser', home_graph_path
+  %div.col-lg-3.right-aligned
+    = link_to "Change your password", edit_user_registration_path, :class => 'btn btn-info btn-xs'
+
+
+
+
+
 
 
 -# = link_to "Register", new_user_registration_path, :class => 'btn btn-info btn-xs'
