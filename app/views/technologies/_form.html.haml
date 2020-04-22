@@ -8,12 +8,11 @@
   .div.row
     .div.col-sm-8
       %table.invisible-layout-table
-        - if policy(Technology).edit_name?
-          %tr
-            %td.field-name
-              Name:
-            %td.field-value
-              = f.text_field :name
+        %tr
+          %td.field-name
+            Name:
+          %td.field-value
+            = f.text_field :name
         %tr
           %td.field-name
             Description:

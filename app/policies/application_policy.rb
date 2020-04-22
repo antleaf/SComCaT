@@ -30,9 +30,9 @@ class ApplicationPolicy
     update?
   end
 
-  def edit_name?
-    @user != nil && @user.has_role?(:admin) # only an admin may change the name of something because these are used to create the friendly URLs
-  end
+  # def edit_name?
+  #   @user != nil && @user.has_role?(:admin) # only an admin may change the name of something because these are used to create the friendly URLs
+  # end
 
   def destroy?
     @user != nil && @user.has_role?(:admin)

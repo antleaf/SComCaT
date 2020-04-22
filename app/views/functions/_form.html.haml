@@ -6,12 +6,11 @@
         - @function.errors.full_messages.each do |message|
           %li= message
   %table.invisible-layout-table
-    - if policy(Function).edit_name?
-      %tr
-        %td.field-name
-          Name:
-        %td.field-value
-          = f.text_field :name
+    %tr
+      %td.field-name
+        Name:
+      %td.field-value
+        = f.text_field :name
     %tr
       %td.field-name
         Description:
