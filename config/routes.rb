@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :governances
   get 'admin', to: 'admin#index'
+  get 'admin/audit', to: 'admin#audit'
   resources :assignments
   resources :roles
   resources :relationships

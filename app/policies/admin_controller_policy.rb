@@ -10,4 +10,8 @@ class AdminControllerPolicy < ApplicationPolicy
     @user != nil && @user.has_role?(:admin)
   end
 
+  def audit?
+    @user != nil && @user.has_role?(:admin)
+  end
+
 end

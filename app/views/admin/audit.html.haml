@@ -1,0 +1,24 @@
+%h4.page-title Audit
+
+
+%table{:class=>"table table-condensed table-striped sorted-table"}
+  %thead
+    %tr
+      %th Target
+      %th User
+      %th.unsorted-column Change(s))
+  %tbody
+    -@audits.each do |audit|
+      %tr
+        %td.no-wrap= audit.auditable_type
+        %td= User.find(audit.user_id).email
+        %td.expand-to-fit-available-space
+          -audit.audited_changes.each_pair do |k,v|
+            %b=k
+            %br
+            &nbsp;&nbsp;(before):
+            =v[0]
+            %br
+            &nbsp;&nbsp;(after):
+            =v[1]
+            %br

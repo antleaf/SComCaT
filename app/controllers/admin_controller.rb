@@ -50,4 +50,14 @@ class AdminController < ApplicationController
       end
     end
   end
+
+  def audit
+    authorize self
+    @audits = Audited::Audit.all.limit(100)
+    respond_to do |format|
+      format.html
+      # format.json { send_data @adoption_levels.to_json, filename: "adoption_levels-#{Date.today}.json" }
+      # format.csv { send_data @adoption_levels.to_csv, filename: "adoption_levels-#{Date.today}.csv" }
+    end
+  end
 end
