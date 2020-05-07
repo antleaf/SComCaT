@@ -3,7 +3,7 @@
 %div.row
   %div.col-lg-6
     - if policy(Governance).create?
-      = link_to 'New Governance Model', new_governance_path, :class => "btn btn-info btn-xs"
+      = link_to 'New Governance', new_governance_path, :class => "btn btn-info btn-xs"
   %div.col.right-aligned
     = render "_shared/download_machine_readable_data_buttons"
 
@@ -31,6 +31,6 @@
 %div.row
   %div.col-lg-6
     - if policy(Governance).create?
-      = link_to 'New Governance Model', new_governance_path, :class => "btn btn-info btn-xs"
+      = link_to 'New Governance', new_governance_path, :class => "btn btn-info btn-xs"
   %div.col.right-aligned
     = render "_shared/download_machine_readable_data_buttons"
