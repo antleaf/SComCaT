@@ -1,6 +1,8 @@
 class TagsController < ApplicationController
   def index
-    @tags = ActsAsTaggableOn::Tag.all
+    # @tags = ActsAsTaggableOn::Tag.all
+    @tags = ActsAsTaggableOn::Tag.for_context(:tags)
+    @base_techs = ActsAsTaggableOn::Tag.for_context(:base_techs)
   end
 
   def show

@@ -74,6 +74,6 @@ class TechnologiesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def technology_params
-      params.require(:technology).permit(:name, :description, :url, :notes, :adoption_level_id, :readiness_level_id,:governance_id,:tag_list,:function_ids => [],:category_ids => [])
+      params.require(:technology).permit(:name, :description, :url, :notes, :editorial, :adoption_level_id, :readiness_level_id,:governance_id,:tag_list,:base_tech_list,:function_ids => [],:category_ids => [])
     end
 end

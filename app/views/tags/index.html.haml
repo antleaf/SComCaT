@@ -1,13 +1,29 @@
 %h4.page-title Tags
 
-%table{:class=>"table table-condensed table-striped sorted-table"}
-  %thead
-    %tr
-      %th Tag
-      %th Technologies with this tag
+%div.row
+  %div.col-lg-6
+    %h5 Base Technologies
+    %table{:class=>"table table-condensed table-striped sorted-table"}
+      %thead
+        %tr
+          %th Base Technology
+          %th Technologies which use this base technology
 
-  %tbody
-    - @tags.each do |tag|
-      %tr
-        %td.no-wrap= link_to tag.name, tag_path(tag)
-        %td.number= tag.taggings_count
+      %tbody
+        - @base_techs.each do |base_tech|
+          %tr
+            %td.no-wrap= link_to base_tech.name, tag_path(base_tech)
+            %td.number= base_tech.taggings_count
+  %div.col-lg-6
+    %h5 General Tags
+    %table{:class=>"table table-condensed table-striped sorted-table"}
+      %thead
+        %tr
+          %th Tag
+          %th Technologies with this tag
+
+      %tbody
+        - @tags.each do |tag|
+          %tr
+            %td.no-wrap= link_to tag.name, tag_path(tag)
+            %td.number= tag.taggings_count

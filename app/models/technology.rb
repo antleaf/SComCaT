@@ -3,6 +3,7 @@ class Technology < ApplicationRecord
   friendly_id :name, use: :slugged
   include GenerateCsv
   acts_as_taggable
+  acts_as_taggable_on :base_techs
   audited
 
   belongs_to :adoption_level

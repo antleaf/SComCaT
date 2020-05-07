@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_16_120953) do
+ActiveRecord::Schema.define(version: 2020_05_07_160942) do
 
   create_table "adoption_levels", force: :cascade do |t|
     t.string "name"
@@ -160,6 +160,7 @@ ActiveRecord::Schema.define(version: 2020_04_16_120953) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "slug"
+    t.text "editorial"
     t.index ["adoption_level_id"], name: "index_technologies_on_adoption_level_id"
     t.index ["governance_id"], name: "index_technologies_on_governance_id"
     t.index ["readiness_level_id"], name: "index_technologies_on_readiness_level_id"

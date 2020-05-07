@@ -54,10 +54,23 @@
               = select_tag "governance", options_from_collection_for_select(Governance.all, "id", "name", @technology.governance.id)
         %tr
           %td.field-name
-            Tags:
+            Base technologies:
+          %td.field-value
+            = f.text_field :base_tech_list, value: f.object.base_tech_list.join(",")
+            %i Separate individual 'base technologies' with a comma. They will be converted to all-lowercase.
+        %tr
+          %td.field-name
+            General Tags:
           %td.field-value
             = f.text_field :tag_list, value: f.object.tag_list.join(",")
-            Separate individual tags with a comma. Tags will be converted to all-lowercase.
+            %i Separate individual tags with a comma. Tags will be converted to all-lowercase.
+        %tr
+          %td.field-name
+            Editors' Comments:
+            %br
+            %i (not displayed to users)
+          %td.field-value
+            = f.text_area :editorial, :rows => 10, :class => 'editorial-comment-field'
     .div.col-sm-2
       .field
         %h5 Functions
