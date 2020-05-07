@@ -6,19 +6,23 @@
     %tr
       %th Target
       %th User
+      %th Change Event
       %th.unsorted-column Change(s))
   %tbody
     -@audits.each do |audit|
       %tr
         %td.no-wrap= audit.auditable_type
         %td= User.find(audit.user_id).email
+        %td= audit.action
         %td.expand-to-fit-available-space
-          -audit.audited_changes.each_pair do |k,v|
-            %b=k
-            %br
-            &nbsp;&nbsp;(before):
-            =v[0]
-            %br
-            &nbsp;&nbsp;(after):
-            =v[1]
-            %br
+          -if audit.action == 'update'
+            -audit.audited_changes.each_pair do |k,v|
+              %b=k
+              %br
+              &nbsp;&nbsp;(before):
+              =v[0]
+              %br
+              &nbsp;&nbsp;(after):
+              =v[1]
+          -else
+            &nbsp;
