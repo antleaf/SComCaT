@@ -4,4 +4,6 @@
 Current Git commit deployed:
 =GitDetails::GIT_COMMIT_ID
 %br
-= link_to 'Download archive', admin_path(format: :zip)
+%ul
+  %li= link_to 'Download archive', admin_path(format: :zip)
+  %li= link_to 'Audits', 'admin/audit'

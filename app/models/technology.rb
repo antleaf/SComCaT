@@ -11,6 +11,9 @@ class Technology < ApplicationRecord
   belongs_to :governance
   has_and_belongs_to_many :functions
   has_and_belongs_to_many :categories
+  has_many :relationships
+
+  before_destroy :remove_relationships
 
   #has_many :subjects, class_name: 'Relationship', foreign_key: 'subject_id'
   #has_many :objects, class_name: 'Relationship', foreign_key: 'object_id'
@@ -26,4 +29,10 @@ class Technology < ApplicationRecord
     Relationship.where(:obj => self,:predicate => 'depends_on').each {|rel| technology_list << rel.subj}
     return technology_list
   end
+
+  private
+    def remove_relationships
+      Relationship.destroy_by(subj_id: self.id)
+      Relationship.destroy_by(obj_id: self.id)
+    end
 end

@@ -53,7 +53,9 @@ class AdminController < ApplicationController
 
   def audit
     authorize self
-    @audits = Audited::Audit.all.limit(100)
+    # Audited::Audit.reorder(:auditable_type)
+    @audits = Audited::Audit.order('created_at DESC').limit(100)
+    # @audits = Audited::Audit.limit(100)
     respond_to do |format|
       format.html
       # format.json { send_data @adoption_levels.to_json, filename: "adoption_levels-#{Date.today}.json" }

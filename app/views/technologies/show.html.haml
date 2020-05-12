@@ -67,6 +67,11 @@
       %ul
         - depends_on.each do |d|
           %li= link_to d.name,d
+    - if @technology.base_techs.count > 0
+      %h5 Base technologies
+      %ul
+        - @technology.base_techs.each do |base_tech|
+          %li=link_to(base_tech.name,tag_path(base_tech))
 
 - if policy(Technology).edit?
   = link_to 'Edit', edit_technology_path(@technology), :class => "btn btn-info btn-xs"

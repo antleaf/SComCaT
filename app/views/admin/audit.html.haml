@@ -4,14 +4,25 @@
 %table{:class=>"table table-condensed table-striped sorted-table"}
   %thead
     %tr
-      %th Target
+      %th Timestamp
+      %th Type
+      %th Name
       %th User
       %th Change Event
       %th.unsorted-column Change(s))
   %tbody
     -@audits.each do |audit|
       %tr
-        %td.no-wrap= audit.auditable_type
+        %td.no-wrap
+          =audit.created_at.strftime('%Y-%m-%d %H:%M')
+        %td.no-wrap
+          = audit.auditable_type
+        %td.no-wrap
+          - audited_thing = eval(audit.auditable_type).find(audit.auditable_id) rescue nil
+          - if audited_thing != nil
+            = audited_thing.name
+          - else
+            &nbsp;
         %td= User.find(audit.user_id).email
         %td= audit.action
         %td.expand-to-fit-available-space
