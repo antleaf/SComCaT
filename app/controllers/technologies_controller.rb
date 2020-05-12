@@ -24,6 +24,7 @@ class TechnologiesController < ApplicationController
 
   # GET /technologies/1/edit
   def edit
+    #@adoption_levels = AdoptionLevel.all
   end
 
   # POST /technologies
