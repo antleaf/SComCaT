@@ -3,10 +3,20 @@
 
 development:
   # <<: *default
-  database: db/development.sqlite3
-  adapter: sqlite3
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  timeout: 5000
+  adapter: postgresql
+  encoding: unicode
+  host: <%= ENV['POSTGRES_HOST'] %>
+  username: <%= ENV['POSTGRES_USER'] %>
+  pool: 5
+  database: scomcat_development
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
+
+# development:
+#  # <<: *default
+#  database: db/development.sqlite3
+#  adapter: sqlite3
+#  pool: <%#= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+#  timeout: 5000
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -24,7 +34,6 @@ production:
   encoding: unicode
   host: <%= ENV['POSTGRES_HOST'] %>
   username: <%= ENV['POSTGRES_USER'] %>
-  #  password:
   pool: 5
   database: scomcat_production
   password: <%= ENV['POSTGRES_PASSWORD'] %>
