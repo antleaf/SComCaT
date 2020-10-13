@@ -1,0 +1,19 @@
+%h4.page-title
+  = "User: #{@user.email}"
+
+%table.invisible-layout-table
+  %tr
+    %td.field-name
+      Email:
+    %td
+      = @user.email
+  %tr
+    %td.field-name
+      Roles:
+    %td
+      = raw(@user.roles.collect { |role| link_to(role.name,role).html_safe }.join(', '))
+
+
+- if policy(User).edit?
+  = link_to 'Edit', edit_user_path(@user), :class => "btn btn-info btn-xs"
+

@@ -10,8 +10,9 @@ Rails.application.routes.draw do
   resources :functions
   resources :categories
   resources :adoption_levels
-  devise_for :users
-
+  # devise_for :users
+  devise_for :users, :path_prefix => 'my'
+  resources :users
   resources :tags, only: [:index, :show]
 
   root 'home#index'

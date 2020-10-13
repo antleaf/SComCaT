@@ -5,12 +5,25 @@
       %ul
         - @role.errors.full_messages.each do |message|
           %li= message
-
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :description
-    = f.text_field :description
+  %table.invisible-layout-table
+    %tr
+      %td.field-name
+        Name:
+      %td.field-value
+        = f.text_field :name
+    %tr
+      %td.field-name
+        Description:
+      %td.field-value
+        = f.text_field :description
+    %tr
+      %td.field-name
+        Users:
+      %td.field-value
+        = collection_check_boxes(:role, :user_ids, User.all, :id, :email) do |c|
+          = c.check_box
+          = c.label
+          %br
   .actions
-    = f.submit 'Save'
+    = link_to 'Cancel', @role, :class => "btn btn-danger btn-xs"
+    = f.submit 'Save', :class => 'btn btn-success btn-xs'

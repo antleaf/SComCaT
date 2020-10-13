@@ -1,0 +1,35 @@
+%h4.page-title  Users
+
+%div.row
+  %div.col-lg-6
+    - if policy(User).create?
+      = link_to 'New User', new_user_path, :class => "btn btn-info btn-xs"
+  %div.col.right-aligned
+    = render "_shared/download_machine_readable_data_buttons"
+
+
+%table{:class=>"table table-condensed table-striped sorted-table"}
+  %thead
+    %tr
+      %th Email
+      - if (policy(User).edit?)|(policy(User).destroy?)
+        %th.actions Actions
+
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td.no-wrap= link_to user.email,user
+        - if (policy(User).edit?)|(policy(User).destroy?)
+          %td.actions
+            - if policy(User).edit?
+              = link_to 'Edit', edit_user_path(user), :title => 'Edit', :class => "btn btn-info btn-xs"
+            - if policy(User).destroy?
+              = link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' }, :title => 'Delete', :class => "btn btn-info btn-xs"
+
+
+%div.row
+  %div.col-lg-6
+    - if policy(User).create?
+      = link_to 'New User', new_user_path, :class => "btn btn-info btn-xs"
+  %div.col.right-aligned
+    = render "_shared/download_machine_readable_data_buttons"

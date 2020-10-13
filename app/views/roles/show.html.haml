@@ -1,12 +1,16 @@
-%p#notice= notice
+%h4.page-title
+  = "Role: #{@role.name}"
+%table.invisible-layout-table
+  %tr
+    %td.field-name
+      Description:
+    %td
+      = @role.description
+  %tr
+    %td.field-name
+      Users with this role:
+    %td
+      = raw(@role.users.collect { |user| link_to(user.email,user).html_safe }.join(', '))
 
-%p
-  %b Name:
-  = @role.name
-%p
-  %b Description:
-  = @role.description
-
-= link_to 'Edit', edit_role_path(@role)
-\|
-= link_to 'Back', roles_path
+- if policy(Role).edit?
+  = link_to 'Edit', edit_role_path(@role), :class => "btn btn-info btn-xs"
