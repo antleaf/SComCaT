@@ -7,8 +7,8 @@ class TechnologiesController < ApplicationController
     @technologies = Technology.all
     respond_to do |format|
       format.html
-      format.json { send_data @technologies.to_json, filename: "technologies-#{Date.today}.json" }
-      format.csv { send_data @technologies.to_csv, filename: "technologies-#{Date.today}.csv" }
+      format.json { send_data Technology.dump_to_json(@technologies), filename: "technologies-#{Time.now.strftime('%Y-%m-%d_%H-%M')}.json" }
+      format.csv { send_data Technology.dump_to_csv(@technologies), filename: "technologies-#{Time.now.strftime('%Y-%m-%d_%H-%M')}.csv" }
     end
   end
 
@@ -68,13 +68,14 @@ class TechnologiesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_technology
-      @technology = Technology.friendly.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def technology_params
-      params.require(:technology).permit(:name, :description, :url, :notes, :editorial, :adoption_level_id, :readiness_level_id,:governance_id,:tag_list,:base_tech_list,:function_ids => [],:category_ids => [])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_technology
+    @technology = Technology.friendly.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def technology_params
+    params.require(:technology).permit(:name, :description, :url, :notes, :editorial, :adoption_level_id, :readiness_level_id, :governance_id, :tag_list, :base_tech_list, :function_ids => [], :category_ids => [])
+  end
 end

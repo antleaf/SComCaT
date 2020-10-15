@@ -7,8 +7,8 @@ class ReadinessLevelsController < ApplicationController
     @readiness_levels = ReadinessLevel.all
     respond_to do |format|
       format.html
-      format.json { send_data @readiness_levels.to_json, filename: "readiness_levels-#{Date.today}.json" }
-      format.csv { send_data @readiness_levels.to_csv, filename: "readiness_levels-#{Date.today}.csv" }
+      format.json { send_data ReadinessLevel.dump_to_json(@readiness_levels), filename: "readiness_levels-#{Time.now.strftime('%Y-%m-%d_%H-%M')}.json" }
+      format.csv { send_data ReadinessLevel.dump_to_csv(@readiness_levels), filename: "readiness_levels-#{Time.now.strftime('%Y-%m-%d_%H-%M')}.csv" }
     end
   end
 

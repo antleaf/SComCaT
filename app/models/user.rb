@@ -12,4 +12,27 @@ class User < ApplicationRecord
   def has_role?(role)
     roles.any? { |r| r.name.underscore.to_sym == role }
   end
+
+  def self.dump_to_json(records=all)
+    output_array = []
+    records.each do |record|
+      output_hash = {}
+      output_hash['email'] = record.email
+      output_hash['roles'] = record.roles.collect { |role| role.name }
+      output_array << output_hash
+    end
+    output_array.to_json
+  end
+
+  def self.dump_to_csv(records=all)
+    CSV.generate(headers: true) do |csv|
+      csv << ['email','roles']
+      records.each do |record|
+        row = []
+        row << record.email
+        row << record.roles.collect { |role| role.name }.join('|')
+        csv << row
+      end
+    end
+  end
 end

@@ -7,8 +7,8 @@ class GovernancesController < ApplicationController
     @governances = Governance.all
     respond_to do |format|
       format.html
-      format.json { send_data @governances.to_json, filename: "governance-#{Date.today}.json" }
-      format.csv { send_data @governances.to_csv, filename: "governance-#{Date.today}.csv" }
+      format.json { send_data Governance.dump_to_json(@governances), filename: "governances-#{Time.now.strftime('%Y-%m-%d_%H-%M')}.json" }
+      format.csv { send_data Governance.dump_to_csv(@governances), filename: "governances-#{Time.now.strftime('%Y-%m-%d_%H-%M')}.csv" }
     end
   end
 

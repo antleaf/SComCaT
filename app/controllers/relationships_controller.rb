@@ -8,8 +8,8 @@ class RelationshipsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { send_data @relationships.to_json, filename: "readiness_levels-#{Date.today}.json" }
-      format.csv { send_data @relationships.to_csv, filename: "readiness_levels-#{Date.today}.csv" }
+      format.json { send_data Relationship.dump_to_json(@relationships), filename: "relationships-#{Time.now.strftime('%Y-%m-%d_%H-%M')}.json" }
+      format.csv { send_data Relationship.dump_to_csv(@relationships), filename: "relationships-#{Time.now.strftime('%Y-%m-%d_%H-%M')}.csv" }
     end
   end
 

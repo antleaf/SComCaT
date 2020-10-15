@@ -8,8 +8,8 @@ class FunctionsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { send_data @functions.to_json, filename: "functions-#{Date.today}.json" }
-      format.csv { send_data @functions.to_csv, filename: "functions-#{Date.today}.csv" }
+      format.json { send_data Function.dump_to_json(@functions), filename: "functions-#{Time.now.strftime('%Y-%m-%d_%H-%M')}.json" }
+      format.csv { send_data Function.dump_to_csv(@functions), filename: "functions-#{Time.now.strftime('%Y-%m-%d_%H-%M')}.csv" }
     end
   end
 

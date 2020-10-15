@@ -7,8 +7,8 @@ class AdoptionLevelsController < ApplicationController
     @adoption_levels = AdoptionLevel.all
     respond_to do |format|
       format.html
-      format.json { send_data @adoption_levels.to_json, filename: "adoption_levels-#{Date.today}.json" }
-      format.csv { send_data @adoption_levels.to_csv, filename: "adoption_levels-#{Date.today}.csv" }
+      format.json { send_data AdoptionLevel.dump_to_json(@adoption_levels), filename: "adoption_levels-#{Time.now.strftime('%Y-%m-%d_%H-%M')}.json" }
+      format.csv { send_data AdoptionLevel.dump_to_csv(@adoption_levels), filename: "adoption_levels-#{Time.now.strftime('%Y-%m-%d_%H-%M')}.csv" }
     end
   end
 

@@ -7,8 +7,8 @@ class CategoriesController < ApplicationController
     @categories = Category.all
     respond_to do |format|
       format.html
-      format.json { send_data @categories.to_json, filename: "categories-#{Date.today}.json" }
-      format.csv { send_data @categories.to_csv, filename: "categories-#{Date.today}.csv" }
+      format.json { send_data Category.dump_to_json(@categories), filename: "categories-#{Time.now.strftime('%Y-%m-%d_%H-%M')}.json" }
+      format.csv { send_data Category.dump_to_csv(@categories), filename: "categories-#{Time.now.strftime('%Y-%m-%d_%H-%M')}.csv" }
     end
   end
 

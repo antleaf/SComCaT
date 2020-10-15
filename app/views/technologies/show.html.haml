@@ -42,11 +42,6 @@
           = raw(@technology.functions.collect { |function| link_to(function.name,function).html_safe }.join(', '))
       %tr
         %td.field-name
-          Base Technologies:
-        %td
-          = raw(@technology.base_techs.collect { |base_tech| link_to(base_tech.name,tag_path(base_tech)).html_safe }.join(', '))
-      %tr
-        %td.field-name
           General Tags:
         %td
           = raw(@technology.tags.collect { |tag| link_to(tag.name,tag_path(tag)).html_safe }.join(', '))

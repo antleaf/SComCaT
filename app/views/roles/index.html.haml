@@ -13,6 +13,7 @@
     %tr
       %th Name
       %th.unsorted-column Description
+      %th Users with this role
       - if (policy(Role).edit?)|(policy(Role).destroy?)
         %th.actions Actions
 
@@ -21,6 +22,7 @@
       %tr
         %td.no-wrap= link_to role.name,role
         %td.expand-to-fit-available-space= role.description
+        %td.number= role.users.count
         - if (policy(Role).edit?)|(policy(Role).destroy?)
           %td.actions
             - if policy(Role).edit?
