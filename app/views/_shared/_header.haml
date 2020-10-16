@@ -1,3 +1,8 @@
+- if ['adoption_levels'].include? controller.controller_name
+  - classifications_extra_css_class = 'nav-item-selected'
+- else
+  - extra_css_class = ''
+
 %div.row.site-header-row
   %div.col-sm-8
     %div.site-header
@@ -32,12 +37,6 @@
             -else
               %li{:class=>"nav-item"}
                 =link_to "Technologies", technologies_path, :class => "nav-link"
-            -if controller.controller_name == "adoption_levels"
-              %li{:class=>"nav-item nav-item-selected"}
-                =link_to "Adoption Levels", adoption_levels_path, :class => "nav-link"
-            -else
-              %li{:class=>"nav-item"}
-                =link_to "Adoption Levels", adoption_levels_path, :class => "nav-link"
             -if controller.controller_name == "functions"
               %li{:class=>"nav-item nav-item-selected"}
                 =link_to "Functions", functions_path, :class => "nav-link"
@@ -50,18 +49,6 @@
             -else
               %li{:class=>"nav-item"}
                 =link_to "Categories", categories_path, :class => "nav-link"
-            -if controller.controller_name == "governance"
-              %li{:class=>"nav-item nav-item-selected"}
-                =link_to "Governance", governances_path, :class => "nav-link"
-            -else
-              %li{:class=>"nav-item"}
-                =link_to "Governance", governances_path, :class => "nav-link"
-            -if controller.controller_name == "readiness_levels"
-              %li{:class=>"nav-item nav-item-selected"}
-                =link_to "Readiness", readiness_levels_path, :class => "nav-link"
-            -else
-              %li{:class=>"nav-item"}
-                =link_to "Readiness", readiness_levels_path, :class => "nav-link"
             - if policy(Relationship).index?
               -if controller.controller_name == "relationships"
                 %li{:class=>"nav-item nav-item-selected"}
@@ -82,13 +69,11 @@
               -else
                 %li{:class=>"nav-item"}
                   =link_to "Admin", admin_path, :class => "nav-link"
-
-            -#%li{:class=>"nav-item dropdown"}
-            -#  %a{:class=>"nav-link dropdown-toggle", :id=>"navbarDropdown", :role=>"button", :"data-toggle"=>"dropdown", :"aria-haspopup"=>"true", :"aria-expanded"=>"false"}Classifications
-            -#  %div{:class=>"dropdown-menu", :"aria-labelledby"=>"navbarDropdown"}
-            -#    =link_to "Entity Types", entity_types_path, :class => "dropdown-item"
-            -#    =link_to "Technology Readiness", technology_readinesses_path, :class => "dropdown-item"
-            -#    =link_to "Community Lifecycle Stage", community_lifecycle_stages_path, :class => "dropdown-item"
-            -#    =link_to "Related Resource Type", related_resource_types_path, :class => "dropdown-item"
-            -#    =link_to "Community Type", community_types_path, :class => "dropdown-item"
-            -#    =link_to "Adoption Levels", adoption_levels_path, :class => "dropdown-item"
+              %li{:class=>"nav-item dropdown #{classifications_extra_css_class}"}
+                %a{:class=>"nav-link dropdown-toggle", :id=>"navbarDropdown", :role=>"button", :"data-toggle"=>"dropdown", :"aria-haspopup"=>"true", :"aria-expanded"=>"false"}Classifications
+                %div{:class=>"dropdown-menu", :"aria-labelledby"=>"navbarDropdown"}
+                  =link_to "Adoption Levels", adoption_levels_path, :class => "nav-link dropdown-item"
+                  =link_to "Readiness", readiness_levels_path, :class => "nav-link dropdown-item"
+                  =link_to "Governance", governances_path, :class => "nav-link dropdown-item"
+                  =link_to "Status", statuses_path, :class => "nav-link dropdown-item"
+                  =link_to "Business Form", business_forms_path, :class => "nav-link dropdown-item"

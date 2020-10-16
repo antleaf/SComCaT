@@ -1,18 +1,20 @@
-%p#notice= notice
+%h4.page-title
+  = "Status: #{@status.name}"
+%table.invisible-layout-table
+  %tr
+    %td.field-name
+      Description:
+    %td
+      = @status.description
+%br
+  - if !@status.notes.blank?
+    %h5 Notes
+    = @status.notes
 
-%p
-  %b Name:
-  = @status.name
-%p
-  %b Description:
-  = @status.description
-%p
-  %b Slug:
-  = @status.slug
-%p
-  %b Notes:
-  = @status.notes
+- if policy(Status).edit?
+  = link_to 'Edit', edit_status_path(@status), :class => "btn btn-info btn-xs"
+%br
+%br
+%h5 Technologies with this Status
 
-= link_to 'Edit', edit_status_path(@status)
-\|
-= link_to 'Back', statuses_path
+= render(:partial => 'technologies/table',:locals => {:technology_list => @status.technologies})

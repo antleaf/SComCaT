@@ -6,17 +6,22 @@
         - @business_form.errors.full_messages.each do |message|
           %li= message
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :description
-    = f.text_field :description
-  .field
-    = f.label :slug
-    = f.text_field :slug
-  .field
-    = f.label :notes
-    = f.text_area :notes
+  %table.invisible-layout-table
+    %tr
+      %td.field-name
+        Name:
+      %td.field-value
+        = f.text_field :name
+    %tr
+      %td.field-name
+        Description:
+      %td.field-value
+        = f.text_field :description
+      %tr
+        %td.field-name
+          Notes:
+        %td.field-value
+          = f.text_area :notes, :rows => 10
   .actions
-    = f.submit 'Save'
+    = link_to 'Cancel', @business_form, :class => "btn btn-danger btn-xs"
+    = f.submit 'Save', :class => 'btn btn-success btn-xs'

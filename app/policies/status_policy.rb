@@ -1,0 +1,3 @@
+class StatusPolicy < ApplicationPolicy
+
+end

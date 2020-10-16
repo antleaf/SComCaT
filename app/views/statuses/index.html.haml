@@ -1,27 +1,37 @@
-%h1 Listing statuses
+%h4.page-title Statuses
 
-%table
+%div.row
+  %div.col-lg-6
+    - if policy(Status).create?
+      = link_to 'New Status', new_status_path, :class => "btn btn-info btn-xs"
+  %div.col.right-aligned
+    = render "_shared/download_machine_readable_data_buttons"
+
+%table{:class=>"table table-condensed table-striped sorted-table"}
   %thead
     %tr
       %th Name
-      %th Description
-      %th Slug
-      %th Notes
-      %th
-      %th
-      %th
+      %th.unsorted-column Description
+      %th Technologies with this readiness level
+      - if (policy(Status).edit?)|(policy(Status).destroy?)
+        %th.actions Actions
 
   %tbody
     - @statuses.each do |status|
       %tr
-        %td= status.name
-        %td= status.description
-        %td= status.slug
-        %td= status.notes
-        %td= link_to 'Show', status
-        %td= link_to 'Edit', edit_status_path(status)
-        %td= link_to 'Destroy', status, method: :delete, data: { confirm: 'Are you sure?' }
+        %td.no-wrap= link_to status.name, status
+        %td.expand-to-fit-available-space= status.description
+        %td.number= status.technologies.count
+        - if (policy(Status).edit?)|(policy(Status).destroy?)
+          %td.actions
+            - if policy(Status).edit?
+              = link_to 'Edit', edit_status_path(status), :title => 'Edit', :class => "btn btn-info btn-xs"
+            - if policy(Status).destroy?
+              = link_to 'Delete', status, method: :delete, data: { confirm: 'Are you sure?' }, :title => 'Delete', :class => "btn btn-info btn-xs"
 
-%br
-
-= link_to 'New Status', new_status_path
+%div.row
+  %div.col-lg-6
+    - if policy(Status).create?
+      = link_to 'New Status', new_status_path, :class => "btn btn-info btn-xs"
+  %div.col.right-aligned
+    = render "_shared/download_machine_readable_data_buttons"

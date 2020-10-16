@@ -5,6 +5,11 @@ class BusinessFormsController < ApplicationController
   # GET /business_forms.json
   def index
     @business_forms = BusinessForm.all
+    respond_to do |format|
+      format.html
+      format.json { send_data BusinessForm.dump_to_json(@business_forms), filename: "business_forms-#{Time.now.strftime('%Y-%m-%d_%H-%M')}.json" }
+      format.csv { send_data BusinessForm.dump_to_csv(@business_forms), filename: "business_forms-#{Time.now.strftime('%Y-%m-%d_%H-%M')}.csv" }
+    end
   end
 
   # GET /business_forms/1
@@ -64,7 +69,7 @@ class BusinessFormsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_business_form
-      @business_form = BusinessForm.find(params[:id])
+      @business_form = BusinessForm.friendly.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

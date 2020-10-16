@@ -1,27 +1,37 @@
-%h1 Listing business_forms
+%h4.page-title Business Forms
 
-%table
+%div.row
+  %div.col-lg-6
+    - if policy(BusinessForm).create?
+      = link_to 'New Business Form', new_business_form_path, :class => "btn btn-info btn-xs"
+  %div.col.right-aligned
+    = render "_shared/download_machine_readable_data_buttons"
+
+%table{:class=>"table table-condensed table-striped sorted-table"}
   %thead
     %tr
       %th Name
-      %th Description
-      %th Slug
-      %th Notes
-      %th
-      %th
-      %th
+      %th.unsorted-column Description
+      %th Technologies with this readiness level
+      - if (policy(BusinessForm).edit?)|(policy(BusinessForm).destroy?)
+        %th.actions Actions
 
   %tbody
     - @business_forms.each do |business_form|
       %tr
-        %td= business_form.name
-        %td= business_form.description
-        %td= business_form.slug
-        %td= business_form.notes
-        %td= link_to 'Show', business_form
-        %td= link_to 'Edit', edit_business_form_path(business_form)
-        %td= link_to 'Destroy', business_form, method: :delete, data: { confirm: 'Are you sure?' }
+        %td.no-wrap= link_to business_form.name, business_form
+        %td.expand-to-fit-available-space= business_form.description
+        %td.number= business_form.technologies.count
+        - if (policy(BusinessForm).edit?)|(policy(BusinessForm).destroy?)
+          %td.actions
+            - if policy(BusinessForm).edit?
+              = link_to 'Edit', edit_business_form_path(business_form), :title => 'Edit', :class => "btn btn-info btn-xs"
+            - if policy(BusinessForm).destroy?
+              = link_to 'Delete', business_form, method: :delete, data: { confirm: 'Are you sure?' }, :title => 'Delete', :class => "btn btn-info btn-xs"
 
-%br
-
-= link_to 'New Business form', new_business_form_path
+%div.row
+  %div.col-lg-6
+    - if policy(BusinessForm).create?
+      = link_to 'New Business Form', new_business_form_path, :class => "btn btn-info btn-xs"
+  %div.col.right-aligned
+    = render "_shared/download_machine_readable_data_buttons"

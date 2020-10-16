@@ -1,0 +1,3 @@
+class BusinessFormPolicy < ApplicationPolicy
+
+end

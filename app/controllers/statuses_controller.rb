@@ -5,6 +5,11 @@ class StatusesController < ApplicationController
   # GET /statuses.json
   def index
     @statuses = Status.all
+    respond_to do |format|
+      format.html
+      format.json { send_data Status.dump_to_json(@statuses), filename: "statuses-#{Time.now.strftime('%Y-%m-%d_%H-%M')}.json" }
+      format.csv { send_data Status.dump_to_csv(@statuses), filename: "statuses-#{Time.now.strftime('%Y-%m-%d_%H-%M')}.csv" }
+    end
   end
 
   # GET /statuses/1
@@ -64,7 +69,7 @@ class StatusesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_status
-      @status = Status.find(params[:id])
+      @status = Status.friendly.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
