@@ -20,9 +20,34 @@
             = f.text_field :description
         %tr
           %td.field-name
-            URL:
+            Homepage:
           %td.field-value
             = f.text_field :url
+        %tr
+          %td.field-name
+            Codebase:
+          %td.field-value
+            = f.text_field :codebase
+        %tr
+          %td.field-name
+            Roadmap:
+          %td.field-value
+            = f.text_field :roadmap
+        %tr
+          %td.field-name
+            Hosting:
+          %td.field-value
+            = f.text_field :hosting
+        %tr
+          %td.field-name
+            Licensing:
+          %td.field-value
+            = f.text_field :licensing
+        %tr
+          %td.field-name
+            Pricing:
+          %td.field-value
+            = f.text_field :pricing
         %tr
           %td.field-name
             Notes:
@@ -52,6 +77,22 @@
               = f.select "governance_id", options_from_collection_for_select(Governance.all, "id", "name")
             - else
               = f.select "governance_id", options_from_collection_for_select(Governance.all, "id", "name", @technology.governance.id)
+        %tr
+          %td.field-name
+            Business Form:
+          %td.field-value
+            - if @technology.new_record?
+              = f.select "business_form_id", options_from_collection_for_select(BusinessForm.all, "id", "name")
+            - else
+              = f.select "business_form_id", options_from_collection_for_select(BusinessForm.all, "id", "name", @technology.business_form.id)
+        %tr
+          %td.field-name
+            Status:
+          %td.field-value
+            - if @technology.new_record?
+              = f.select "status_id", options_from_collection_for_select(Status.all, "id", "name")
+            - else
+              = f.select "status_id", options_from_collection_for_select(Status.all, "id", "name", @technology.status.id)
         %tr
           %td.field-name
             Base technologies:

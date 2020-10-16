@@ -5,6 +5,8 @@ class Technology < ApplicationRecord
   acts_as_taggable_on :base_techs
   audited
 
+  belongs_to :status
+  belongs_to :business_form
   belongs_to :adoption_level
   belongs_to :readiness_level
   belongs_to :governance
@@ -36,10 +38,17 @@ class Technology < ApplicationRecord
       tech['id'] = technology.slug
       tech['name'] = technology.name
       tech['description'] = technology.description
-      tech['url'] = technology.url
+      tech['homepage'] = technology.url
+      tech['codebase'] = technology.codebase
+      tech['roadmap'] = technology.roadmap
+      tech['hosting'] = technology.hosting
+      tech['pricing'] = technology.pricing
+      tech['licensing'] = technology.licensing
       tech['adoption_level'] = technology.adoption_level.name
       tech['readiness_level'] = technology.readiness_level.name
       tech['governance'] = technology.governance.name
+      tech['status'] = technology.status.name
+      tech['business_form'] = technology.business_form.name
       tech['categories'] = technology.categories.collect { |category| category.name }
       tech['functions'] = technology.functions.collect { |function| function.name }
       tech['base_technologies'] = technology.base_techs.collect { |base_tech| base_tech.name }
@@ -53,16 +62,23 @@ class Technology < ApplicationRecord
 
   def self.dump_to_csv(technologies=all)
     CSV.generate(headers: true) do |csv|
-      csv << ['id','name','description','url','adoption_level','readiness_level','governance','categories','functions','base_technologies','tags','is_depended_on_by','depends_on']
+      csv << ['id','name','description','homepage','codebase','roadmap','hosting','pricing','licensing','adoption_level','readiness_level','governance','status','business_form','categories','functions','base_technologies','tags','is_depended_on_by','depends_on']
       technologies.each do |technology|
         row = []
         row << technology.slug
         row << technology.name
         row << technology.description
         row << technology.url
+        row << technology.codebase
+        row << technology.roadmap
+        row << technology.hosting
+        row << technology.pricing
+        row << technology.licensing
         row << technology.adoption_level.name
         row << technology.readiness_level.name
         row << technology.governance.name
+        row << technology.status.name
+        row << technology.business_form.name
         row << technology.categories.collect { |category| category.name }.join('|')
         row << technology.functions.collect { |function| function.name }.join('|')
         row << technology.base_techs.collect { |base_tech| base_tech.name }.join('|')

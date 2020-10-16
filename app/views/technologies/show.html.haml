@@ -8,13 +8,37 @@
         %td.field-name
           Description:
         %td
-          = @technology.description
+          = auto_link @technology.description
       %tr
         %td.field-name
-          Canonical URL:
+          Homepage:
         %td
-          - if @technology.url
-            = link_to @technology.url, @technology.url
+          = auto_link @technology.url
+      %tr
+        %td.field-name
+          Codebase:
+        %td
+          = auto_link @technology.codebase
+      %tr
+        %td.field-name
+          Roadmap:
+        %td
+          = auto_link @technology.roadmap
+      %tr
+        %td.field-name
+          Hosting:
+        %td
+          = auto_link @technology.hosting
+      %tr
+        %td.field-name
+          Licensing:
+        %td
+          = auto_link @technology.licensing
+      %tr
+        %td.field-name
+          Pricing:
+        %td
+          = auto_link @technology.pricing
       %tr
         %td.field-name
           Adoption level:
@@ -30,6 +54,16 @@
           Governance:
         %td
           = link_to @technology.governance.name, @technology.governance
+      %tr
+        %td.field-name
+          Business Form:
+        %td
+          = link_to @technology.business_form.name, @technology.business_form
+      %tr
+        %td.field-name
+          Status:
+        %td
+          = link_to @technology.status.name, @technology.status
       %tr
         %td.field-name
           Categories:
@@ -48,7 +82,7 @@
     %br
     - if !@technology.notes.blank?
       %h5 Notes
-      = @technology.notes
+      = auto_link @technology.notes
   %div.col-sm-3
     - is_depended_on_by = @technology.is_depended_on_by
     - if is_depended_on_by.count > 0
