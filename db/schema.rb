@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_16_112811) do
+ActiveRecord::Schema.define(version: 2020_10_16_114231) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -182,10 +182,19 @@ ActiveRecord::Schema.define(version: 2020_10_16_112811) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "slug"
     t.text "editorial"
+    t.string "roadmap"
+    t.string "codebase"
+    t.string "hosting"
+    t.string "pricing"
+    t.string "licensing"
+    t.bigint "business_form_id"
+    t.bigint "status_id"
     t.index ["adoption_level_id"], name: "index_technologies_on_adoption_level_id"
+    t.index ["business_form_id"], name: "index_technologies_on_business_form_id"
     t.index ["governance_id"], name: "index_technologies_on_governance_id"
     t.index ["readiness_level_id"], name: "index_technologies_on_readiness_level_id"
     t.index ["slug"], name: "index_technologies_on_slug", unique: true
+    t.index ["status_id"], name: "index_technologies_on_status_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -206,6 +215,8 @@ ActiveRecord::Schema.define(version: 2020_10_16_112811) do
   add_foreign_key "relationships", "technologies", column: "subj_id"
   add_foreign_key "taggings", "tags"
   add_foreign_key "technologies", "adoption_levels"
+  add_foreign_key "technologies", "business_forms"
   add_foreign_key "technologies", "governances"
   add_foreign_key "technologies", "readiness_levels"
+  add_foreign_key "technologies", "statuses"
 end
