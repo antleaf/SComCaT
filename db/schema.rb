@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_13_100318) do
+ActiveRecord::Schema.define(version: 2020_10_16_112811) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,8 +26,8 @@ ActiveRecord::Schema.define(version: 2020_10_13_100318) do
   end
 
   create_table "assignments", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "role_id", null: false
+    t.integer "user_id", null: false
+    t.integer "role_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["role_id"], name: "index_assignments_on_role_id"
@@ -56,6 +56,15 @@ ActiveRecord::Schema.define(version: 2020_10_13_100318) do
     t.index ["user_id", "user_type"], name: "user_index"
   end
 
+  create_table "business_forms", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.string "slug"
+    t.text "notes"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.string "description"
@@ -67,8 +76,8 @@ ActiveRecord::Schema.define(version: 2020_10_13_100318) do
   end
 
   create_table "categories_technologies", id: false, force: :cascade do |t|
-    t.bigint "technology_id", null: false
-    t.bigint "category_id", null: false
+    t.integer "technology_id", null: false
+    t.integer "category_id", null: false
   end
 
   create_table "functions", force: :cascade do |t|
@@ -82,8 +91,8 @@ ActiveRecord::Schema.define(version: 2020_10_13_100318) do
   end
 
   create_table "functions_technologies", id: false, force: :cascade do |t|
-    t.bigint "technology_id", null: false
-    t.bigint "function_id", null: false
+    t.integer "technology_id", null: false
+    t.integer "function_id", null: false
   end
 
   create_table "governances", force: :cascade do |t|
@@ -108,8 +117,8 @@ ActiveRecord::Schema.define(version: 2020_10_13_100318) do
 
   create_table "relationships", force: :cascade do |t|
     t.string "predicate"
-    t.bigint "subj_id", null: false
-    t.bigint "obj_id", null: false
+    t.integer "subj_id", null: false
+    t.integer "obj_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["obj_id"], name: "index_relationships_on_obj_id"
@@ -125,7 +134,16 @@ ActiveRecord::Schema.define(version: 2020_10_13_100318) do
     t.index ["slug"], name: "index_roles_on_slug", unique: true
   end
 
-  create_table "taggings", id: :serial, force: :cascade do |t|
+  create_table "statuses", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.string "slug"
+    t.text "notes"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "taggings", force: :cascade do |t|
     t.integer "tag_id"
     t.string "taggable_type"
     t.integer "taggable_id"
@@ -144,7 +162,7 @@ ActiveRecord::Schema.define(version: 2020_10_13_100318) do
     t.index ["tagger_id"], name: "index_taggings_on_tagger_id"
   end
 
-  create_table "tags", id: :serial, force: :cascade do |t|
+  create_table "tags", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -157,13 +175,13 @@ ActiveRecord::Schema.define(version: 2020_10_13_100318) do
     t.string "description"
     t.string "url"
     t.text "notes"
-    t.bigint "adoption_level_id", null: false
-    t.bigint "readiness_level_id", null: false
+    t.integer "adoption_level_id", null: false
+    t.integer "readiness_level_id", null: false
+    t.integer "governance_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "slug"
     t.text "editorial"
-    t.bigint "governance_id", null: false
     t.index ["adoption_level_id"], name: "index_technologies_on_adoption_level_id"
     t.index ["governance_id"], name: "index_technologies_on_governance_id"
     t.index ["readiness_level_id"], name: "index_technologies_on_readiness_level_id"

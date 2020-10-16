@@ -1,0 +1,27 @@
+%h1 Listing business_forms
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Description
+      %th Slug
+      %th Notes
+      %th
+      %th
+      %th
+
+  %tbody
+    - @business_forms.each do |business_form|
+      %tr
+        %td= business_form.name
+        %td= business_form.description
+        %td= business_form.slug
+        %td= business_form.notes
+        %td= link_to 'Show', business_form
+        %td= link_to 'Edit', edit_business_form_path(business_form)
+        %td= link_to 'Destroy', business_form, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Business form', new_business_form_path

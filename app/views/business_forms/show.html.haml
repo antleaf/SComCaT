@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @business_form.name
+%p
+  %b Description:
+  = @business_form.description
+%p
+  %b Slug:
+  = @business_form.slug
+%p
+  %b Notes:
+  = @business_form.notes
+
+= link_to 'Edit', edit_business_form_path(@business_form)
+\|
+= link_to 'Back', business_forms_path

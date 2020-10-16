@@ -1,0 +1,22 @@
+= form_for @business_form do |f|
+  - if @business_form.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@business_form.errors.count, "error")} prohibited this business_form from being saved:"
+      %ul
+        - @business_form.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :description
+    = f.text_field :description
+  .field
+    = f.label :slug
+    = f.text_field :slug
+  .field
+    = f.label :notes
+    = f.text_area :notes
+  .actions
+    = f.submit 'Save'

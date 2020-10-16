@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :statuses
+  resources :business_forms
   resources :governances
   get 'admin', to: 'admin#index'
   get 'admin/audit', to: 'admin#audit'
