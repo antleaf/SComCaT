@@ -17,6 +17,7 @@ gem "audited", "~> 4.9"
 gem "pg"
 gem 'tzinfo-data'
 gem 'rails_autolink'
+gem 'forty_facets'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.2'

@@ -1,32 +1,4 @@
 %h4.page-title Home
-%div.row
-  %div.col-lg-9
-    %p
-      Welcome to the Scholarly Communication Technology Catalogue.
-    %p
-      This scan presents a catalogue (knowledge base) of scholarly communications open technologies where the term “technologies” is defined to include software and some essential running services. The aim is to assist potential users in making decisions about which technologies they will adopt by providing an overview of the functionality, organizational models, dependencies, use of standards, and levels of adoption of each technology.
-    %p
-      The scan includes tools, platforms, and standards that can be locally adopted to support one or more of functions of the lifecycle of scholarly communications, which is conceptualized as including the following activities: creation, evaluation, publication, dissemination, preservation, and reuse.
-    %p
-      We envision this scan as being extensible over time in order to address the evolving needs of various communities.
-    %p
-      Please get in touch by emailing
-      %a{:href=>"mailto:office@coar-repositories.org"}office@coar-repositories.org
-      if you know of a technology or platform that you think should be included in this scan.
+%p
+  Welcome to the Scholarly Communication Technology Catalogue.
 
-
-
-    %h5 Experimental features
-    %ul
-      %li= link_to 'Dependency graph visualiser', home_graph_path
-  %div.col-lg-3.right-aligned
-    - if current_user
-      = link_to "Change your password", edit_user_registration_path, :class => 'btn btn-info btn-xs'
-
-
-
-
-
-
-
--# = link_to "Register", new_user_registration_path, :class => 'btn btn-info btn-xs'
