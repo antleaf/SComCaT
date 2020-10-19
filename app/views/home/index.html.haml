@@ -1,4 +1,70 @@
-%h4.page-title Home
+%h4.page-title Technology Browser
 %p
   Welcome to the Scholarly Communication Technology Catalogue.
+%div.row
+  %div.col-md-5.col-lg-4
+    %div.search-filter-sidebar
+      %div.reset-filter-button
+        =link_to 'Reset search/filters', '?', class: 'btn btn-danger btn-xs form-button'
+      %h5 Search
+      = form_tag nil, method: :get do
+        = hidden_field_tag 'search[order]', @search.order.definition.request_value if @search.order
+        - name_filter = @search.filter(:name)
+        = text_field_tag 'search[name]', name_filter.value, class: 'form-control form-control-sm', placeholder: name_filter.name, style: 'margin-bottom: 10px;'
+        - description_filter = @search.filter(:description)
+        = text_field_tag 'search[description]', description_filter.value, class: 'form-control form-control-sm', placeholder: description_filter.name, style: 'margin-bottom: 10px;'
+        %div.form-button
+          %button.btn.btn-primary.btn-xs.form-button Search
+      %div.row
+        %div.col-sm-6
+          = render(:partial => 'facet',:locals => {:filter_name => :functions})
+          = render(:partial => 'facet',:locals => {:filter_name => :governance})
+          = render(:partial => 'facet',:locals => {:filter_name => :adoption_level})
+        %div.col-sm-6
+          = render(:partial => 'facet',:locals => {:filter_name => :business_form})
+          = render(:partial => 'facet',:locals => {:filter_name => :status})
+          = render(:partial => 'facet',:locals => {:filter_name => :readiness_level})
+          = render(:partial => 'facet',:locals => {:filter_name => :categories})
 
+  %div.col-md-7.col-lg-8
+    %div.scomcat-pagination
+      %div{:class=>"page_info"}
+        = raw "Displaying technologies <b>#{@technologies.offset + 1}</b> to <b>#{@technologies.offset + @technologies.length}</b> of <b>#{@technologies.total_entries}</b> matching this search/filter"
+      = will_paginate @technologies, :container => false
+
+    %div.row
+      - @technologies.each do |technology|
+        %div.col-md-4.col-sm-6
+          %div.card.tech-search-result-card
+            %div.card-header
+              %b
+                =link_to technology.name,technology
+            %div.card-body
+              =truncate technology.description,{length: 300, separator: ' '}
+
+    %div.scomcat-pagination
+      %div{:class=>"page_info"}
+        = raw "Displaying technologies <b>#{@technologies.offset + 1}</b> to <b>#{@technologies.offset + @technologies.length}</b> of <b>#{@technologies.total_entries}</b> matching this search/filter"
+      = will_paginate @technologies, :container => false
+
+
+
+    -#%table{:class=>"table table-condensed table-striped"}
+    -#  %thead
+    -#    %tr
+    -#      %th Name
+    -#      %th.unsorted-column Description
+    -#      - if (policy(Technology).edit?)|(policy(Technology).destroy?)
+    -#        %th.actions Actions
+    -#
+    -#  %tbody
+    -#    - @technologies.each do |technology|
+    -#      %tr
+    -#        %td.no-wrap= link_to technology.name,technology
+    -#        %td.no-wrap= truncate(technology.description, length: 50, separator: ' ')
+    -#        - if (policy(Technology).edit?)|(policy(Technology).destroy?)
+    -#          %td.actions
+    -#            - if policy(Technology).edit?
+    -#              = link_to 'Edit', edit_technology_path(technology), :class => "btn btn-info btn-xs"
+    -#            - if policy(Technology).destroy?
+    -#              = link_to 'Delete', technology, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-info btn-xs"

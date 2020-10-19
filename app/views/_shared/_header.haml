@@ -1,4 +1,4 @@
-- if ['adoption_levels'].include? controller.controller_name
+- if ['adoption_levels','readiness_levels','functions','categories','governances','business_forms','statuses','tags'].include? controller.controller_name
   - classifications_extra_css_class = 'nav-item-selected'
 - else
   - extra_css_class = ''
@@ -39,18 +39,18 @@
             -else
               %li{:class=>"nav-item"}
                 =link_to "Technologies", technologies_path, :class => "nav-link"
-            -if controller.controller_name == "functions"
-              %li{:class=>"nav-item nav-item-selected"}
-                =link_to "Functions", functions_path, :class => "nav-link"
-            -else
-              %li{:class=>"nav-item"}
-                =link_to "Functions", functions_path, :class => "nav-link"
-            -if controller.controller_name == "categories"
-              %li{:class=>"nav-item nav-item-selected"}
-                =link_to "Categories", categories_path, :class => "nav-link"
-            -else
-              %li{:class=>"nav-item"}
-                =link_to "Categories", categories_path, :class => "nav-link"
+            -# -if controller.controller_name == "functions"
+            -#   %li{:class=>"nav-item nav-item-selected"}
+            -#     =link_to "Functions", functions_path, :class => "nav-link"
+            -# -else
+            -#   %li{:class=>"nav-item"}
+            -#     =link_to "Functions", functions_path, :class => "nav-link"
+            -# -if controller.controller_name == "categories"
+            -#   %li{:class=>"nav-item nav-item-selected"}
+            -#     =link_to "Categories", categories_path, :class => "nav-link"
+            -# -else
+            -#   %li{:class=>"nav-item"}
+            -#     =link_to "Categories", categories_path, :class => "nav-link"
             - if policy(Relationship).index?
               -if controller.controller_name == "relationships"
                 %li{:class=>"nav-item nav-item-selected"}
@@ -58,20 +58,23 @@
               -else
                 %li{:class=>"nav-item"}
                   =link_to "Relationships", relationships_path, :class => "nav-link"
-            -if controller.controller_name == "tags"
-              %li{:class=>"nav-item nav-item-selected"}
-                =link_to "Tags", tags_path, :class => "nav-link"
-            -else
-              %li{:class=>"nav-item"}
-                =link_to "Tags", tags_path, :class => "nav-link"
-              %li{:class=>"nav-item dropdown #{classifications_extra_css_class}"}
-                %a{:class=>"nav-link dropdown-toggle", :id=>"navbarDropdown", :role=>"button", :"data-toggle"=>"dropdown", :"aria-haspopup"=>"true", :"aria-expanded"=>"false"}Classifications
-                %div{:class=>"dropdown-menu", :"aria-labelledby"=>"navbarDropdown"}
-                  =link_to "Adoption Levels", adoption_levels_path, :class => "nav-link dropdown-item"
-                  =link_to "Readiness", readiness_levels_path, :class => "nav-link dropdown-item"
-                  =link_to "Governance", governances_path, :class => "nav-link dropdown-item"
-                  =link_to "Status", statuses_path, :class => "nav-link dropdown-item"
-                  =link_to "Business Form", business_forms_path, :class => "nav-link dropdown-item"
+            -#  -if controller.controller_name == "tags"
+            -#    %li{:class=>"nav-item nav-item-selected"}
+            -#      =link_to "Tags", tags_path, :class => "nav-link"
+            -# -else
+            -#   %li{:class=>"nav-item"}
+            -#     =link_to "Tags", tags_path, :class => "nav-link"
+            %li{:class=>"nav-item dropdown #{classifications_extra_css_class}"}
+              %a{:class=>"nav-link dropdown-toggle", :id=>"navbarDropdown", :role=>"button", :"data-toggle"=>"dropdown", :"aria-haspopup"=>"true", :"aria-expanded"=>"false"}Classifications
+              %div{:class=>"dropdown-menu", :"aria-labelledby"=>"navbarDropdown"}
+                =link_to "Function", functions_path, :class => "nav-link dropdown-item"
+                =link_to "Category", categories_path, :class => "nav-link dropdown-item"
+                =link_to "Adoption Level", adoption_levels_path, :class => "nav-link dropdown-item"
+                =link_to "Technology Readiness", readiness_levels_path, :class => "nav-link dropdown-item"
+                =link_to "Governance", governances_path, :class => "nav-link dropdown-item"
+                =link_to "Status", statuses_path, :class => "nav-link dropdown-item"
+                =link_to "Business Form", business_forms_path, :class => "nav-link dropdown-item"
+                =link_to "Tags", tags_path, :class => "nav-link dropdown-item"
             - if policy(AdminController).index?
               -if controller.controller_name == "admin"
                 %li{:class=>"nav-item nav-item-selected"}

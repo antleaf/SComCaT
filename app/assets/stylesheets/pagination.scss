@@ -1,0 +1,30 @@
+.scomcat-pagination {
+  margin-top: 5px;
+  margin-bottom: 10px;
+  text-align: center;
+  cursor: default;
+  a, span {
+    padding: 3px;
+  }
+  a {
+    text-decoration: none;
+  }
+  a:hover, a:focus {
+    text-decoration: underline;
+  }
+  .disabled {
+    color: #aaaaaa;
+  }
+  .current {
+    font-style: normal;
+    font-weight: bold;
+    //background-color: #bebebe;
+    //display: inline-block;
+    //width: 1.4em;
+    //height: 1.4em;
+    //line-height: 1.5;
+    //-moz-border-radius: 1em;
+    //-webkit-border-radius: 1em;
+    //border-radius: 1em;
+  }
+}

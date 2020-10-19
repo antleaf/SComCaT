@@ -18,6 +18,7 @@ gem "pg"
 gem 'tzinfo-data'
 gem 'rails_autolink'
 gem 'forty_facets'
+gem 'will_paginate', '~> 3.1.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.2'

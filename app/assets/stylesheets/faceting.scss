@@ -1,0 +1,64 @@
+.search-filter-sidebar {
+  background-color: #efefef;
+  padding: 5px;
+  padding-top: 10px;
+  border: 1px solid #cdcdcd;
+}
+
+div.reset-filter-button {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+div.form-button {
+  text-align: right;
+  margin-bottom: 10px;
+}
+
+.filter {
+  border: 1px #cdcdcd solid;
+  padding: 5px;
+  margin-bottom: 5px;
+  background-color: white;
+  margin-right: 1px;
+}
+
+.filter-title {
+  font-weight: bold;
+}
+
+.filter-values ul.selected,.filter-values ul.selectable {
+  a {
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+}
+
+.filter-values ul.selected {
+  border: 1px #efefef solid;
+  background-color: #efefef;
+  padding-left: 20px;
+  list-style-type: square;
+  a::after {
+    content: '[x]';
+    margin-left: 5px;
+    color: #800000;
+  }
+}
+
+.filter-values ul.selectable {
+  overflow: scroll;
+  background-color: white;
+  padding-left: 20px;
+  list-style-type: square;
+  li a {
+    color: #555555;
+    font-size: 90%;
+  }
+}
+
+.tech-search-result-card {
+  margin-top: 10px;
+}

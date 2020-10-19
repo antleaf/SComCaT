@@ -1,0 +1,14 @@
+- filter = @search.filter(filter_name)
+.filter
+  .filter-title
+    = filter.name
+  .filter-values
+    %ul.selected
+      - filter.selected.each do |entity|
+        %li= link_to entity.name, filter.remove(entity).path
+    %ul.selectable
+      - filter.facet.reject(&:selected).each do |facet_value|
+        - entity = facet_value.entity
+        %li
+          = link_to entity.name, filter.add(entity).path
+          %span.count (#{facet_value.count})
