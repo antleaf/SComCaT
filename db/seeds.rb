@@ -9,9 +9,9 @@ CSV_DATA_ROOT = "#{File.dirname(__FILE__)}/seed_data"
 
 CSV.open("#{CSV_DATA_ROOT}/technologies.csv", CSV_PARSING_OPTIONS).each do |row|
   tech = Technology.find(row['id'])
-  # tech.adoption_level = AdoptionLevel.find_by_slug(row['adoption_level'])
-  # tech.readiness_level = ReadinessLevel.find_by_slug(row['readiness_level'])
-  # tech.status = Status.find_by_slug(row['status'])
+  tech.adoption_level = AdoptionLevel.find_by_slug(row['adoption_level'])
+  tech.readiness_level = ReadinessLevel.find_by_slug(row['readiness_level'])
+  tech.status = Status.find_by_slug(row['status'])
   # tech.governance = Governance.find_by_slug(row['governance'])
   # tech.business_form = BusinessForm.find_by_slug(row['business_form'])
   # if row['base_tech_list']
@@ -36,7 +36,7 @@ CSV.open("#{CSV_DATA_ROOT}/technologies.csv", CSV_PARSING_OPTIONS).each do |row|
   # tech.roadmap = row['roadmap']
   # tech.licensing = row['licensing']
   # tech.codebase = row['codebase']
-  puts "saving #{tech.name}..."
+  # puts "saving #{tech.name}..."
   # tech.save!
 end
 

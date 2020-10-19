@@ -6,6 +6,11 @@
     %table.invisible-layout-table
       %tr
         %td.field-name
+          Last updated:
+        %td
+          = @technology.updated_at.strftime('%Y-%m-%d %H:%M UTC')
+      %tr
+        %td.field-name
           Description:
         %td
           = auto_link @technology.description

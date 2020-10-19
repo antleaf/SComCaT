@@ -62,13 +62,6 @@
             -else
               %li{:class=>"nav-item"}
                 =link_to "Tags", tags_path, :class => "nav-link"
-            - if policy(AdminController).index?
-              -if controller.controller_name == "admin"
-                %li{:class=>"nav-item nav-item-selected"}
-                  =link_to "Admin", admin_path, :class => "nav-link"
-              -else
-                %li{:class=>"nav-item"}
-                  =link_to "Admin", admin_path, :class => "nav-link"
               %li{:class=>"nav-item dropdown #{classifications_extra_css_class}"}
                 %a{:class=>"nav-link dropdown-toggle", :id=>"navbarDropdown", :role=>"button", :"data-toggle"=>"dropdown", :"aria-haspopup"=>"true", :"aria-expanded"=>"false"}Classifications
                 %div{:class=>"dropdown-menu", :"aria-labelledby"=>"navbarDropdown"}
@@ -77,3 +70,10 @@
                   =link_to "Governance", governances_path, :class => "nav-link dropdown-item"
                   =link_to "Status", statuses_path, :class => "nav-link dropdown-item"
                   =link_to "Business Form", business_forms_path, :class => "nav-link dropdown-item"
+            - if policy(AdminController).index?
+              -if controller.controller_name == "admin"
+                %li{:class=>"nav-item nav-item-selected"}
+                  =link_to "Admin", admin_path, :class => "nav-link"
+              -else
+                %li{:class=>"nav-item"}
+                  =link_to "Admin", admin_path, :class => "nav-link"

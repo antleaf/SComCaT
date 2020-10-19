@@ -37,6 +37,7 @@ class Technology < ApplicationRecord
       tech = {}
       tech['id'] = technology.slug
       tech['name'] = technology.name
+      tech['last_updated'] = technology.updated_at.strftime('%Y-%m-%d %H:%M UTC')
       tech['description'] = technology.description
       tech['homepage'] = technology.url
       tech['codebase'] = technology.codebase
@@ -62,12 +63,13 @@ class Technology < ApplicationRecord
 
   def self.dump_to_csv(technologies=all)
     CSV.generate(headers: true) do |csv|
-      csv << ['id','name','description','homepage','codebase','roadmap','hosting','pricing','licensing','adoption_level','readiness_level','governance','status','business_form','categories','functions','base_technologies','tags','is_depended_on_by','depends_on']
+      csv << ['id','name','description','last_updated','homepage','codebase','roadmap','hosting','pricing','licensing','adoption_level','readiness_level','governance','status','business_form','categories','functions','base_technologies','tags','is_depended_on_by','depends_on']
       technologies.each do |technology|
         row = []
         row << technology.slug
         row << technology.name
         row << technology.description
+        row << technology.updated_at.strftime('%Y-%m-%d %H:%M UTC')
         row << technology.url
         row << technology.codebase
         row << technology.roadmap

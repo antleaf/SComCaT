@@ -26,8 +26,8 @@ ActiveRecord::Schema.define(version: 2020_10_16_114231) do
   end
 
   create_table "assignments", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "role_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "role_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["role_id"], name: "index_assignments_on_role_id"
@@ -76,8 +76,8 @@ ActiveRecord::Schema.define(version: 2020_10_16_114231) do
   end
 
   create_table "categories_technologies", id: false, force: :cascade do |t|
-    t.integer "technology_id", null: false
-    t.integer "category_id", null: false
+    t.bigint "technology_id", null: false
+    t.bigint "category_id", null: false
   end
 
   create_table "functions", force: :cascade do |t|
@@ -91,8 +91,8 @@ ActiveRecord::Schema.define(version: 2020_10_16_114231) do
   end
 
   create_table "functions_technologies", id: false, force: :cascade do |t|
-    t.integer "technology_id", null: false
-    t.integer "function_id", null: false
+    t.bigint "technology_id", null: false
+    t.bigint "function_id", null: false
   end
 
   create_table "governances", force: :cascade do |t|
@@ -117,8 +117,8 @@ ActiveRecord::Schema.define(version: 2020_10_16_114231) do
 
   create_table "relationships", force: :cascade do |t|
     t.string "predicate"
-    t.integer "subj_id", null: false
-    t.integer "obj_id", null: false
+    t.bigint "subj_id", null: false
+    t.bigint "obj_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["obj_id"], name: "index_relationships_on_obj_id"
@@ -143,7 +143,7 @@ ActiveRecord::Schema.define(version: 2020_10_16_114231) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "taggings", force: :cascade do |t|
+  create_table "taggings", id: :serial, force: :cascade do |t|
     t.integer "tag_id"
     t.string "taggable_type"
     t.integer "taggable_id"
@@ -162,7 +162,7 @@ ActiveRecord::Schema.define(version: 2020_10_16_114231) do
     t.index ["tagger_id"], name: "index_taggings_on_tagger_id"
   end
 
-  create_table "tags", force: :cascade do |t|
+  create_table "tags", id: :serial, force: :cascade do |t|
     t.string "name"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -175,13 +175,13 @@ ActiveRecord::Schema.define(version: 2020_10_16_114231) do
     t.string "description"
     t.string "url"
     t.text "notes"
-    t.integer "adoption_level_id", null: false
-    t.integer "readiness_level_id", null: false
-    t.integer "governance_id", null: false
+    t.bigint "adoption_level_id", null: false
+    t.bigint "readiness_level_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "slug"
     t.text "editorial"
+    t.bigint "governance_id", null: false
     t.string "roadmap"
     t.string "codebase"
     t.string "hosting"
