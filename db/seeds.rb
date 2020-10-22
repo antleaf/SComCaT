@@ -7,6 +7,27 @@ require 'csv'
 CSV_PARSING_OPTIONS = {:headers=>true,:encoding=>'UTF-8'}
 CSV_DATA_ROOT = "#{File.dirname(__FILE__)}/seed_data"
 
+# models = [AdoptionLevel,Assignment,BusinessForm,Category,Function,Governance,ReadinessLevel,Relationship,Role,Status,Technology,User]
+
+# models.each do |model|
+#   CSV.open( "#{CSV_DATA_ROOT}/#{model.name}.csv", 'w' ) do |csv|
+#     records = model.all
+#     csv << records.first.attributes.map { |a,v| a }
+#     records.each do |record|
+#       csv << record.attributes.map { |a,v| v }
+#     end
+#   end
+# end
+
+# csv = CSV.parse(File.read("#{CSV_DATA_ROOT}/Assignment.csv"), :headers => true, :encoding => 'UTF-8')
+# csv.each do |row|
+#   puts row.to_hash
+# end
+
+
+
+
+
 # CSV.open("#{CSV_DATA_ROOT}/technologies.csv", CSV_PARSING_OPTIONS).each do |row|
 #   tech = Technology.find(row['id'])
 #   tech.adoption_level = AdoptionLevel.find_by_slug(row['adoption_level'])

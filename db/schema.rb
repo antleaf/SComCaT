@@ -175,13 +175,13 @@ ActiveRecord::Schema.define(version: 2020_10_16_114231) do
     t.string "description"
     t.string "url"
     t.text "notes"
-    t.bigint "adoption_level_id", null: false
-    t.bigint "readiness_level_id", null: false
+    t.bigint "adoption_level_id"
+    t.bigint "readiness_level_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "slug"
     t.text "editorial"
-    t.bigint "governance_id", null: false
+    t.bigint "governance_id"
     t.string "roadmap"
     t.string "codebase"
     t.string "hosting"
