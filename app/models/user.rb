@@ -9,6 +9,10 @@ class User < ApplicationRecord
   # extend FriendlyId
   # friendly_id :email
 
+  def display_name
+    "#{forenames} #{lastname}"
+  end
+
   def has_role?(role)
     roles.any? { |r| r.name.underscore.to_sym == role }
   end

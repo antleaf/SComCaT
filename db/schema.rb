@@ -10,44 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_16_114231) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 2020_11_09_121925) do
 
   create_table "adoption_levels", force: :cascade do |t|
-    t.string "name"
-    t.string "description"
+    t.string "name", limit: 255
+    t.string "description", limit: 255
     t.text "notes"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "slug"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "slug", limit: 255
     t.index ["slug"], name: "index_adoption_levels_on_slug", unique: true
   end
 
   create_table "assignments", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "role_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id", null: false
+    t.integer "role_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["role_id"], name: "index_assignments_on_role_id"
     t.index ["user_id"], name: "index_assignments_on_user_id"
   end
 
   create_table "audits", force: :cascade do |t|
     t.integer "auditable_id"
-    t.string "auditable_type"
+    t.string "auditable_type", limit: 255
     t.integer "associated_id"
-    t.string "associated_type"
+    t.string "associated_type", limit: 255
     t.integer "user_id"
-    t.string "user_type"
-    t.string "username"
-    t.string "action"
+    t.string "user_type", limit: 255
+    t.string "username", limit: 255
+    t.string "action", limit: 255
     t.text "audited_changes"
     t.integer "version", default: 0
-    t.string "comment"
-    t.string "remote_address"
-    t.string "request_uuid"
+    t.string "comment", limit: 255
+    t.string "remote_address", limit: 255
+    t.string "request_uuid", limit: 255
     t.datetime "created_at"
     t.index ["associated_type", "associated_id"], name: "associated_index"
     t.index ["auditable_type", "auditable_id", "version"], name: "auditable_index"
@@ -57,97 +54,97 @@ ActiveRecord::Schema.define(version: 2020_10_16_114231) do
   end
 
   create_table "business_forms", force: :cascade do |t|
-    t.string "name"
-    t.string "description"
-    t.string "slug"
+    t.string "name", limit: 255
+    t.string "description", limit: 255
+    t.string "slug", limit: 255
     t.text "notes"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "categories", force: :cascade do |t|
-    t.string "name"
-    t.string "description"
+    t.string "name", limit: 255
+    t.string "description", limit: 255
     t.text "notes"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "slug"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "slug", limit: 255
     t.index ["slug"], name: "index_categories_on_slug", unique: true
   end
 
   create_table "categories_technologies", id: false, force: :cascade do |t|
-    t.bigint "technology_id", null: false
-    t.bigint "category_id", null: false
+    t.integer "technology_id", null: false
+    t.integer "category_id", null: false
   end
 
   create_table "functions", force: :cascade do |t|
-    t.string "name"
-    t.string "description"
+    t.string "name", limit: 255
+    t.string "description", limit: 255
     t.text "notes"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "slug"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "slug", limit: 255
     t.index ["slug"], name: "index_functions_on_slug", unique: true
   end
 
   create_table "functions_technologies", id: false, force: :cascade do |t|
-    t.bigint "technology_id", null: false
-    t.bigint "function_id", null: false
+    t.integer "technology_id", null: false
+    t.integer "function_id", null: false
   end
 
   create_table "governances", force: :cascade do |t|
-    t.string "name"
-    t.string "description"
+    t.string "name", limit: 255
+    t.string "description", limit: 255
     t.text "notes"
-    t.string "slug"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.string "slug", limit: 255
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["slug"], name: "index_governances_on_slug", unique: true
   end
 
   create_table "readiness_levels", force: :cascade do |t|
-    t.string "name"
-    t.string "description"
+    t.string "name", limit: 255
+    t.string "description", limit: 255
     t.text "notes"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "slug"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "slug", limit: 255
     t.index ["slug"], name: "index_readiness_levels_on_slug", unique: true
   end
 
   create_table "relationships", force: :cascade do |t|
-    t.string "predicate"
-    t.bigint "subj_id", null: false
-    t.bigint "obj_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.string "predicate", limit: 255
+    t.integer "subj_id", null: false
+    t.integer "obj_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["obj_id"], name: "index_relationships_on_obj_id"
     t.index ["subj_id"], name: "index_relationships_on_subj_id"
   end
 
   create_table "roles", force: :cascade do |t|
-    t.string "name"
-    t.string "description"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "slug"
+    t.string "name", limit: 255
+    t.string "description", limit: 255
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "slug", limit: 255
     t.index ["slug"], name: "index_roles_on_slug", unique: true
   end
 
   create_table "statuses", force: :cascade do |t|
-    t.string "name"
-    t.string "description"
-    t.string "slug"
+    t.string "name", limit: 255
+    t.string "description", limit: 255
+    t.string "slug", limit: 255
     t.text "notes"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "taggings", id: :serial, force: :cascade do |t|
+  create_table "taggings", force: :cascade do |t|
     t.integer "tag_id"
-    t.string "taggable_type"
+    t.string "taggable_type", limit: 255
     t.integer "taggable_id"
-    t.string "tagger_type"
+    t.string "tagger_type", limit: 255
     t.integer "tagger_id"
     t.string "context", limit: 128
     t.datetime "created_at"
@@ -162,8 +159,8 @@ ActiveRecord::Schema.define(version: 2020_10_16_114231) do
     t.index ["tagger_id"], name: "index_taggings_on_tagger_id"
   end
 
-  create_table "tags", id: :serial, force: :cascade do |t|
-    t.string "name"
+  create_table "tags", force: :cascade do |t|
+    t.string "name", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer "taggings_count", default: 0
@@ -171,22 +168,22 @@ ActiveRecord::Schema.define(version: 2020_10_16_114231) do
   end
 
   create_table "technologies", force: :cascade do |t|
-    t.string "name"
-    t.string "description"
-    t.string "url"
+    t.string "name", limit: 255
+    t.string "description", limit: 255
+    t.string "url", limit: 255
     t.text "notes"
-    t.bigint "adoption_level_id"
-    t.bigint "readiness_level_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "slug"
+    t.integer "adoption_level_id", null: false
+    t.integer "readiness_level_id", null: false
+    t.integer "governance_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "slug", limit: 255
     t.text "editorial"
-    t.bigint "governance_id"
-    t.string "roadmap"
-    t.string "codebase"
-    t.string "hosting"
-    t.string "pricing"
-    t.string "licensing"
+    t.string "roadmap", limit: 255
+    t.string "codebase", limit: 255
+    t.string "hosting", limit: 255
+    t.string "pricing", limit: 255
+    t.string "licensing", limit: 255
     t.bigint "business_form_id"
     t.bigint "status_id"
     t.index ["adoption_level_id"], name: "index_technologies_on_adoption_level_id"
@@ -198,13 +195,15 @@ ActiveRecord::Schema.define(version: 2020_10_16_114231) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
+    t.string "email", limit: 255, default: "", null: false
+    t.string "encrypted_password", limit: 255, default: "", null: false
+    t.string "reset_password_token", limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "forenames"
+    t.string "lastname"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

@@ -20,10 +20,16 @@
         %td.no-wrap
           - audited_thing = eval(audit.auditable_type).find(audit.auditable_id) rescue nil
           - if audited_thing != nil
-            = audited_thing.name
+            - if audited_thing.class.name != 'Relationship'
+              = audited_thing.name
           - else
             &nbsp;
-        %td= User.find(audit.user_id).email
+        %td
+          - if audit.user_id
+            -# = User.find(audit.user_id).email
+            = link_to audit.user_id, User.find(audit.user_id)
+          - else
+            unknown
         %td= audit.action
         %td.expand-to-fit-available-space
           -if audit.action == 'update'

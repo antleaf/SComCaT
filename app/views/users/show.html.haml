@@ -9,6 +9,16 @@
       = @user.email
   %tr
     %td.field-name
+      Forename(s):
+    %td
+      = @user.forenames
+  %tr
+    %td.field-name
+      Last Name:
+    %td
+      = @user.lastname
+  %tr
+    %td.field-name
       Roles:
     %td
       = raw(@user.roles.collect { |role| link_to(role.name,role).html_safe }.join(', '))
