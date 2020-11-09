@@ -8,11 +8,18 @@
   %table.invisible-layout-table
     %tr
       %td
-        = select_tag "subj", options_from_collection_for_select(Technology.all, "id", "name", @relationship.subj.id)
+        - if @relationship.new_record?
+          = f.select "subj_id", options_from_collection_for_select(Technology.all, "id", "name")
+        - else
+          = f.select "subj_id", options_from_collection_for_select(Technology.all, "id", "name", @relationship.subj.id)
       %td
-        = f.text_field :predicate
+        = f.hidden_field :predicate, :value => 'depends_on'
+        depends_on
       %td
-        = select_tag "obj", options_from_collection_for_select(Technology.all, "id", "name", @relationship.obj.id)
+        - if @relationship.new_record?
+          = f.select "obj_id", options_from_collection_for_select(Technology.all, "id", "name")
+        - else
+          = f.select "obj_id", options_from_collection_for_select(Technology.all, "id", "name", @relationship.obj.id)
 
 
   .actions

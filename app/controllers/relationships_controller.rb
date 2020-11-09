@@ -31,7 +31,6 @@ class RelationshipsController < ApplicationController
   # POST /relationships.json
   def create
     @relationship = Relationship.new(relationship_params)
-
     respond_to do |format|
       if @relationship.save
         format.html { redirect_to @relationship, notice: 'Relationship was successfully created.' }
