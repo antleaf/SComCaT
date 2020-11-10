@@ -17,7 +17,7 @@
           %td.field-name
             Description:
           %td.field-value
-            = f.text_field :description
+            = f.text_area :description, :rows => 10
         %tr
           %td.field-name
             Homepage:
@@ -119,7 +119,7 @@
           = c.check_box
           = c.label
           %br
-          %br
+        %br
       .field
         %h5 Collections
         = collection_check_boxes(:technology, :collection_ids, Collection.all, :id, :name) do |c|
