@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_09_121925) do
+ActiveRecord::Schema.define(version: 2020_11_10_093831) do
 
   create_table "adoption_levels", force: :cascade do |t|
     t.string "name", limit: 255
@@ -75,6 +75,25 @@ ActiveRecord::Schema.define(version: 2020_11_09_121925) do
   create_table "categories_technologies", id: false, force: :cascade do |t|
     t.integer "technology_id", null: false
     t.integer "category_id", null: false
+    t.index ["category_id", "technology_id"], name: "index_cat_tech_2", unique: true
+    t.index ["technology_id", "category_id"], name: "index_cat_tech_1", unique: true
+  end
+
+  create_table "collections", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.text "notes"
+    t.string "slug"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["slug"], name: "index_collections_on_slug", unique: true
+  end
+
+  create_table "collections_technologies", id: false, force: :cascade do |t|
+    t.integer "technology_id", null: false
+    t.integer "collection_id", null: false
+    t.index ["collection_id", "technology_id"], name: "index_coll_tech_2", unique: true
+    t.index ["technology_id", "collection_id"], name: "index_coll_tech_1", unique: true
   end
 
   create_table "functions", force: :cascade do |t|
@@ -90,6 +109,8 @@ ActiveRecord::Schema.define(version: 2020_11_09_121925) do
   create_table "functions_technologies", id: false, force: :cascade do |t|
     t.integer "technology_id", null: false
     t.integer "function_id", null: false
+    t.index ["function_id", "technology_id"], name: "index_func_tech_2", unique: true
+    t.index ["technology_id", "function_id"], name: "index_func_tech_1", unique: true
   end
 
   create_table "governances", force: :cascade do |t|

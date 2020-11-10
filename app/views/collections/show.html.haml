@@ -1,0 +1,25 @@
+%h4.page-title
+  = "Collection: #{@collection.name}"
+%table.invisible-layout-table
+  -#%tr
+  -#  %td.field-name
+  -#    Last updated:
+  -#  %td
+  -#    = @collection.updated_at.strftime('%Y-%m-%d %H:%M UTC')
+  %tr
+    %td.field-name
+      Description:
+    %td
+      = @collection.description
+%br
+  - if !@collection.notes.blank?
+    %h5 Notes
+    = @collection.notes
+
+- if policy(Collection).edit?
+  = link_to 'Edit', edit_collection_path(@collection), :class => "btn btn-info btn-xs"
+%br
+%br
+%h5 Technologies in this collection
+
+= render(:partial => 'technologies/table',:locals => {:technology_list => @collection.technologies})

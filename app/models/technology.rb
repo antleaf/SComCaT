@@ -12,6 +12,7 @@ class Technology < ApplicationRecord
   belongs_to :governance
   has_and_belongs_to_many :functions
   has_and_belongs_to_many :categories
+  has_and_belongs_to_many :collections
   has_many :relationships
 
   before_destroy :remove_relationships
@@ -52,6 +53,7 @@ class Technology < ApplicationRecord
       tech['business_form'] = technology.business_form.name
       tech['categories'] = technology.categories.collect { |category| category.name }
       tech['functions'] = technology.functions.collect { |function| function.name }
+      tech['collections'] = technology.collections.collect { |collection| collection.name }
       tech['base_technologies'] = technology.base_techs.collect { |base_tech| base_tech.name }
       tech['tags'] = technology.tags.collect { |tag| tag.name }
       tech['is_depended_on_by'] = technology.is_depended_on_by.collect { |child_tech| child_tech.slug }
@@ -63,7 +65,7 @@ class Technology < ApplicationRecord
 
   def self.dump_to_csv(technologies=all)
     CSV.generate(headers: true) do |csv|
-      csv << ['id','name','description','last_updated','homepage','codebase','roadmap','hosting','pricing','licensing','adoption_level','readiness_level','governance','status','business_form','categories','functions','base_technologies','tags','is_depended_on_by','depends_on']
+      csv << ['id','name','description','last_updated','homepage','codebase','roadmap','hosting','pricing','licensing','adoption_level','readiness_level','governance','status','business_form','categories','collections','functions','base_technologies','tags','is_depended_on_by','depends_on']
       technologies.each do |technology|
         row = []
         row << technology.slug
@@ -82,6 +84,7 @@ class Technology < ApplicationRecord
         row << technology.status.name
         row << technology.business_form.name
         row << technology.categories.collect { |category| category.name }.join('|')
+        row << technology.collections.collect { |collection| collection.name }.join('|')
         row << technology.functions.collect { |function| function.name }.join('|')
         row << technology.base_techs.collect { |base_tech| base_tech.name }.join('|')
         row << technology.tags.collect { |tag| tag.name }.join('|')

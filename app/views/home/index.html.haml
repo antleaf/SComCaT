@@ -17,6 +17,7 @@
           %button.btn.btn-primary.btn-xs.form-button Search
       %div.row
         %div.col-sm-6
+          = render(:partial => 'facet',:locals => {:filter_name => :collections})
           = render(:partial => 'facet',:locals => {:filter_name => :functions})
           = render(:partial => 'facet',:locals => {:filter_name => :governance})
           = render(:partial => 'facet',:locals => {:filter_name => :adoption_level})

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :collections
   resources :statuses
   resources :business_forms
   resources :governances

@@ -119,6 +119,13 @@
           = c.check_box
           = c.label
           %br
+          %br
+      .field
+        %h5 Collections
+        = collection_check_boxes(:technology, :collection_ids, Collection.all, :id, :name) do |c|
+          = c.check_box
+          = c.label
+          %br
     .div.col-sm-2
       .field
         %h5 Categories

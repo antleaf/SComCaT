@@ -11,6 +11,7 @@ class HomeController < ApplicationController
     facet :readiness_level, name: 'Readiness Level', order: :name
     facet :functions, name: 'Function', order: :name
     facet :categories, name: 'Category', order: :name
+    facet :collections, name: 'Collection', order: :name
     facet :status, name: 'Status', order: :name
     facet :business_form, name: 'Business Form', order: :name
 
