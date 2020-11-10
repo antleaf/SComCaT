@@ -1,7 +1,7 @@
 class Relationship < ApplicationRecord
   belongs_to :subj, class_name: 'Technology'
   belongs_to :obj, class_name: 'Technology'
-  audited
+  audited max_audits: 500
 
   enum predicate: {
       depends_on: "depends_on"

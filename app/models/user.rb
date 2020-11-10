@@ -6,6 +6,8 @@ class User < ApplicationRecord
   has_many :assignments
   has_many :roles, through: :assignments
 
+  audited max_audits: 50
+
   # extend FriendlyId
   # friendly_id :email
 

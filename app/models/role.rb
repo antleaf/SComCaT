@@ -2,6 +2,8 @@ class Role < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: :slugged
 
+  audited max_audits: 50
+
   has_many :assignments
   has_many :users, through: :assignments
 

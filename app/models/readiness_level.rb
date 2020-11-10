@@ -1,7 +1,7 @@
 class ReadinessLevel < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: :slugged
-  audited
+  audited max_audits: 50
 
   has_many :technologies
 

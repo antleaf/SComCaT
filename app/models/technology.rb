@@ -3,7 +3,7 @@ class Technology < ApplicationRecord
   friendly_id :name, use: :slugged
   acts_as_taggable
   acts_as_taggable_on :base_techs
-  audited
+  audited max_audits: 500
 
   belongs_to :status
   belongs_to :business_form

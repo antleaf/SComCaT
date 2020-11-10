@@ -29,7 +29,4 @@ class HomeController < ApplicationController
     @technologies = @search.result.paginate(page: params[:page], per_page: 20) # optionally paginate through your results
   end
 
-
-
-
 end
