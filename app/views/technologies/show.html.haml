@@ -98,7 +98,7 @@
       %ul
         - is_depended_on_by.each do |d|
           %li= link_to d.name,d
-    - depends_on = @technology.depends_on
+    - depends_on = @technology.dependees
     - if depends_on.count > 0
       %h5 Depends on
       %ul

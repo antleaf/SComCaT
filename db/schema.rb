@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_11_104333) do
+ActiveRecord::Schema.define(version: 2020_11_11_154915) do
 
   create_table "adoption_levels", force: :cascade do |t|
     t.string "name", limit: 255
@@ -94,6 +94,16 @@ ActiveRecord::Schema.define(version: 2020_11_11_104333) do
     t.integer "collection_id", null: false
     t.index ["collection_id", "technology_id"], name: "index_coll_tech_2", unique: true
     t.index ["technology_id", "collection_id"], name: "index_coll_tech_1", unique: true
+  end
+
+  create_table "dependencies", force: :cascade do |t|
+    t.integer "technology_id", null: false
+    t.integer "dependee_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["dependee_id"], name: "index_dependencies_on_dependee_id"
+    t.index ["technology_id", "dependee_id"], name: "index_dependencies_on_technology_id_and_dependee_id", unique: true
+    t.index ["technology_id"], name: "index_dependencies_on_technology_id"
   end
 
   create_table "functions", force: :cascade do |t|
@@ -232,6 +242,8 @@ ActiveRecord::Schema.define(version: 2020_11_11_104333) do
 
   add_foreign_key "assignments", "roles"
   add_foreign_key "assignments", "users"
+  add_foreign_key "dependencies", "technologies"
+  add_foreign_key "dependencies", "technologies", column: "dependee_id"
   add_foreign_key "relationships", "technologies", column: "obj_id"
   add_foreign_key "relationships", "technologies", column: "subj_id"
   add_foreign_key "taggings", "tags"

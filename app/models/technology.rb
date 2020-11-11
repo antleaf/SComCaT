@@ -13,22 +13,13 @@ class Technology < ApplicationRecord
   has_and_belongs_to_many :functions
   has_and_belongs_to_many :categories
   has_and_belongs_to_many :collections
-  has_many :relationships
 
-  before_destroy :remove_relationships
-
-  #has_many :subjects, class_name: 'Relationship', foreign_key: 'subject_id'
-  #has_many :objects, class_name: 'Relationship', foreign_key: 'object_id'
-  #
-  def depends_on
-    technology_list = []
-    Relationship.where(:subj => self,:predicate => 'depends_on').each {|rel| technology_list << rel.obj}
-    return technology_list
-  end
+  has_many :dependencies, dependent: :destroy
+  has_many :dependees, through: :dependencies
 
   def is_depended_on_by
     technology_list = []
-    Relationship.where(:obj => self,:predicate => 'depends_on').each {|rel| technology_list << rel.subj}
+    Dependency.where(:dependee => self).each {|d| technology_list << d.technology}
     return technology_list
   end
 
@@ -94,10 +85,4 @@ class Technology < ApplicationRecord
       end
     end
   end
-
-  private
-    def remove_relationships
-      Relationship.destroy_by(subj_id: self.id)
-      Relationship.destroy_by(obj_id: self.id)
-    end
 end

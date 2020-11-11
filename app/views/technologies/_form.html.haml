@@ -5,8 +5,8 @@
       %ul
         - @technology.errors.full_messages.each do |message|
           %li= message
-  .div.row
-    .div.col-sm-8
+  %div.row
+    %div.col-sm-9
       %table.invisible-layout-table
         %tr
           %td.field-name
@@ -107,29 +107,40 @@
             %i (not displayed to users)
           %td.field-value
             = f.text_area :editorial, :rows => 10, :class => 'editorial-comment-field'
-    .div.col-sm-2
+      %div.row
+        %div.col
+          .field
+            %h5 Collections
+            = collection_check_boxes(:technology, :collection_ids, Collection.all, :id, :name) do |c|
+              = c.check_box
+              = c.label
+              %br
+            %br
+        %div.col
+          .field
+            %h5 Categories
+            = collection_check_boxes(:technology, :category_ids, Category.all, :id, :name) do |c|
+              = c.check_box
+              = c.label
+              %br
+            %br
+        %div.col
+          .field
+            %h5 Functions
+            = collection_check_boxes(:technology, :function_ids, Function.all, :id, :name) do |c|
+              = c.check_box
+              = c.label
+              %br
+    %div.col-sm-3
+      %h5 Dependents
       .field
-        %h5 Functions
-        = collection_check_boxes(:technology, :function_ids, Function.all, :id, :name) do |c|
+        = collection_check_boxes(:technology, :dependee_ids, Technology.all, :id, :name) do |c|
           = c.check_box
           = c.label
           %br
         %br
-      .field
-        %h5 Collections
-        = collection_check_boxes(:technology, :collection_ids, Collection.all, :id, :name) do |c|
-          = c.check_box
-          = c.label
-          %br
-    .div.col-sm-2
-      .field
-        %h5 Categories
-        = collection_check_boxes(:technology, :category_ids, Category.all, :id, :name) do |c|
-          = c.check_box
-          = c.label
-          %br
-  .div.row
-    .div.col
+  %div.row
+    %div.col
       .actions
         = link_to 'Cancel', @technology, :class => "btn btn-danger btn-xs"
         = f.submit 'Save', :class => 'btn btn-success btn-xs'
