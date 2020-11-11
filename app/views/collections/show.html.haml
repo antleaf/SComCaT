@@ -11,10 +11,6 @@
       Description:
     %td
       = @collection.description
-%br
-  - if !@collection.notes.blank?
-    %h5 Notes
-    = @collection.notes
 
 - if policy(Collection).edit?
   = link_to 'Edit', edit_collection_path(@collection), :class => "btn btn-info btn-xs"

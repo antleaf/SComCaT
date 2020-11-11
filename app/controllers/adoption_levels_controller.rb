@@ -74,6 +74,6 @@ class AdoptionLevelsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def adoption_level_params
-      params.require(:adoption_level).permit(:name, :description, :notes)
+      params.require(:adoption_level).permit(:name, :description, :notes, :editorial)
     end
 end

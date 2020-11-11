@@ -74,6 +74,6 @@ class GovernancesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def governance_params
-      params.require(:governance).permit(:name, :description, :notes, :slug)
+      params.require(:governance).permit(:name, :description, :notes, :editorial)
     end
 end

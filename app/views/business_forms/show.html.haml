@@ -11,10 +11,6 @@
       Description:
     %td
       = @business_form.description
-%br
-  - if !@business_form.notes.blank?
-    %h5 Notes
-    = @business_form.notes
 
 - if policy(BusinessForm).edit?
   = link_to 'Edit', edit_business_form_path(@business_form), :class => "btn btn-info btn-xs"

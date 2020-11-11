@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_10_111308) do
+ActiveRecord::Schema.define(version: 2020_11_11_104333) do
 
   create_table "adoption_levels", force: :cascade do |t|
     t.string "name", limit: 255
     t.text "description", limit: 255
-    t.text "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug", limit: 255
+    t.text "editorial"
     t.index ["slug"], name: "index_adoption_levels_on_slug", unique: true
   end
 
@@ -57,18 +57,18 @@ ActiveRecord::Schema.define(version: 2020_11_10_111308) do
     t.string "name", limit: 255
     t.text "description", limit: 255
     t.string "slug", limit: 255
-    t.text "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "editorial"
   end
 
   create_table "categories", force: :cascade do |t|
     t.string "name", limit: 255
     t.text "description", limit: 255
-    t.text "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug", limit: 255
+    t.text "editorial"
     t.index ["slug"], name: "index_categories_on_slug", unique: true
   end
 
@@ -82,10 +82,10 @@ ActiveRecord::Schema.define(version: 2020_11_10_111308) do
   create_table "collections", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.text "notes"
     t.string "slug"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "editorial"
     t.index ["slug"], name: "index_collections_on_slug", unique: true
   end
 
@@ -99,10 +99,10 @@ ActiveRecord::Schema.define(version: 2020_11_10_111308) do
   create_table "functions", force: :cascade do |t|
     t.string "name", limit: 255
     t.text "description", limit: 255
-    t.text "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug", limit: 255
+    t.text "editorial"
     t.index ["slug"], name: "index_functions_on_slug", unique: true
   end
 
@@ -116,20 +116,20 @@ ActiveRecord::Schema.define(version: 2020_11_10_111308) do
   create_table "governances", force: :cascade do |t|
     t.string "name", limit: 255
     t.text "description", limit: 255
-    t.text "notes"
     t.string "slug", limit: 255
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "editorial"
     t.index ["slug"], name: "index_governances_on_slug", unique: true
   end
 
   create_table "readiness_levels", force: :cascade do |t|
     t.string "name", limit: 255
     t.text "description", limit: 255
-    t.text "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug", limit: 255
+    t.text "editorial"
     t.index ["slug"], name: "index_readiness_levels_on_slug", unique: true
   end
 
@@ -149,6 +149,7 @@ ActiveRecord::Schema.define(version: 2020_11_10_111308) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug", limit: 255
+    t.text "editorial"
     t.index ["slug"], name: "index_roles_on_slug", unique: true
   end
 
@@ -156,9 +157,9 @@ ActiveRecord::Schema.define(version: 2020_11_10_111308) do
     t.string "name", limit: 255
     t.text "description", limit: 255
     t.string "slug", limit: 255
-    t.text "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "editorial"
   end
 
   create_table "taggings", force: :cascade do |t|
@@ -192,7 +193,6 @@ ActiveRecord::Schema.define(version: 2020_11_10_111308) do
     t.string "name", limit: 255
     t.text "description", limit: 255
     t.string "url", limit: 255
-    t.text "notes"
     t.integer "adoption_level_id", null: false
     t.integer "readiness_level_id", null: false
     t.integer "governance_id", null: false
@@ -225,6 +225,7 @@ ActiveRecord::Schema.define(version: 2020_11_10_111308) do
     t.datetime "updated_at", null: false
     t.string "forenames"
     t.string "lastname"
+    t.text "editorial"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

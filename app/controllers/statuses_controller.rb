@@ -74,6 +74,6 @@ class StatusesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def status_params
-      params.require(:status).permit(:name, :description, :slug, :notes)
+      params.require(:status).permit(:name, :description, :notes, :editorial)
     end
 end

@@ -50,11 +50,6 @@
             = f.text_field :pricing
         %tr
           %td.field-name
-            Notes:
-          %td.field-value
-            = f.text_area :notes, :rows => 10
-        %tr
-          %td.field-name
             Adoption Level:
           %td.field-value
             - if @technology.new_record?

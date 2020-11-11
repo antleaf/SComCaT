@@ -78,6 +78,6 @@ class UsersController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def user_params
-    params.require(:user).permit(:email,:forenames,:lastname, :password,:password_confirmation,:role_ids => [])
+    params.require(:user).permit(:email,:forenames,:lastname, :editorial, :password,:password_confirmation,:role_ids => [])
   end
 end

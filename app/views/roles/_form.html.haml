@@ -18,6 +18,13 @@
         = f.text_area :description, :rows => 10
     %tr
       %td.field-name
+        Editors' Comments:
+        %br
+        %i (not displayed to users)
+      %td.field-value
+        = f.text_area :editorial, :rows => 10, :class => 'editorial-comment-field'
+    %tr
+      %td.field-name
         Users:
       %td.field-value
         = collection_check_boxes(:role, :user_ids, User.all, :id, :email) do |c|

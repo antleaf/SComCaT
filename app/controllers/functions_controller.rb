@@ -75,6 +75,6 @@ class FunctionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def function_params
-      params.require(:function).permit(:name, :description, :notes)
+      params.require(:function).permit(:name, :description, :notes, :editorial)
     end
 end

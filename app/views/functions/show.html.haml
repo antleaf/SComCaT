@@ -11,10 +11,6 @@
       Description:
     %td
       = @function.description
-%br
-  - if !@function.notes.blank?
-    %h5 Notes
-    = @function.notes
 
 - if policy(Function).edit?
   = link_to 'Edit', edit_function_path(@function), :class => "btn btn-info btn-xs"

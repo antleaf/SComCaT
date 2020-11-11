@@ -11,10 +11,6 @@
       Description:
     %td
       = @status.description
-%br
-  - if !@status.notes.blank?
-    %h5 Notes
-    = @status.notes
 
 - if policy(Status).edit?
   = link_to 'Edit', edit_status_path(@status), :class => "btn btn-info btn-xs"

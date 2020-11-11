@@ -11,10 +11,6 @@
       Description:
     %td
       = @governance.description
-%br
-  - if !@governance.notes.blank?
-    %h5 Notes
-    = @governance.notes
 
 - if policy(Governance).edit?
   = link_to 'Edit', edit_governance_path(@governance), :class => "btn btn-info btn-xs"

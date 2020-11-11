@@ -91,10 +91,6 @@
           General Tags:
         %td
           = raw(@technology.tags.collect { |tag| link_to(tag.name,tag_path(tag)).html_safe }.join(', '))
-    %br
-    - if !@technology.notes.blank?
-      %h5 Notes
-      = auto_link @technology.notes
   %div.col-sm-3
     - is_depended_on_by = @technology.is_depended_on_by
     - if is_depended_on_by.count > 0

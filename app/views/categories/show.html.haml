@@ -11,10 +11,6 @@
       Description:
     %td
       = @category.description
-%br
-  - if !@category.notes.blank?
-    %h5 Notes
-    = @category.notes
 
 - if policy(Category).edit?
   = link_to 'Edit', edit_category_path(@category), :class => "btn btn-info btn-xs"

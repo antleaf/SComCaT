@@ -74,6 +74,6 @@ class ReadinessLevelsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def readiness_level_params
-      params.require(:readiness_level).permit(:name, :description, :notes)
+      params.require(:readiness_level).permit(:name, :description, :notes, :editorial)
     end
 end

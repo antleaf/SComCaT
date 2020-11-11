@@ -75,6 +75,6 @@ class CollectionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def collection_params
-      params.require(:collection).permit(:name, :description, :notes)
+      params.require(:collection).permit(:name, :description, :notes, :editorial)
     end
 end

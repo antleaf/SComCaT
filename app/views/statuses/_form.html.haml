@@ -6,7 +6,7 @@
         - @status.errors.full_messages.each do |message|
           %li= message
 
-    %table.invisible-layout-table
+  %table.invisible-layout-table
     %tr
       %td.field-name
         Name:
@@ -17,11 +17,13 @@
         Description:
       %td.field-value
         = f.text_area :description, :rows => 10
-      %tr
-        %td.field-name
-          Notes:
-        %td.field-value
-          = f.text_area :notes, :rows => 10
+    %tr
+      %td.field-name
+        Editors' Comments:
+        %br
+        %i (not displayed to users)
+      %td.field-value
+        = f.text_area :editorial, :rows => 10, :class => 'editorial-comment-field'
   .actions
     = link_to 'Cancel', @status, :class => "btn btn-danger btn-xs"
     = f.submit 'Save', :class => 'btn btn-success btn-xs'
