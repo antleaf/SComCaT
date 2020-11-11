@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load',function () {
+$('document').ready(function() {
     $('.unsorted-table').dataTable({
         "bSort": false,
         "bInfo": false,
@@ -9,7 +9,7 @@ $(document).on('turbolinks:load',function () {
     });
 });
 
-$(document).on('turbolinks:load',function () {
+$('document').ready(function() {
     $('.sorted-table').dataTable({
         "bSort": true,
         "bInfo": false,
@@ -22,7 +22,7 @@ $(document).on('turbolinks:load',function () {
     });
 });
 
-$(document).on('turbolinks:load',function () {
+$('document').ready(function() {
     $('.reverse-sorted-table').dataTable({
         "bSort": true,
         "bInfo": false,

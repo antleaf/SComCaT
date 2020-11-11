@@ -1,0 +1,23 @@
+%div.modal.fade{id:"modal_#{technology.id}",tabindex:"-1",role:"dialog","aria-labelledby":"exampleModalLongTitle","aria-hidden":"true"}
+  %div.modal-dialog.modal-dialog-centered{role:"document"}
+    %div.modal-content
+      %div.modal-header
+        %h5.modal-title#exampleModalLongTitle=technology.name
+        %button.close{type:"button","data-dismiss":"modal","aria-label":"Close"}
+          %span{"aria-hidden":"true"} &times;
+      %div.modal-body
+        %b Status:
+        =technology.status.name
+        %br
+        %b Adoption Level:
+        =technology.adoption_level.name
+        %br
+        %b Business Form:
+        =technology.business_form.name
+        %br
+        %b Governance:
+        =technology.governance.name
+        %hr
+        =technology.description
+      %div.modal-footer
+        = link_to 'View full record', technology

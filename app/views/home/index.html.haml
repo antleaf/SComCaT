@@ -5,7 +5,7 @@
   %div.col-md-5.col-lg-4
     %div.search-filter-sidebar
       %div.reset-filter-button
-        =link_to 'Reset search/filters', '?', class: 'btn btn-danger btn-xs form-button'
+        =link_to 'Reset search/filters', '?', class: 'btn btn-info btn-xs form-button'
       %h5 Search
       = form_tag nil, method: :get do
         = hidden_field_tag 'search[order]', @search.order.definition.request_value if @search.order
@@ -14,7 +14,10 @@
         - description_filter = @search.filter(:description)
         = text_field_tag 'search[description]', description_filter.value, class: 'form-control form-control-sm', placeholder: description_filter.name, style: 'margin-bottom: 10px;'
         %div.form-button
-          %button.btn.btn-primary.btn-xs.form-button Search
+          %button.btn.btn-info.btn-xs.form-button Search
+      %div.row
+        %div.col
+          %h5 Filter
       %div.row
         %div.col-sm-6
           = render(:partial => 'facet',:locals => {:filter_name => :collections})
@@ -39,33 +42,14 @@
           %div.card.tech-search-result-card
             %div.card-header
               %b
-                =link_to technology.name,technology
+                %a{href:"","data-toggle":"modal", "data-target":"#modal_#{technology.id}"}
+                  = technology.name
             %div.card-body
-              =truncate technology.description,{length: 300, separator: ' '}
+              =truncate technology.description,{length: 150, separator: ' '}
+          = render(:partial => 'modal',:locals => {:technology => technology})
 
     %div.scomcat-pagination
       %div{:class=>"page_info"}
         = raw "Displaying technologies <b>#{@technologies.offset + 1}</b> to <b>#{@technologies.offset + @technologies.length}</b> of <b>#{@technologies.total_entries}</b> matching this search/filter"
       = will_paginate @technologies, :container => false
 
-
-
-    -#%table{:class=>"table table-condensed table-striped"}
-    -#  %thead
-    -#    %tr
-    -#      %th Name
-    -#      %th.unsorted-column Description
-    -#      - if (policy(Technology).edit?)|(policy(Technology).destroy?)
-    -#        %th.actions Actions
-    -#
-    -#  %tbody
-    -#    - @technologies.each do |technology|
-    -#      %tr
-    -#        %td.no-wrap= link_to technology.name,technology
-    -#        %td.no-wrap= truncate(technology.description, length: 50, separator: ' ')
-    -#        - if (policy(Technology).edit?)|(policy(Technology).destroy?)
-    -#          %td.actions
-    -#            - if policy(Technology).edit?
-    -#              = link_to 'Edit', edit_technology_path(technology), :class => "btn btn-info btn-xs"
-    -#            - if policy(Technology).destroy?
-    -#              = link_to 'Delete', technology, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-info btn-xs"

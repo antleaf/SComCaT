@@ -1,22 +1,22 @@
 
 # default: &default
 
-development:
-  # <<: *default
-  adapter: postgresql
-  encoding: unicode
-  host: <%= ENV['POSTGRES_HOST'] %>
-  username: <%= ENV['POSTGRES_USER'] %>
-  pool: 5
-  database: scomcat_development
-  password: <%= ENV['POSTGRES_PASSWORD'] %>
-
 #development:
 #  # <<: *default
-#  database: db/development.sqlite3
-#  adapter: sqlite3
-#  pool: <%#= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-#  timeout: 5000
+#  adapter: postgresql
+#  encoding: unicode
+#  host: <%#= ENV['POSTGRES_HOST'] %>
+#  username: <%#= ENV['POSTGRES_USER'] %>
+#  pool: 5
+#  database: scomcat_development
+#  password: <%#= ENV['POSTGRES_PASSWORD'] %>
+
+development:
+  # <<: *default
+  database: db/development.sqlite3
+  adapter: sqlite3
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
 
 test:
   # <<: *default
@@ -25,19 +25,19 @@ test:
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
 
-production:
-  # <<: *default
-  adapter: postgresql
-  encoding: unicode
-  host: <%= ENV['POSTGRES_HOST'] %>
-  username: <%= ENV['POSTGRES_USER'] %>
-  pool: 5
-  database: scomcat_production
-  password: <%= ENV['POSTGRES_PASSWORD'] %>
-
 #production:
 #  # <<: *default
-#  database: db/development.sqlite3
-#  adapter: sqlite3
-#  pool: <%#= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-#  timeout: 5000
+#  adapter: postgresql
+#  encoding: unicode
+#  host: <%#= ENV['POSTGRES_HOST'] %>
+#  username: <%#= ENV['POSTGRES_USER'] %>
+#  pool: 5
+#  database: scomcat_production
+#  password: <%#= ENV['POSTGRES_PASSWORD'] %>
+
+production:
+  # <<: *default
+  database: db/development.sqlite3
+  adapter: sqlite3
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000

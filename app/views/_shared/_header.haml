@@ -16,7 +16,7 @@
       Scholarly Communications Technology Catalogue
   %div.col-sm-4#header-login-col
     - if user_signed_in?
-      ="User: #{current_user.email}"
+      ="User: #{current_user.display_name}"
       = link_to 'Logout', destroy_user_session_path, method: :delete, :class => 'btn btn-info btn-xs'
       %br
       = link_to "Change your password", edit_user_registration_path
