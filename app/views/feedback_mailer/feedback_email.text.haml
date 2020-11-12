@@ -1,0 +1,16 @@
+="Here is some feedback about SComCat!\n\n"
+
+
+="Name: #{@name}\n"
+= "Email Address: #{@email_address}\n\n"
+
+- if @technology
+  = "This is about a particular technology: #{@technology.name}\n"
+
+  = "Calling page: #{@calling_page}\n\n"
+- else
+  = "This is general feedback (not about any particular technology)\n\n"
+
+
+= "Feedback:\n"
+= "#{@body}\n\n"

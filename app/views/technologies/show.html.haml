@@ -112,3 +112,8 @@
 
 - if policy(Technology).edit?
   = link_to 'Edit', edit_technology_path(@technology), :class => "btn btn-info btn-xs"
+
+%div.right-aligned
+  %a.btn.btn-info.btn-xs{href:"","data-toggle":"modal", "data-target":"#modal_feedback"}
+    Give feedback about this record
+= render(:partial => '_shared/modal_feedback',:locals => {:technology_id => @technology.id})

@@ -2,6 +2,11 @@ textarea,input[type=text],input[type=email],input[type=password] {
   width: 100%;
 }
 
+textarea {
+  color: #555555;
+  border: .5px solid #cdcdcd;
+}
+
 div.actions {
   text-align: center;
   //border-top: 1px #efefef solid;

@@ -18,9 +18,20 @@
 %p
   SComCat is built with <a href="https://github.com/antleaf/scomcat">open-source software</a>, licensed under an MIT License
 %p
-  Please get in touch by emailing
-  %a{:href=>"mailto:office@coar-repositories.org"}office@coar-repositories.org
-  if you know of a technology or platform that you think should be included in this scan.
+  If you know of a technology or platform that you think should be included in this scan, please use this feedback form:
+  %a.btn.btn-info.btn-xs{href:"","data-toggle":"modal", "data-target":"#modal_feedback"}
+    Feedback
+
+  = render(:partial => '_shared/modal_feedback',:locals => {:technology_id => nil})
+
+  -#Please get in touch by emailing
+  -#%a{:href=>"mailto:office@coar-repositories.org"}office@coar-repositories.org
+  -#if you know of a technology or platform that you think should be included in this scan.
+
+
+
+
+
 
 
 

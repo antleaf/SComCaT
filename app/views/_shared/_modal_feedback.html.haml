@@ -1,0 +1,29 @@
+%div.modal.fade{id:"modal_feedback",tabindex:"-1",role:"dialog","aria-labelledby":"feedbackModalLongTitle","aria-hidden":"true"}
+  %div.modal-dialog.modal-dialog-centered.modal-lg{role:"document"}
+    %div.modal-content
+      %div.modal-header
+        %h5.modal-title#feedbackModalLongTitle
+          Feedback form
+        %button.close{type:"button","data-dismiss":"modal","aria-label":"Close"}
+          %span{"aria-hidden":"true"} &times;
+      %div.modal-body
+        = form_tag(feedback_path, :method => "get") do
+          = hidden_field_tag :technology_id, technology_id
+          = hidden_field_tag :calling_page, request.original_url
+          %table.invisible-layout-table
+            %tr
+              %td.field-name
+                Name (optional):
+              %td.field-value
+                = text_field_tag :name
+            %tr
+              %td.field-name
+                Email Address (optional):
+              %td.field-value
+                = text_field_tag :email_address
+            %tr
+              %td.field-name
+                Feedback:
+              %td.field-value
+                = text_area_tag(:body, nil,rows: 20)
+          = submit_tag("Submit feedback!", class: "btn btn-info btn-xs form-button")

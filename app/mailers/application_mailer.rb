@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'from@example.com'
+  default from: ENV['SCOMCAT_MAILER_FROM']
   layout 'mailer'
 end

@@ -19,9 +19,9 @@ Rails.application.routes.draw do
 
   root 'home#index'
   get 'home', to: 'home#index'
-
   get 'about', to: 'about#index'
   get 'about/graph', to: 'about#graph'
+  get 'feedback', to: 'feedback#index'
 
   # get 'home/dump_csv', to: 'home#dump_csv'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
