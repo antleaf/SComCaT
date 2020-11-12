@@ -11,8 +11,8 @@ class AboutController < ApplicationController
       nodes_array << {"name": tech.name,"slug": tech.slug}
     end
     links_array = []
-    Relationship.all.each do |rel|
-      links_array << {"source": nodes_array.find_index({"name": rel.subj.name,"slug": rel.subj.slug}), "target": nodes_array.find_index({"name": rel.obj.name,"slug": rel.obj.slug}),"value": 1}
+    Dependency.all.each do |dep|
+      links_array << {"source": nodes_array.find_index({"name": dep.technology.name,"slug": dep.technology.slug}), "target": nodes_array.find_index({"name": dep.dependee.name,"slug": dep.dependee.slug}),"value": 1}
     end
     @graph = {"nodes" => nodes_array,"links" => links_array}.to_json.html_safe
   end
