@@ -4,13 +4,13 @@ Rails.application.configure do
   # Code is not reloaded between requests.
 
   config.action_mailer.smtp_settings = {
-      address: "smtp.gmail.com",
-      port: 587,
+      address: ENV['SCOMCAT_SMTP_HOST'],
+      port: ENV['SCOMCAT_SMTP_PORT'],
       domain: "antleaf.com",
       authentication: "plain",
       enable_starttls_auto: true,
-      user_name: ENV["GMAIL_USERNAME"],
-      password:ENV["GMAIL_PASSWORD"]
+      user_name: ENV['SCOMCAT_SMTP_USERNAME'],
+      password:ENV['SCOMCAT_SMTP_PASSWORD']
   }
   config.action_mailer.default_url_options = { :host => 'scomcat.antleaf.org' }
 

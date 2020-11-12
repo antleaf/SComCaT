@@ -5,11 +5,11 @@
 #  # <<: *default
 #  adapter: postgresql
 #  encoding: unicode
-#  host: <%#= ENV['POSTGRES_HOST'] %>
-#  username: <%#= ENV['POSTGRES_USER'] %>
+#  host: <%#= ENV['SCOMCAT_POSTGRES_HOST'] %>
+#  username: <%#= ENV['SCOMCAT_POSTGRES_USER'] %>
 #  pool: 5
-#  database: scomcat_development
-#  password: <%#= ENV['POSTGRES_PASSWORD'] %>
+#  database: <%#= ENV['SCOMCAT_POSTGRES_DB'] %>
+#  password: <%#= ENV['SCOMCAT_POSTGRES_PASSWORD'] %>
 
 development:
   # <<: *default
@@ -29,11 +29,11 @@ test:
 #  # <<: *default
 #  adapter: postgresql
 #  encoding: unicode
-#  host: <%#= ENV['POSTGRES_HOST'] %>
-#  username: <%#= ENV['POSTGRES_USER'] %>
+#  host: <%#= ENV['SCOMCAT_POSTGRES_HOST'] %>
+#  username: <%#= ENV['SCOMCAT_POSTGRES_USER'] %>
 #  pool: 5
-#  database: scomcat_production
-#  password: <%#= ENV['POSTGRES_PASSWORD'] %>
+#  database: <%#= ENV['SCOMCAT_POSTGRES_DB'] %>
+#  password: <%#= ENV['SCOMCAT_POSTGRES_PASSWORD'] %>
 
 production:
   # <<: *default

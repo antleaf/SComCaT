@@ -5,16 +5,16 @@ Rails.application.configure do
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
   #
-
   config.action_mailer.smtp_settings = {
-      address: "smtp.gmail.com",
-      port: 587,
+      address: ENV['SCOMCAT_SMTP_HOST'],
+      port: ENV['SCOMCAT_SMTP_PORT'],
       domain: "antleaf.com",
       authentication: "plain",
       enable_starttls_auto: true,
-      user_name: ENV["GMAIL_USERNAME"],
-      password:ENV["GMAIL_PASSWORD"]
+      user_name: ENV['SCOMCAT_SMTP_USERNAME'],
+      password:ENV['SCOMCAT_SMTP_PASSWORD']
   }
+
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
   config.cache_classes = false
