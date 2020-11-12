@@ -1,0 +1,20 @@
+<h5>Dependents</h5>
+<div class="row">
+  <div class="col">
+    <% rowcount = 0 %>
+    <% max_rows = ((Technology.count / 3).round(half: :up)) %>
+    <%= collection_check_boxes(:technology, :dependee_ids, Technology.all, :id, :name) do |c| %>
+    <%= c.check_box %>
+    <%= c.label %>
+    <br/>
+    <%
+      rowcount += 1
+      if rowcount % max_rows == 0 then
+    %>
+        </div><div class="col">
+    <%
+      end
+      end
+    %>
+  </div>
+</div>
