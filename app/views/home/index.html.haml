@@ -40,10 +40,11 @@
       - @technologies.each do |technology|
         %div.col-md-4.col-sm-6
           %div.card.tech-search-result-card
-            %div.card-header
+            %div.card-header.hover-over
               %b
                 %a{href:"","data-toggle":"modal", "data-target":"#modal_#{technology.id}"}
                   = technology.name
+              %span.hover-over-text= technology.description
             %div.card-body
               =truncate technology.description,{length: 150, separator: ' '}
           = render(:partial => 'modal',:locals => {:technology => technology})

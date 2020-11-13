@@ -2,7 +2,7 @@
   %thead
     %tr
       %th Name
-      %th.unsorted-column Description
+      -#%th.unsorted-column Description
       %th Adoption
       %th Readiness
       %th Status
@@ -19,8 +19,12 @@
   %tbody
     - technology_list.each do |technology|
       %tr
-        %td.no-wrap= link_to technology.name,technology
-        %td.no-wrap= truncate(technology.description, length: 50, separator: ' ')
+        %td.no-wrap
+          %div.hover-over{style:"width:100%;"}
+            = link_to technology.name,technology
+            %span.hover-over-text= technology.description
+        -#%td.no-wrap
+        -#  =truncate(technology.description, length: 50, separator: ' ')
         %td= link_to technology.adoption_level.name, technology.adoption_level
         %td= link_to technology.readiness_level.name, technology.readiness_level
         %td= link_to technology.status.name, technology.status
