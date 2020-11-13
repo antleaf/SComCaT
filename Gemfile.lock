@@ -182,6 +182,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    sequel (5.38.0)
     sexp_processor (4.15.1)
     spring (2.1.1)
     spring-watcher-listen (2.0.1)
@@ -238,6 +239,7 @@ DEPENDENCIES
   rails_autolink
   rubyzip
   sass-rails (>= 6)
+  sequel
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3 (~> 1.4)

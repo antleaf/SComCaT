@@ -19,6 +19,7 @@ gem 'tzinfo-data'
 gem 'rails_autolink'
 gem 'forty_facets'
 gem 'will_paginate', '~> 3.1.0'
+gem 'sequel'# (only for migrating data between sqlite and postgress)
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.2'
