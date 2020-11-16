@@ -1,5 +1,6 @@
 class FeedbackMailer < ApplicationMailer
   def feedback_email
+    @recipient = params[:recipient]
     @calling_page = params[:calling_page]
     @name = params[:name] || 'Anonymous'
     @email_address = params[:email_address] || 'Not provided'
@@ -9,7 +10,6 @@ class FeedbackMailer < ApplicationMailer
     else
       @technology = nil
     end
-
-    Role.find_by_name('Helpdesk').users.each {|user| mail(to: user.email, subject: 'SComCat Feedback')}
+    mail(to: @recipient, subject: 'SComCat Feedback')
   end
 end
