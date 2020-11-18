@@ -32,3 +32,4 @@
 .idea
 .rakeTasks
 .generators
+/config/database.yml
