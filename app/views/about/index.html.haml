@@ -1,37 +1,48 @@
 %h4.page-title About SComCat
-%p
-  This catalogue has been developed by
-  %a{href: "http://www.antleaf.com"} Antleaf
-  for the
-  %a{href: "https://www.coar-repositories.org"} Confederation of Open Access Repositories (COAR)
-  as part of the
-  %a{href: "https://educopia.org/next-generation-library-publishing/"} Next Generation Libraries Project
-  and is licensed under a
-  %a{rel:"license", href: "https://creativecommons.org/licenses/by/4.0/"} Creative Commons Attribution 4.0 License
-
-%p
-  SComCat comprises a catalogue (knowledge base) of scholarly communications open technologies where the term "technologies" is defined to include software and some essential running services. The aim is to assist potential users in making decisions about which technologies they will adopt by providing an overview of the functionality, organizational models, dependencies, use of standards, and levels of adoption of each technology.
-%p
-  The scan includes tools, platforms, and standards that can be locally adopted to support one or more of functions of the lifecycle of scholarly communications, which is conceptualized as including the following activities: creation, evaluation, publication, dissemination, preservation, and reuse.
-%p
-  We envision this scan as being extensible over time in order to address the evolving needs of various communities.
-%p
-  SComCat is built with <a href="https://github.com/antleaf/scomcat">open-source software</a>, licensed under an MIT License
-%p
-  If you know of a technology or platform that you think should be included in this scan, please use this feedback form:
-  %a.btn.btn-info.btn-xs{href:"","data-toggle":"modal", "data-target":"#modal_feedback"}
-    Feedback
-
-  = render(:partial => '_shared/modal_feedback',:locals => {:technology_id => nil})
-
-  -#Please get in touch by emailing
-  -#%a{:href=>"mailto:office@coar-repositories.org"}office@coar-repositories.org
-  -#if you know of a technology or platform that you think should be included in this scan.
 
 
+%div.row
+  %div.col-sm-9
+    %h5
+      The catalogue
+    %p
+      This catalogue has been developed by
+      %a{href: "http://www.antleaf.com"} Antleaf
+      for the
+      %a{href: "https://www.coar-repositories.org"} Confederation of Open Access Repositories (COAR)
+      as part of the
+      %a{href: "https://educopia.org/next-generation-library-publishing/"} Next Generation Libraries Project
+      and is licensed under a
+      %a{rel:"license", href: "https://creativecommons.org/licenses/by/4.0/"} Creative Commons Attribution 4.0 License
 
+    %p
+      SComCat comprises a catalogue (knowledge base) of scholarly communications open technologies where the term "technologies" is defined to include software and some essential running services. The aim is to assist potential users in making decisions about which technologies they will adopt by providing an overview of the functionality, organizational models, dependencies, use of standards, and levels of adoption of each technology.
+    %p
+      The scan includes tools, platforms, and standards that can be locally adopted to support one or more of functions of the lifecycle of scholarly communications, which is conceptualized as including the following activities: creation, evaluation, publication, dissemination, preservation, and reuse.
+    %p
+      We envision this scan as being extensible over time in order to address the evolving needs of various communities.
+    %p
+      SComCat is built as <a href="https://github.com/antleaf/scomcat">open-source software</a>, licensed under an MIT License.
+    %p
+      If you know of a technology or platform that you think should be included in this scan, please use the feedback form:
+      %a.btn.btn-info.btn-xs{href:"","data-toggle":"modal", "data-target":"#modal_feedback"}
+        Feedback
 
+      = render(:partial => '_shared/modal_feedback',:locals => {:technology_id => nil})
 
+  %div.col-sm-3
+    %h5
+      Acknowledgements
+    %p
+      The development of this catalogue was funded by&nbsp;
+      %a{href: "https://www.arcadiafund.org.uk"}> Arcadia
+      , a charitable fund of Lisbet Rausing and Peter Baldwin.
+    %p
+      This catalogue was originally populated with data from the
+      %i
+        %a{href:"https://mindthegap.pubpub.org"}Mind The Gap
+      report, used with the permission of the authors. We are grateful for their support in this project.
+      The information in this catalogue has been revised over time.
 
 
 
