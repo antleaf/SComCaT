@@ -48,7 +48,7 @@ class Technology < ApplicationRecord
       tech['base_technologies'] = technology.base_techs.collect { |base_tech| base_tech.name }
       tech['tags'] = technology.tags.collect { |tag| tag.name }
       tech['is_depended_on_by'] = technology.is_depended_on_by.collect { |child_tech| child_tech.slug }
-      tech['depends_on'] = technology.depends_on.collect { |parent_tech| parent_tech.slug }
+      tech['depends_on'] = technology.dependees.collect { |parent_tech| parent_tech.slug }
       tech_array << tech
     end
     tech_array.to_json
@@ -80,7 +80,7 @@ class Technology < ApplicationRecord
         row << technology.base_techs.collect { |base_tech| base_tech.name }.join('|')
         row << technology.tags.collect { |tag| tag.name }.join('|')
         row << technology.is_depended_on_by.collect { |tech| tech.slug }.join('|')
-        row << technology.depends_on.collect { |tech| tech.slug }.join('|')
+        row << technology.dependees.collect { |tech| tech.slug }.join('|')
         csv << row
       end
     end
