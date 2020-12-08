@@ -33,3 +33,4 @@
 .rakeTasks
 .generators
 /config/database.yml
+/db/*.sqlite3
