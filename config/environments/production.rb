@@ -10,7 +10,7 @@ Rails.application.configure do
       authentication: "plain",
       enable_starttls_auto: true,
       user_name: ENV['SCOMCAT_SMTP_USERNAME'],
-      password:ENV['SCOMCAT_SMTP_PASSWORD']
+      password: ENV['SCOMCAT_SMTP_PASSWORD']
   }
   config.action_mailer.default_url_options = { :host => 'scomcat.antleaf.org' }
 

@@ -9,8 +9,8 @@
           Last updated:
         %td
           = @technology.updated_at.strftime('%Y-%m-%d %H:%M UTC')
-          - if @technology.audits.last.user_id
-            = "by #{User.find(@technology.audits.last.user_id).display_name}"
+          -# - if @technology.audits.last.user_id
+          -#   = "by #{User.find(@technology.audits.last.user_id).display_name}"
       %tr
         %td.field-name
           Description:
