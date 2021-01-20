@@ -8,24 +8,21 @@
           %span{"aria-hidden":"true"} &times;
       %div.modal-body
         %ul
-          %li Your feedback will be sent to the SComCat editors by email.
-          %li The information submitted in this form is not recorded in the SComCat system.
-          %li You are not required to submit your name or email address.
-          %li If you do submit your email address, then one of the SComCat editors may use this to contact you in response to your feedback.
-          %li Your name and email address will not be used for any other purpose
-
+          %li The information submitted in this form is not recorded in the SComCat system - it will be sent to the SComCat editors by email.
+          %li One of the SComCat editors may contact you in response to your feedback.
+          %li Your name and email address will not be used for any other purpose.
         = form_tag(feedback_path, :method => "get") do
           = hidden_field_tag :technology_id, technology_id
           = hidden_field_tag :calling_page, request.original_url
           %table.invisible-layout-table
             %tr
               %td.field-name
-                Name (optional):
+                Name:
               %td.field-value
                 = text_field_tag :name
             %tr
               %td.field-name
-                Email Address (optional):
+                Email Address:
               %td.field-value
                 = text_field_tag :email_address
             %tr

@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   root 'home#index'
   get 'home', to: 'home#index'
+  get 'contribute', to: 'contribute#index'
   get 'about', to: 'about#index'
   get 'about/graph', to: 'about#graph'
   get 'feedback', to: 'feedback#index'
