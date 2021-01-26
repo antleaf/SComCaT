@@ -1,5 +1,5 @@
 # SComCat
-Scholarly Communications Technology Catalogue, developed by [Antleaf](http://www.antleaf.com) for the [Confederation of Open Access Repositories (COAR)](https://www.coar-repositories.org) as part of the [Next Generation Libraries Project](https://educopia.org/next-generation-library-publishing/).
+Scholarly Communication Technology Catalogue, developed by [Antleaf](http://www.antleaf.com) for the [Confederation of Open Access Repositories (COAR)](https://www.coar-repositories.org) as part of the [Next Generation Libraries Project](https://educopia.org/next-generation-library-publishing/).
 
 The development of this catalogue was funded by [Arcadia](https://www.arcadiafund.org.uk), a charitable fund of Lisbet Rausing and Peter Baldwin.
 
