@@ -20,7 +20,6 @@ class Technology < ApplicationRecord
 
   scope :published, -> { where(editorial_state: EditorialState.friendly.find('published')) }
   scope :draft, -> { where(editorial_state: EditorialState.friendly.find('draft')) }
-  default_scope {where(editorial_state: EditorialState.friendly.find('published'))}
 
   def is_depended_on_by
     technology_list = []

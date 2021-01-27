@@ -2,7 +2,7 @@ class HomeController < ApplicationController
 
   class TechnologySearch < FortyFacets::FacetSearch
     model 'Technology' # which model to search for
-    scope :draft
+    scope :published, name: 'published'
     text :name   # filter by a generic string entered by the user
     text :description   # filter by a generic string entered by the user
     # range :price, name: 'Price' # filter by ranges for decimal fields
@@ -21,12 +21,17 @@ class HomeController < ApplicationController
     #        'price, cheap first' => "price asc",
     #        'price, expensive first' => {price: :desc, title: :desc}
     # custom :for_manual_handling
+    #
+    # def root_scope
+    #   Technology.published
+    # end
 
   end
 
   def index
     @search = TechnologySearch.new(params) # this initializes your search object from the request params
     @technologies = @search.result.paginate(page: params[:page], per_page: 20) # optionally paginate through your results
+    @technologies = @technologies.published
   end
 
 end
