@@ -3,6 +3,8 @@ Rails.application.configure do
 
   # Code is not reloaded between requests.
 
+  config.logger = ActiveSupport::Logger.new(config.paths['log'].first, 1, 50.megabytes)
+
   config.action_mailer.smtp_settings = {
       address: ENV['SCOMCAT_SMTP_HOST'],
       port: ENV['SCOMCAT_SMTP_PORT'],
