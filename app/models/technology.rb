@@ -10,6 +10,7 @@ class Technology < ApplicationRecord
   belongs_to :adoption_level
   belongs_to :readiness_level
   belongs_to :governance
+  belongs_to :editorial_state
   has_and_belongs_to_many :functions
   has_and_belongs_to_many :categories
   has_and_belongs_to_many :collections
@@ -17,13 +18,17 @@ class Technology < ApplicationRecord
   has_many :dependencies, dependent: :destroy
   has_many :dependees, through: :dependencies
 
+  scope :published, -> { where(editorial_state: EditorialState.friendly.find('published')) }
+  scope :draft, -> { where(editorial_state: EditorialState.friendly.find('draft')) }
+  default_scope {where(editorial_state: EditorialState.friendly.find('published'))}
+
   def is_depended_on_by
     technology_list = []
     Dependency.where(:dependee => self).each {|d| technology_list << d.technology}
     return technology_list
   end
 
-  def self.dump_to_json(technologies=all)
+  def self.dump_to_json(technologies=published)
     tech_array = []
     technologies.each do |technology|
       tech = {}
@@ -54,7 +59,7 @@ class Technology < ApplicationRecord
     tech_array.to_json
   end
 
-  def self.dump_to_csv(technologies=all)
+  def self.dump_to_csv(technologies=published)
     CSV.generate(headers: true) do |csv|
       csv << ['id','name','description','last_updated','homepage','codebase','roadmap','hosting','pricing','licensing','adoption_level','readiness_level','governance','status','business_form','categories','collections','functions','base_technologies','tags','is_depended_on_by','depends_on']
       technologies.each do |technology|

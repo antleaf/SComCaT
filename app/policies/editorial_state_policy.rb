@@ -1,0 +1,3 @@
+class EditorialStatePolicy < ApplicationPolicy
+
+end

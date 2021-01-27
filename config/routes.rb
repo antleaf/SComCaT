@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :governances
   get 'admin', to: 'admin#index'
   get 'admin/audit', to: 'admin#audit'
+  get 'editorial', to: 'editorial#index'
   resources :assignments
   resources :roles
   resources :technologies
@@ -12,6 +13,7 @@ Rails.application.routes.draw do
   resources :functions
   resources :categories
   resources :adoption_levels
+  resources :editorial_states
   # devise_for :users
   devise_for :users, :path_prefix => 'my'
   resources :users

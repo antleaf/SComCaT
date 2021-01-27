@@ -10,6 +10,14 @@
       %table.invisible-layout-table
         %tr
           %td.field-name
+            Editorial State:
+          %td.field-value
+            - if @technology.new_record?
+              = f.select "editorial_state_id", options_from_collection_for_select(EditorialState.all, "id", "name",EditorialState.friendly.find('draft').id)
+            - else
+              = f.select "editorial_state_id", options_from_collection_for_select(EditorialState.all, "id", "name", @technology.editorial_state.id)
+        %tr
+          %td.field-name
             Name:
           %td.field-value
             = f.text_field :name

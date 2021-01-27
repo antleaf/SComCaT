@@ -1,0 +1,21 @@
+%h4.page-title
+  = "Editorial State: #{@editorial_state.name}"
+%table.invisible-layout-table
+  -#%tr
+  -#  %td.field-name
+  -#    Last updated:
+  -#  %td
+  -#    = @editorial_state.updated_at.strftime('%Y-%m-%d %H:%M UTC')
+  %tr
+    %td.field-name
+      Description:
+    %td
+      = @editorial_state.description
+
+- if policy(EditorialState).edit?
+  = link_to 'Edit', edit_editorial_state_path(@editorial_state), :class => "btn btn-info btn-xs"
+%br
+%br
+%h5 Technologies with this Editorial State
+
+= render(:partial => 'technologies/table',:locals => {:technology_list => @editorial_state.technologies})

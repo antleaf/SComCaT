@@ -2,9 +2,9 @@ class HomeController < ApplicationController
 
   class TechnologySearch < FortyFacets::FacetSearch
     model 'Technology' # which model to search for
+    scope :draft
     text :name   # filter by a generic string entered by the user
     text :description   # filter by a generic string entered by the user
-    # scope :classics   # only return movies which are in the scope 'classics'
     # range :price, name: 'Price' # filter by ranges for decimal fields
     facet :governance, name: 'Governance', order: :name
     facet :adoption_level, name: 'Adoption Level', order: :name

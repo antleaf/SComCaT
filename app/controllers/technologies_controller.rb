@@ -4,7 +4,7 @@ class TechnologiesController < ApplicationController
   # GET /technologies
   # GET /technologies.json
   def index
-    @technologies = Technology.all
+    @technologies = Technology.published
     respond_to do |format|
       format.html
       format.json { send_data Technology.dump_to_json(@technologies), filename: "technologies-#{Time.now.strftime('%Y-%m-%d_%H-%M')}.json" }
@@ -76,6 +76,6 @@ class TechnologiesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def technology_params
-    params.require(:technology).permit(:name, :description, :url, :codebase, :roadmap, :hosting, :pricing, :licensing, :notes, :editorial, :adoption_level_id, :readiness_level_id, :governance_id, :business_form_id, :status_id, :tag_list, :base_tech_list, :function_ids => [], :category_ids => [], :collection_ids => [],:dependee_ids => [])
+    params.require(:technology).permit(:name, :description, :url, :codebase, :roadmap, :hosting, :pricing, :licensing, :notes, :editorial, :adoption_level_id, :readiness_level_id, :governance_id, :business_form_id, :editorial_state_id,:status_id, :tag_list, :base_tech_list, :function_ids => [], :category_ids => [], :collection_ids => [],:dependee_ids => [])
   end
 end

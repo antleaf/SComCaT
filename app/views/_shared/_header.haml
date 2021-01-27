@@ -63,6 +63,13 @@
               -else
                 %li{:class=>"nav-item"}
                   =link_to "Admin", admin_path, :class => "nav-link"
+            - if policy(EditorialController).index?
+              -if controller.controller_name == "editorial"
+                %li{:class=>"nav-item nav-item-selected"}
+                  =link_to "Editorial", editorial_path, :class => "nav-link"
+              -else
+                %li{:class=>"nav-item"}
+                  =link_to "Editorial", editorial_path, :class => "nav-link"
             -if controller.controller_name == "contribute"
               %li{:class=>"nav-item nav-item-selected"}
                 =link_to "Contribute", contribute_path, :class => "nav-link"

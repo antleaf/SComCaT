@@ -1,0 +1,22 @@
+= form_for @editorial_state do |f|
+  - if @editorial_state.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@editorial_state.errors.count, "error")} prohibited this editorial_state from being saved:"
+      %ul
+        - @editorial_state.errors.full_messages.each do |message|
+          %li= message
+
+  %table.invisible-layout-table
+    %tr
+      %td.field-name
+        Name:
+      %td.field-value
+        = f.text_field :name
+    %tr
+      %td.field-name
+        Description:
+      %td.field-value
+        = f.text_area :description, :rows => 10
+  .actions
+    = link_to 'Cancel', @editorial_state, :class => "btn btn-danger btn-xs"
+    = f.submit 'Save', :class => 'btn btn-success btn-xs'

@@ -1,0 +1,2 @@
+module EditorialHelper
+end

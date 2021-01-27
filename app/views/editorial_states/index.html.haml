@@ -1,0 +1,37 @@
+%h4.page-title Editorial States
+
+%div.row
+  %div.col-lg-6
+    - if policy(EditorialState).create?
+      = link_to 'New Editorial State', new_editorial_state_path, :class => "btn btn-info btn-xs"
+  %div.col.right-aligned
+    = render "_shared/download_machine_readable_data_buttons"
+
+%table{:class=>"table table-condensed table-striped sorted-table"}
+  %thead
+    %tr
+      %th Name
+      %th.unsorted-column Description
+      %th Technologies with this editorial state
+      - if (policy(EditorialState).edit?)|(policy(EditorialState).destroy?)
+        %th.actions Actions
+
+  %tbody
+    - @editorial_states.each do |editorial_state|
+      %tr
+        %td.no-wrap= link_to editorial_state.name, editorial_state
+        %td.expand-to-fit-available-space= editorial_state.description
+        %td.number= editorial_state.technologies.count
+        - if (policy(EditorialState).edit?)|(policy(EditorialState).destroy?)
+          %td.actions
+            - if policy(EditorialState).edit?
+              = link_to 'Edit', edit_editorial_state_path(editorial_state), :title => 'Edit', :class => "btn btn-info btn-xs"
+            - if policy(EditorialState).destroy?
+              = link_to 'Delete', editorial_state, method: :delete, data: { confirm: 'Are you sure?' }, :title => 'Delete', :class => "btn btn-info btn-xs"
+
+%div.row
+  %div.col-lg-6
+    - if policy(EditorialState).create?
+      = link_to 'New Editorial State', new_editorial_state_path, :class => "btn btn-info btn-xs"
+  %div.col.right-aligned
+    = render "_shared/download_machine_readable_data_buttons"
