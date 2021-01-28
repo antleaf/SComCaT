@@ -17,6 +17,13 @@
               -# = f.select "editorial_state_id", options_from_collection_for_select(EditorialState.all, "id", "name",EditorialState.friendly.find('draft').id)
             - else
               = f.select "editorial_state_id", options_from_collection_for_select(EditorialState.all, "id", "name", @technology.editorial_state.id)
+        - if policy(Technology).change_slug_id?
+          %tr
+            %td.field-name
+              Slug:
+            %td.field-value
+              = f.text_field :slug
+              (warning = changing this will change the URL for this record)
         %tr
           %td.field-name
             Name:
