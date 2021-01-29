@@ -17,13 +17,14 @@
               -# = f.select "editorial_state_id", options_from_collection_for_select(EditorialState.all, "id", "name",EditorialState.friendly.find('draft').id)
             - else
               = f.select "editorial_state_id", options_from_collection_for_select(EditorialState.all, "id", "name", @technology.editorial_state.id)
-        - if policy(Technology).change_slug_id?
-          %tr
-            %td.field-name
-              Slug:
-            %td.field-value
-              = f.text_field :slug
-              (warning = changing this will change the URL for this record)
+        - if @technology.new_record? == false
+          - if policy(Technology).change_slug_id?
+            %tr
+              %td.field-name
+                Slug:
+              %td.field-value
+                = f.text_field :slug
+                (warning: changing this will change the URL for this record)
         %tr
           %td.field-name
             Name:
@@ -69,7 +70,7 @@
             Adoption Level:
           %td.field-value
             - if @technology.new_record?
-              = f.select "adoption_level_id", options_from_collection_for_select(AdoptionLevel.all, "id", "name")
+              = f.select "adoption_level_id", options_from_collection_for_select(AdoptionLevel.all, "id", "name",1)
             - else
               = f.select "adoption_level_id", options_from_collection_for_select(AdoptionLevel.all, "id", "name", @technology.adoption_level.id)
         %tr
@@ -77,7 +78,7 @@
             Readiness Level:
           %td.field-value
             - if @technology.new_record?
-              = f.select "readiness_level_id", options_from_collection_for_select(ReadinessLevel.all, "id", "name")
+              = f.select "readiness_level_id", options_from_collection_for_select(ReadinessLevel.all, "id", "name",1)
             - else
               = f.select "readiness_level_id", options_from_collection_for_select(ReadinessLevel.all, "id", "name", @technology.readiness_level.id)
         %tr
@@ -85,7 +86,7 @@
             Governance:
           %td.field-value
             - if @technology.new_record?
-              = f.select "governance_id", options_from_collection_for_select(Governance.all, "id", "name")
+              = f.select "governance_id", options_from_collection_for_select(Governance.all, "id", "name",1)
             - else
               = f.select "governance_id", options_from_collection_for_select(Governance.all, "id", "name", @technology.governance.id)
         %tr
@@ -93,7 +94,7 @@
             Business Form:
           %td.field-value
             - if @technology.new_record?
-              = f.select "business_form_id", options_from_collection_for_select(BusinessForm.all, "id", "name")
+              = f.select "business_form_id", options_from_collection_for_select(BusinessForm.all, "id", "name",1)
             - else
               = f.select "business_form_id", options_from_collection_for_select(BusinessForm.all, "id", "name", @technology.business_form.id)
         %tr
@@ -101,7 +102,7 @@
             Status:
           %td.field-value
             - if @technology.new_record?
-              = f.select "status_id", options_from_collection_for_select(Status.all, "id", "name")
+              = f.select "status_id", options_from_collection_for_select(Status.all, "id", "name",1)
             - else
               = f.select "status_id", options_from_collection_for_select(Status.all, "id", "name", @technology.status.id)
         %tr
