@@ -18,4 +18,4 @@
 %br
 %h5 Technologies in this category
 
-= render(:partial => 'technologies/table',:locals => {:technology_list => @category.technologies})
+= render(:partial => 'technologies/table',:locals => {:technology_list => @category.technologies.published})

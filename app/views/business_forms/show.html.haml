@@ -18,4 +18,4 @@
 %br
 %h5 Technologies with this Business Form
 
-= render(:partial => 'technologies/table',:locals => {:technology_list => @business_form.technologies})
+= render(:partial => 'technologies/table',:locals => {:technology_list => @business_form.technologies.published})

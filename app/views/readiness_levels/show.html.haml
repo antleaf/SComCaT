@@ -18,4 +18,4 @@
 %br
 %h5 Technologies with this Readiness Level
 
-= render(:partial => 'technologies/table',:locals => {:technology_list => @readiness_level.technologies})
+= render(:partial => 'technologies/table',:locals => {:technology_list => @readiness_level.technologies.published})

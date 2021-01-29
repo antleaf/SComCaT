@@ -1,5 +1,6 @@
 %div#footer
   %p
+    SComCat system v
     Developed by
     %a{href: "http://www.antleaf.com"} Antleaf
     for
@@ -9,3 +10,6 @@
 
     This website is licensed under a
     %a{rel:"license", href: "https://creativecommons.org/licenses/by/4.0/"} Creative Commons Attribution 4.0 License
+
+-# - if Rails.env != 'production'
+  -# =debug(params.to_s)

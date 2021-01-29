@@ -18,4 +18,4 @@
 %br
 %h5 Technologies with this adoption level
 
-= render(:partial => 'technologies/table',:locals => {:technology_list => @adoption_level.technologies})
+= render(:partial => 'technologies/table',:locals => {:technology_list => @adoption_level.technologies.published})

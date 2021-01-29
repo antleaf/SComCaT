@@ -18,4 +18,4 @@
 %br
 %h5 Technologies providing this function
 
-= render(:partial => 'technologies/table',:locals => {:technology_list => @function.technologies})
+= render(:partial => 'technologies/table',:locals => {:technology_list => @function.technologies.published})

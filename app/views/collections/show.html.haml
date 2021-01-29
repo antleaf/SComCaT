@@ -18,4 +18,4 @@
 %br
 %h5 Technologies in this collection
 
-= render(:partial => 'technologies/table',:locals => {:technology_list => @collection.technologies})
+= render(:partial => 'technologies/table',:locals => {:technology_list => @collection.technologies.published})

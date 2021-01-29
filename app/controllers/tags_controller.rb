@@ -7,6 +7,6 @@ class TagsController < ApplicationController
 
   def show
     @tag =  ActsAsTaggableOn::Tag.find(params[:id])
-    @technologies = Technology.tagged_with(@tag.name)
+    @technologies = Technology.tagged_with(@tag.name).published
   end
 end

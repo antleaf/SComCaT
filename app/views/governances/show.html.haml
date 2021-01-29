@@ -18,5 +18,5 @@
 %br
 %h5 Technologies with this governance
 
-= render(:partial => 'technologies/table',:locals => {:technology_list => @governance.technologies})
+= render(:partial => 'technologies/table',:locals => {:technology_list => @governance.technologies.published})
 

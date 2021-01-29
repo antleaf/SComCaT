@@ -11,8 +11,8 @@
         = hidden_field_tag 'search[order]', @search.order.definition.request_value if @search.order
         - name_filter = @search.filter(:name)
         = text_field_tag 'search[name]', name_filter.value, class: 'form-control form-control-sm', placeholder: name_filter.name, style: 'margin-bottom: 10px;'
-        - description_filter = @search.filter(:description)
-        = text_field_tag 'search[description]', description_filter.value, class: 'form-control form-control-sm', placeholder: description_filter.name, style: 'margin-bottom: 10px;'
+        -# - description_filter = @search.filter(:description)
+        -# = text_field_tag 'search[description]', description_filter.value, class: 'form-control form-control-sm', placeholder: description_filter.name, style: 'margin-bottom: 10px;'
         %div.form-button
           %button.btn.btn-info.btn-xs.form-button Search
       %div.row
@@ -53,4 +53,3 @@
       %div{:class=>"page_info"}
         = raw "Displaying technologies <b>#{@technologies.offset + 1}</b> to <b>#{@technologies.offset + @technologies.length}</b> of <b>#{@technologies.total_entries}</b> matching this search/filter"
       = will_paginate @technologies, :container => false
-

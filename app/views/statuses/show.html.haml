@@ -18,4 +18,4 @@
 %br
 %h5 Technologies with this Status
 
-= render(:partial => 'technologies/table',:locals => {:technology_list => @status.technologies})
+= render(:partial => 'technologies/table',:locals => {:technology_list => @status.technologies.published})
