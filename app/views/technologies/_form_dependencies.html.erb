@@ -3,7 +3,7 @@
   <div class="col">
     <% rowcount = 0 %>
     <% max_rows = ((Technology.count / 3).round(half: :up)) %>
-    <%= collection_check_boxes(:technology, :dependee_ids, Technology.all, :id, :name) do |c| %>
+    <%= collection_check_boxes(:technology, :dependee_ids, Technology.published, :id, :name) do |c| %>
     <%= c.check_box %>
     <%= c.label %>
     <br/>

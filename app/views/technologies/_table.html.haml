@@ -40,5 +40,5 @@
           %td.actions
             - if policy(Technology).edit?
               = link_to 'Edit', edit_technology_path(technology), :class => "btn btn-info btn-xs"
-            - if policy(Technology).destroy? && controller.controller_name == "technologies"
+            - if policy(Technology).destroy?# && controller.controller_name == "technologies"
               = link_to 'Delete', technology, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-info btn-xs"
