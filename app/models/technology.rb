@@ -18,7 +18,7 @@ class Technology < ApplicationRecord
   has_many :dependencies, dependent: :destroy
   has_many :dependees, through: :dependencies
 
-  # default_scope { order(name: :asc) }
+  # default_scope { order(slug: :asc) }
   scope :published, -> { where(editorial_state: EditorialState.friendly.find('published')) }
   scope :draft, -> { where(editorial_state: EditorialState.friendly.find('draft')) }
   scope :rejected, -> { where(editorial_state: EditorialState.friendly.find('rejected')) }
