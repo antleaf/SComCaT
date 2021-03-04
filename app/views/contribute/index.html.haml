@@ -4,34 +4,39 @@
   The Contribute section allows users of the SComCat tool to supply new entries for the SComCat Database. A team from the Next Generation Library Publishing Project (NGLP) will formally review each contribution as part of the peer-review process. New information that is approved by this team for inclusion will be incorporated in the subsequent updates to the SComCat Database.
 %p
   The Contribute section allows the database to continue evolving in a way that respects the high standards of data gathering and evaluation that have governed the construction of the original database. When the NGLP project concludes (currently Spring 2022), this resource will transition into an appropriate longer-term home, and an Editorial Review Board will continue to serve in this capacity.
-%p
-  To contribute a revision for an existing listing in the SComCat Database, please fill out the form below.
-%p
-  %b Many thanks for helping us to build out this tool and resource!
 
-%ul
-  %li The information submitted in this form is not recorded in the SComCat system - it will be sent to the SComCat editors by email.
-  %li One of the SComCat editors will contact you with further instructions and a location in which you may submit the new entry data using a spreadsheet containing all of the relevant fields.
-  %li Your name and email address will not be used for any other purpose.
+%p
+  To contribute a suggestion for a new entry, or a revision for an existing entry in the SComCat Database, please use the feedback button (below, right).
 
-  = form_tag(feedback_path, :method => "get") do
-    = hidden_field_tag :technology_id, nil
-    = hidden_field_tag :calling_page, request.original_url
-    %table.invisible-layout-table
-      %tr
-        %td.field-name
-          Name:
-        %td.field-value
-          = text_field_tag :name
-      %tr
-        %td.field-name
-          Email Address:
-        %td.field-value
-          = text_field_tag :email_address
-      %tr
-        %td.field-name
-          Feedback:
-        %td.field-value
-          = text_area_tag(:body, nil,rows: 20)
-    %div.right-aligned
-      = submit_tag("Submit feedback!", class: "btn btn-info btn-xs form-button")
+
+-#%p
+-#  To contribute a revision for an existing listing in the SComCat Database, please fill out the form below.
+-#%p
+-#  %b Many thanks for helping us to build out this tool and resource!
+-#
+-#%ul
+-#  %li The information submitted in this form is not recorded in the SComCat system - it will be sent to the SComCat editors by email.
+-#  %li One of the SComCat editors will contact you with further instructions and a location in which you may submit the new entry data using a spreadsheet containing all of the relevant fields.
+-#  %li Your name and email address will not be used for any other purpose.
+-#
+-#  = form_tag(feedback_path, :method => "get") do
+-#    = hidden_field_tag :technology_id, nil
+-#    = hidden_field_tag :calling_page, request.original_url
+-#    %table.invisible-layout-table
+-#      %tr
+-#        %td.field-name
+-#          Name:
+-#        %td.field-value
+-#          = text_field_tag :name
+-#      %tr
+-#        %td.field-name
+-#          Email Address:
+-#        %td.field-value
+-#          = text_field_tag :email_address
+-#      %tr
+-#        %td.field-name
+-#          Feedback:
+-#        %td.field-value
+-#          = text_area_tag(:body, nil,rows: 20)
+-#    %div.right-aligned
+-#      = submit_tag("Submit feedback!", class: "btn btn-info btn-xs form-button")
