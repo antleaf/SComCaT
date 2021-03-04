@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/ffi/ffi.git
+  revision: 3f862ca78ec4e6c2a5eabca8a5f7780d1774c1a0
+  specs:
+    ffi (1.14.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -80,7 +86,6 @@ GEM
       railties (>= 3.2)
     erubi (1.10.0)
     erubis (2.7.0)
-    ffi (1.13.1)
     forty_facets (0.1.9.1)
     friendly_id (5.3.0)
       activerecord (>= 4.0.0)
@@ -227,6 +232,7 @@ DEPENDENCIES
   byebug
   devise (~> 4.7.1)
   dotenv-rails
+  ffi!
   forty_facets
   friendly_id (~> 5.3.0)
   haml-rails (~> 2.0.1)
