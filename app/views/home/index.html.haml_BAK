@@ -42,10 +42,12 @@
           %div.card.tech-search-result-card
             %div.card-header.hover-over
               %b
-                = link_to technology.name, technology
+                %a{href:"","data-toggle":"modal", "data-target":"#modal_#{technology.id}"}
+                  = technology.name
               %span.hover-over-text= technology.description
             %div.card-body
               =truncate technology.description,{length: 150, separator: ' '}
+          = render(:partial => 'modal',:locals => {:technology => technology})
 
     %div.scomcat-pagination
       %div{:class=>"page_info"}
