@@ -69,7 +69,7 @@ class AdoptionLevelsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_adoption_level
-      @adoption_level = AdoptionLevel.friendly.find(params[:id])
+      @adoption_level = AdoptionLevel.includes(:technology).friendly.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

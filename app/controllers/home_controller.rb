@@ -3,14 +3,14 @@ class HomeController < ApplicationController
   class TechnologySearch < FortyFacets::FacetSearch
     model 'Technology' # which model to search for
     custom :name   # filter by a generic string entered by the user
-    facet :governance, name: 'Governance', order: :name
-    facet :adoption_level, name: 'Adoption Level', order: :name
-    facet :readiness_level, name: 'Readiness Level', order: :name
-    facet :functions, name: 'Function', order: :name
-    facet :categories, name: 'Category', order: :name
-    facet :collections, name: 'Collection', order: :name
-    facet :status, name: 'Status', order: :name
-    facet :business_form, name: 'Business Form', order: :name
+    facet :governance, name: 'Governance'#, order: :name
+    facet :adoption_level, name: 'Adoption Level'#, order: :name
+    facet :readiness_level, name: 'Readiness Level'#, order: :name
+    facet :functions, name: 'Function'#, order: :name
+    facet :categories, name: 'Category'#, order: :name
+    facet :collections, name: 'Collection'#, order: :name
+    facet :status, name: 'Status'#, order: :name
+    facet :business_form, name: 'Business Form'#, order: :name
   end
 
   def index

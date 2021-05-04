@@ -4,7 +4,7 @@ class TechnologiesController < ApplicationController
   # GET /technologies
   # GET /technologies.json
   def index
-    @technologies = Technology.published
+    @technologies = Technology.includes(:adoption_level).includes(:readiness_level).includes(:status).includes(:governance).includes(:business_form).published
     respond_to do |format|
       format.html
       format.json { send_data Technology.dump_to_json(@technologies), filename: "technologies-#{Time.now.strftime('%Y-%m-%d_%H-%M')}.json" }
@@ -71,7 +71,7 @@ class TechnologiesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_technology
-    @technology = Technology.friendly.find(params[:id])
+    @technology = Technology.includes(:adoption_level).includes(:readiness_level).includes(:governance).includes(:business_form).includes(:status).includes(:categories).includes(:functions).includes(:collections).friendly.find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.

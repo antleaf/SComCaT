@@ -64,7 +64,7 @@ class EditorialStatesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_editorial_state
-      @editorial_state = EditorialState.friendly.find(params[:id])
+      @editorial_state = EditorialState.includes(:technology).friendly.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
