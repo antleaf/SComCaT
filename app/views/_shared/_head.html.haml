@@ -12,5 +12,8 @@
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', "#{ENV['SCOMCAT_GOOGLE_ANALYTICS_CODE']}");
+  %link{:href=>"https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap", :rel=>"stylesheet"}
+
+
   = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
   = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
