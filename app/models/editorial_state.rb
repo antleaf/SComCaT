@@ -4,5 +4,5 @@ class EditorialState < ApplicationRecord
   audited max_audits: 50
   has_many :technologies
 
-  default_scope { order(name: :asc) }
+  # default_scope { order(name: :asc) }
 end

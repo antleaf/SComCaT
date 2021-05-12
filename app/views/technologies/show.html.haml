@@ -9,8 +9,6 @@
           Last updated:
         %td
           = @technology.updated_at.strftime('%Y-%m-%d %H:%M UTC')
-          -# - if @technology.audits.last.user_id
-          -#   = "by #{User.find(@technology.audits.last.user_id).display_name}"
       %tr
         %td.field-name
           Description:
@@ -114,9 +112,3 @@
   = link_to 'Edit', edit_technology_path(@technology), :class => "btn btn-info btn-xs"
 - if policy(Technology).destroy?
   = link_to 'Delete', @technology, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-xs"
-
-
-
--#  %a.btn.btn-info.btn-xs{href:"","data-toggle":"modal", "data-target":"#modal_feedback"}
--#    Give feedback about this record
--#= render(:partial => '_shared/modal_feedback',:locals => {:technology_id => @technology.id})

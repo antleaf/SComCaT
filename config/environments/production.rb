@@ -14,7 +14,7 @@ Rails.application.configure do
       user_name: ENV['SCOMCAT_SMTP_USERNAME'],
       password: ENV['SCOMCAT_SMTP_PASSWORD']
   }
-  config.action_mailer.default_url_options = { :host => 'scomcat.antleaf.org' }
+  config.action_mailer.default_url_options = { :host => 'www.scomcat.net' }
 
 
   config.cache_classes = true

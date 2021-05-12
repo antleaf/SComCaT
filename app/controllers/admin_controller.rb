@@ -9,7 +9,7 @@ class AdminController < ApplicationController
       format.html
       format.zip do
         begin
-          data_model_names = ['Governance','AdoptionLevel','Category','Function','ReadinessLevel','Relationship','Technology']
+          data_model_names = ['Governance','AdoptionLevel','Category','Function','ReadinessLevel','Technology']
           compressed_filestream = Zip::OutputStream.write_buffer do |zos|
             data_model_names.each do |data_model_name|
               zos.put_next_entry "#{data_model_name}.csv"

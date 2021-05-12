@@ -5,6 +5,6 @@ class Governance < ApplicationRecord
 
   has_many :technologies
 
-  default_scope { order(name: :asc) }
+  # default_scope { order(name: :asc) }
 
 end
