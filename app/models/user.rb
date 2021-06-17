@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :assignments
+  has_many :assignments, dependent: :destroy
   has_many :roles, through: :assignments
 
   audited max_audits: 50

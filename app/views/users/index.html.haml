@@ -12,8 +12,10 @@
   %thead
     %tr
       %th Email
-      %th Forename(s)
-      %th Last Name
+      %th Name
+      %th Admin?
+      %th Editor?
+      %th Helpdesk?
       - if (policy(User).edit?)|(policy(User).destroy?)
         %th.actions Actions
 
@@ -21,8 +23,16 @@
     - @users.each do |user|
       %tr
         %td.no-wrap= link_to user.email,user
-        %td= user.forenames
-        %td= user.lastname
+        %td= user.display_name
+        %td
+          - if user.has_role?(:admin)
+            yes
+        %td
+          - if user.has_role?(:editor)
+            yes
+        %td
+          - if user.has_role?(:helpdesk)
+            yes
         - if (policy(User).edit?)|(policy(User).destroy?)
           %td.actions
             - if policy(User).edit?
