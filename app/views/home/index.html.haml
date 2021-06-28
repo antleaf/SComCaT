@@ -31,6 +31,7 @@
           = render(:partial => 'facet',:locals => {:filter_name => :categories})
 
   %div.col-md-7.col-lg-8
+    = render(:partial => 'download_machine_readable_data_buttons')
     %div.scomcat-pagination
       %div{:class=>"page_info"}
         = raw "Displaying technologies <b>#{@technologies.offset + 1}</b> to <b>#{@technologies.offset + @technologies.length}</b> of <b>#{@technologies.total_entries}</b> matching this search/filter"
@@ -51,3 +52,5 @@
       %div{:class=>"page_info"}
         = raw "Displaying technologies <b>#{@technologies.offset + 1}</b> to <b>#{@technologies.offset + @technologies.length}</b> of <b>#{@technologies.total_entries}</b> matching this search/filter"
       = will_paginate @technologies, :container => false
+
+    = render(:partial => 'download_machine_readable_data_buttons')

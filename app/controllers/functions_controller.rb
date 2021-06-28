@@ -70,7 +70,7 @@ class FunctionsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_function
-      @function = Function.includes(:technology).friendly.find(params[:id])
+      @function = Function.includes(:technologies).friendly.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

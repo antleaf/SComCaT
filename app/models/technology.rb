@@ -60,7 +60,7 @@ class Technology < ApplicationRecord
     tech_array.to_json
   end
 
-  def self.dump_to_csv(technologies=published)
+  def self.dump_to_csv(technologies)
     CSV.generate(headers: true) do |csv|
       csv << ['id','name','description','last_updated','homepage','codebase','roadmap','hosting','pricing','licensing','adoption_level','readiness_level','governance','status','business_form','categories','collections','functions','base_technologies','tags','is_depended_on_by','depends_on']
       technologies.each do |technology|

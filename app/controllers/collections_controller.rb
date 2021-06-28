@@ -70,7 +70,7 @@ class CollectionsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_collection
-      @collection = Collection.includes(:technology).friendly.find(params[:id])
+      @collection = Collection.includes(:technologies).friendly.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

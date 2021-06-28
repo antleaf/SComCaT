@@ -18,7 +18,13 @@ class HomeController < ApplicationController
     if @search.filter(:name).value.present?
       @search = TechnologySearch.new(params,Technology.published.where("lower(technologies.name) LIKE ?", "%#{@search.filter(:name).value.downcase}%"))
     end
-    @technologies = @search.result.order(:slug).paginate(page: params[:page], per_page: 20)
+    @technologies_no_pagination = @search.result.order(:slug)
+    @technologies = @technologies_no_pagination.paginate(page: params[:page], per_page: 20)
+    respond_to do |format|
+      format.html
+      format.json { send_data Technology.dump_to_json(@technologies_no_pagination), filename: "technologies-#{Time.now.strftime('%Y-%m-%d_%H-%M')}.json" }
+      format.csv { send_data Technology.dump_to_csv(@technologies_no_pagination), filename: "technologies-#{Time.now.strftime('%Y-%m-%d_%H-%M')}.csv" }
+    end
   end
 
 end
