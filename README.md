@@ -7,6 +7,10 @@ This repository is no longer under active development or maintenance. You may re
 
 This repository contains the source-code and data for the Scholarly Communication Technology Catalogue, developed by [Antleaf](http://www.antleaf.com) for the [Confederation of Open Access Repositories (COAR)](https://www.coar-repositories.org) as part of the [Next Generation Libraries Project](https://educopia.org/next-generation-library-publishing/).
 
+![](./app/assets/images/Educopia_NextGen_PartnerLogoBanner_half_size.png)
+
+![](./app/assets/images/antleaf_small_logo.png)
+
 The development of this catalogue was funded by [Arcadia](https://www.arcadiafund.org.uk), a charitable fund of Lisbet Rausing and Peter Baldwin.
 
 ## To deploy
