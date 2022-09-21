@@ -32,5 +32,3 @@
 .idea
 .rakeTasks
 .generators
-/config/database.yml
-/db/sqlite_database/production.sqlite3
